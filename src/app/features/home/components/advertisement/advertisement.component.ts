@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ads',
-  templateUrl: './ads.component.html',
-  styleUrls: ['./ads.component.scss']
+  selector: 'app-advertisement',
+  templateUrl: './advertisement.component.html',
+  styleUrls: ['./advertisement.component.scss']
 })
 export class AdsComponent implements OnInit {
 

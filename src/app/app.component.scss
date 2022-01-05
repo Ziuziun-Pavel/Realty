@@ -1,1 +1,14 @@
-    
+header {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    padding: 5px 10px 10px 10px; 
+    background-color: rgba($color: #ffffff, $alpha: 1);
+    z-index: 15;
+    overflow: hidden;
+}
+
+footer {
+    padding: 5px 0 10px 0;
+    background-color: rgb(179, 174, 174);
+}

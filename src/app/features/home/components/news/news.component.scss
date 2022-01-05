@@ -1,0 +1,32 @@
+.news {
+    background-color: rgb(196, 196, 196);
+    .title {
+        font-size: 32px;
+        line-height: 68px;
+        font-weight: 500;
+    }
+    .wrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: grid;
+        grid-template: repeat(2,  minmax(300px, auto)) / repeat(4, 1fr);
+        grid-auto-rows: minmax(300px, auto);
+        gap: 15px;
+        .card {
+            background-color:rgb(234, 234, 236);
+            height: 320px;
+            padding: 10px;
+            &-photo {
+                object-fit: cover;
+                width: 100%;
+                height: 200px;
+            }
+        }
+        #c1 {
+            grid-column: 1/3;
+        }
+        #c5 {
+            grid-column: 2/4;
+        }
+    }
+}

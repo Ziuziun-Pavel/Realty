@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdsComponent } from './ads.component';
+import { AdsComponent } from './advertisement.component';
 
 describe('AdsComponent', () => {
   let component: AdsComponent;

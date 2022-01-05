@@ -10,6 +10,8 @@ export class SearchPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
+
 
 }
