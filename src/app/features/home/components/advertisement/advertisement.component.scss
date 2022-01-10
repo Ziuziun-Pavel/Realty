@@ -23,6 +23,7 @@
         height: 320px;
         border-radius: 10px;
         transition: all .2s;
+        cursor: pointer;
         &-photo {
             object-fit: cover;
             border-radius: 10px 10px 0px 0px;

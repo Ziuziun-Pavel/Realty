@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-advertisement',
   templateUrl: './advertisement.component.html',
   styleUrls: ['./advertisement.component.scss']
 })
-export class AdsComponent implements OnInit {
-
+export class AdsComponent {
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
