@@ -1,0 +1,15 @@
+:host {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template: repeat(2,  minmax(300px, auto)) / repeat(4, 1fr);
+  grid-auto-rows: minmax(300px, auto);
+  gap: 15px;
+}
+#c1 {
+  grid-column: 1/3;
+}
+
+#c5 {
+  grid-column: 2/4;
+}

@@ -1,20 +1,25 @@
 
 :root {
-    --primary-color: #FFD02F;
+  --primary-color: #FFD02F;
 }
 
 * {
   box-sizing: border-box;
 }
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto Mono', monospace;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .container {
-    max-width: 1276px;
-    margin: 0 auto;
-    overflow: hidden;
+  max-width: 1276px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
+a {
+  color: #000;
+  text-decoration: none;
+}

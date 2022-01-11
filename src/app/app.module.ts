@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from "@angular/common";
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
@@ -7,17 +6,20 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './features/home/home.module';
 
 import { AppComponent } from './app.component';
+import {HttpClientModule} from "@angular/common/http";
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    CommonModule,
+    BrowserModule,
     AppRoutingModule,
     HomeModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

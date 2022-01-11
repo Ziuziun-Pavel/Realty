@@ -1,72 +1,15 @@
 .ads {
-    padding: 0 0 50px 0;
-    .title {
-        font-size: 32px;
-        line-height: 32px;
-    }
-    .subtitle {
-        font-size: 24px;
-        line-height: 32px;
-        font-weight: 400;
-        &:nth-child(1) {
-            color: #259c6b; 
-        }
-    }
-    .wrapper {
-        display: grid;
-        grid-template: repeat(2, minmax(300px, auto)) / repeat(4, 1fr);
-        grid-auto-rows: minmax(300px, auto);
-        gap: 15px;
-    }
-    .item {
-        background-color:rgb(234, 234, 236);
-        height: 320px;
-        border-radius: 10px;
-        transition: all .2s;
-        cursor: pointer;
-        &-photo {
-            object-fit: cover;
-            border-radius: 10px 10px 0px 0px;
-            width: 100%;
-            height: 200px;
-        }
-        &-price {
-            margin-left: 8px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        &-square {
-            margin-left: 8px;
-            font-size: 15px;
-            line-height: 30px;
-            font-weight: 400;
-            margin-top: 8px;
-        }
-        &-street {
-            margin-left: 8px;
-            font-size: 15px;
-            line-height: 20px;
-        }
-        &-location {
-            position: relative;
-            padding-left: 23px;
-            font-size: 14px;
-            &::before {
-                content: '';
-                position: absolute;
-                left: 9px;
-                top: 6px;
-                width: 10px;
-                height: 10px;
-                -moz-border-radius: 7.5px;
-                -webkit-border-radius: 7.5px;
-                border-radius: 7.5px;
-                background-color: #69b6d5;
-            }
-        }
-        &:hover .item-price{
-            color: rgb(73, 89, 230);
+  padding: 0 0 50px 0;
 
-        }
-    }
+  .title {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 400;
+  }
+
 }

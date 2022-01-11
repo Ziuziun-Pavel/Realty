@@ -10,11 +10,10 @@ import { NewsComponent } from "./components/news/news.component";
 import { SellCardComponent } from "./components/advertisement/sell-card/sell-card.component";
 import { NewsCardComponent } from './components/news/news-card/news-card.component';
 import { HomeComponent } from "./home.component";
-import { RentCardComponent } from './components/advertisement/rent-card/rent-card.component';
 
-import { SellCardService } from "./services/sell-card.service";
-import { RentCardService } from "./services/rent-card.service";
-import { NewsCardService } from "./services/news-card.service";
+import { CardComponent } from './components/advertisement/card/card.component';
+import { RentCardsComponent } from './components/advertisement/rent-cards/rent-cards.component';
+import { NewsListComponent } from './components/news/news-list/news-list.component';
 
 @NgModule({
   imports: [
@@ -30,14 +29,11 @@ import { NewsCardService } from "./services/news-card.service";
         SellCardComponent,
         NewsCardComponent,
         HomeComponent,
-        RentCardComponent
+        CardComponent,
+        RentCardsComponent,
+        NewsListComponent
     ],
-    exports: [HomeComponent],
-    providers: [
-        SellCardService,
-        RentCardService,
-        NewsCardService
-    ]
+    exports: [HomeComponent]
 })
 
 export class HomeModule { }

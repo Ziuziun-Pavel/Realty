@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RentCardComponent } from './rent-card.component';
+import { RentCardsComponent } from './rent-cards.component';
 
-describe('RentCardComponent', () => {
-  let component: RentCardComponent;
-  let fixture: ComponentFixture<RentCardComponent>;
+describe('RentCardsComponent', () => {
+  let component: RentCardsComponent;
+  let fixture: ComponentFixture<RentCardsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RentCardComponent ]
+      declarations: [ RentCardsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RentCardComponent);
+    fixture = TestBed.createComponent(RentCardsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
