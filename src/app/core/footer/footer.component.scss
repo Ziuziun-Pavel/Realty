@@ -1,7 +1,11 @@
 :host {
   display: block;
+  background-color: darkgray;
   text-align: center;
   padding: 5px;
+}
+.info {
+  margin: 10px 0;
 }
 .img-container {
   display: flex;

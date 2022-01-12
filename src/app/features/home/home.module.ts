@@ -10,10 +10,10 @@ import { NewsComponent } from "./components/news/news.component";
 import { SellCardComponent } from "./components/advertisement/sell-card/sell-card.component";
 import { NewsCardComponent } from './components/news/news-card/news-card.component';
 import { HomeComponent } from "./home.component";
-
 import { CardComponent } from './components/advertisement/card/card.component';
 import { RentCardsComponent } from './components/advertisement/rent-cards/rent-cards.component';
 import { NewsListComponent } from './components/news/news-list/news-list.component';
+import { PageComponent } from './components/advertisement/page/page.component';
 
 @NgModule({
   imports: [
@@ -31,7 +31,8 @@ import { NewsListComponent } from './components/news/news-list/news-list.compone
         HomeComponent,
         CardComponent,
         RentCardsComponent,
-        NewsListComponent
+        NewsListComponent,
+        PageComponent
     ],
     exports: [HomeComponent]
 })
