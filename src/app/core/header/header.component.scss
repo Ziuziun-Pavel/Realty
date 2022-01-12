@@ -1,0 +1,141 @@
+:host {
+  position: fixed;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  width: 100%;
+  height: 60px;
+  padding: 0 10px 0 10px;
+  background-color: rgba($color: #ffffff, $alpha: 1);
+  z-index: 15;
+  overflow: hidden;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+.favourite {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 150px;
+  height: 100%;
+  padding: 0 10px 0 10px;
+  transition: all .5s;
+  cursor: pointer;
+  img {
+    display: inline-block;
+    margin: -3px 5px 0 0;
+  }
+  &:hover {
+    background-color: rgba(102,102,102,.1);
+  }
+}
+.logo {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.menu {
+  width: 500px;
+  height: 100%;
+  margin-right: 280px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+    &-item {
+      display: block;
+      height: 100%;
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      list-style-type: none;
+      transition: all .3s;
+      li {
+        display: block;
+        padding: 0 15px 0 15px;
+        height: 60px;
+        line-height: 60px;
+        transition: all .5s;
+      }
+      &:hover li {
+        background-color: rgba(102,102,102,.1);
+      }
+    }
+}
+.account {
+  display: block;
+  position: absolute;
+  right: 179px;
+  top: 22%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.adding {
+  height: 100%;
+  padding: 0 10px 0 10px;
+  transition: all .5s;
+  &:hover {
+    background-color: rgba(102,102,102,.1);
+  }
+}
+.btn {
+  position: relative;
+  margin-top: 10px;
+  width: 210px;
+  height: 40px;
+  border-radius: 10px;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  background-color:  var(--primary-color);
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+  span {
+    margin-left: 15px;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 18px;
+    height: 3px;
+    width: 15px;
+    background: #000;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 19px;
+    height: 2px;
+    width: 15px;
+    transform: rotate(-90deg);
+    background: #000;
+  }
+}
+.signin {
+  height: 100%;
+  padding: 0 10px 0 10px;
+  transition: all .5s;
+  &:hover {
+    background-color: rgba(102,102,102,.1);
+  }
+}
+.btn-signin {
+  position: relative;
+  margin-top: 10px;
+  width: 80px;
+  height: 40px;
+  border-radius: 10px;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  background-color:  rgba($color: #FFD02F, $alpha: 1);
+  text-align: end;
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+}

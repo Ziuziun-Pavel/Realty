@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+import { HomeModule } from './features/home/home.module';
+
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { SearchPanelComponent } from './search-panel/search-panel.component';
-import { AdsComponent } from './ads/ads.component';
-import { FooterComponent } from './footer/footer.component';
+import {HttpClientModule} from "@angular/common/http";
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    SearchPanelComponent,
-    AdsComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HomeModule,
+    CoreModule,
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
