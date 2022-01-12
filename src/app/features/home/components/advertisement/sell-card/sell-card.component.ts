@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CardService } from '../../../services/card.service';
 import { Observable } from 'rxjs';
-
 import { ICard } from '../../../../../core/models/cards';
 
 @Component({
@@ -12,7 +11,7 @@ import { ICard } from '../../../../../core/models/cards';
 export class SellCardComponent implements OnInit {
   cards: Observable<Array<ICard>>|undefined;
 
-  constructor(private readonly cardService: CardService) {  }
+  constructor(private readonly cardService: CardService) { }
 
   ngOnInit(): void {
     this.cards = this.cardService.getSellCards()

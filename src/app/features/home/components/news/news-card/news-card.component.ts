@@ -7,9 +7,5 @@ import { NewsItem } from '../../../../../core/models/news';
   styleUrls: ['./news-card.component.scss']
 })
 export class NewsCardComponent {
-
   @Input()  card?: NewsItem;
-  constructor() { }
-
-
 }

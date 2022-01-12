@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class NewsPageComponent implements OnInit {
 
   newsCard?: Observable<NewsItem|undefined>;
-  newsCardId: string | undefined;
+  newsCardId: string| undefined;
 
   constructor(private readonly activateRoute: ActivatedRoute, private readonly cardService: NewsService) {  }
 

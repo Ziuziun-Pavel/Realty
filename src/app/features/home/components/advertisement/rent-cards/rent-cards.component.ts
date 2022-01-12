@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Observable } from 'rxjs';
 import { CardService } from '../../../services/card.service';
 import { ICard } from '../../../../../core/models/cards';
