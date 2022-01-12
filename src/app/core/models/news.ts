@@ -1,5 +1,9 @@
-export interface Item {
+export interface NewsItem {
+  id: string,
   url: string,
+  title: string,
+  date: string,
+  author: string,
   description: string,
-  id: string
+  additionalInfo: string
 }

@@ -5,8 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './search-panel.component.html',
   styleUrls: ['./search-panel.component.scss']
 })
-export class SearchPanelComponent {
-
-  constructor() { }
-
-}
+export class SearchPanelComponent { }

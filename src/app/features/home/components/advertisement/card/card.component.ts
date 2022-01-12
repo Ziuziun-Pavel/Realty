@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Input } from "@angular/core";
-import {ICard} from "../../../../../core/models/cards";
+import { Input } from '@angular/core';
+import { ICard } from '../../../../../core/models/cards';
 
 @Component({
   selector: 'app-card',
@@ -8,11 +8,5 @@ import {ICard} from "../../../../../core/models/cards";
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
-
   @Input()  card?: ICard;
-
-  constructor() {
-
   }
-
-}
