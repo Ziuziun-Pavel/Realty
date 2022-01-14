@@ -5,5 +5,14 @@ export interface ICard {
   street: string,
   metro: string,
   seller: string,
-  id: number
+  numberOfRooms: number,
+  floor: number,
+  maxFloor: number,
+  typeOfHouse: string,
+  balcony: string,
+  heightOfCeiling: number,
+  yearOfBuilding: number,
+  telNumber: string,
+  description: string,
+  id: number,
 }

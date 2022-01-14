@@ -1,23 +1,23 @@
-<section *ngIf="cards | async as cardItem" class="card">
+<section *ngIf="card | async as cardItem" class="card">
   <div class="container">
-    <h2 class="title">Квартира по адресу <span>{{ cardItem[id-1].street }}</span></h2>
-    <h3 class="price">{{ cardItem[id-1].price }}</h3>
-    <img class="subway" src="assets/icons/socials/subway.svg"><span class="metro">{{ cardItem[id-1].metro }}</span>
+    <h2 class="title">Квартира по адресу <span>{{ cardItem.street }}</span></h2>
+    <h3 class="price">{{ cardItem.price }}</h3>
+    <img class="subway" src="assets/icons/socials/subway.svg"><span class="metro">{{ cardItem.metro }}</span>
     <div class="contacts-wrapper">
-      <img src="{{ cardItem[id-1].url }}" alt="flat" class="card-photo">
+      <img src="{{ cardItem.url }}" alt="flat" class="card-photo">
 
       <div class="contacts">
         <h2 class="title">Контакты:</h2>
         <div>
-          <p class="name">{{ cardItem[id-1].seller }}</p><br>
+          <p class="name">{{ cardItem.seller }}</p><br>
           <p class="mobile"><img src="assets/icons/socials/a1.svg" alt=""> <a href="tel:+375295554433"> +375 29
-            555-44-33</a></p><br>
+            {{ cardItem.telNumber }}</a></p><br>
           <p class="mobile"><img src="assets/icons/socials/mts.svg" alt=""> <a href="tel:+375335554433"> +375 33
-            555-44-33</a></p><br>
+            {{ cardItem.telNumber }}</a></p><br>
           <div class="socials">
-            <a href="/"><img src="assets/icons/socials/viber_logo.svg"></a>
-            <a href="/"><img src="assets/icons/socials/vk_logo.svg"></a>
-            <a href="/"><img src="assets/icons/socials/wharsapp_logo.svg"></a>
+            <a href="/"><img alt="social" src="assets/icons/socials/viber_logo.svg"></a>
+            <a href="/"><img alt="social" src="assets/icons/socials/vk_logo.svg"></a>
+            <a href="/"><img alt="social" src="assets/icons/socials/wharsapp_logo.svg"></a>
           </div>
         </div>
       </div>
@@ -27,42 +27,35 @@
         <table class="table">
           <tr>
             <td>Комнат всего</td>
-            <td>4-комнатная квартира</td>
+            <td>{{ cardItem.numberOfRooms }}-комнатная квартира</td>
           </tr>
           <tr>
             <td>Этаж / этажность</td>
-            <td>14 / 26</td>
+            <td>{{ cardItem.floor }} / {{ cardItem.maxFloor }}</td>
           </tr>
           <tr>
             <td>Тип дома</td>
-            <td>каркасно-блочный</td>
+            <td>{{ cardItem.typeOfHouse }}</td>
           </tr>
           <tr>
             <td>Балкон</td>
-            <td>3 лоджии застекленные</td>
+            <td>{{ cardItem.balcony }}</td>
           </tr>
           <tr>
             <td>Высота потолков</td>
-            <td>3.2 м</td>
+            <td>{{ cardItem.heightOfCeiling }} м</td>
           </tr>
           <tr>
             <td>Год постройки</td>
-            <td>2012</td>
+            <td>{{ cardItem.yearOfBuilding }}</td>
           </tr>
         </table>
       </div>
     </div>
 
     <h2 class="title">Описание</h2>
-    <p class="descr">
-      Продается квартира свободной планировки с местом в подземном паркинге<br><br>
-      {{ cardItem[id-1].street }}<br><br>
-      Дом класса элит расположен в историческом центре столицы<br><br>
-      14 этаж 26-этажного каркасно-блочного дома 2012 г.п., высота потолков 3,2м.<br><br>
-      Система «Умный дом», лифты «OTIS», в подъезде консьерж, система круглосуточного видеонаблюдения, въезд на территорию закрыт шлагбаумом, благоустроенный двор : детская и спортивные площадки.<br>
-      Потрясающий вид из панорамных окон квартиры на обе стороны дома.<br><br>
-      Планировка квартиры позволяет при желании разделить ее на две полноценных видовых квартиры.<br><br>
-      С квартирой продается место в подземном паркинге площадью 17,9м.кв.<br><br>
+    <p class="description">
+      {{ cardItem.description }}
     </p>
   </div>
 </section>

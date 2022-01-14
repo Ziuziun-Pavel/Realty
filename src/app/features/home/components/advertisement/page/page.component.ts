@@ -11,16 +11,16 @@ import {Observable} from "rxjs";
 })
 export class PageComponent implements OnInit {
 
-  cards: Observable<ICard[]> |undefined;
-  id: number;
+  card?: Observable<ICard|undefined> ;
+  cardId: number;
 
   constructor(private readonly activateRoute: ActivatedRoute,
               private readonly cardService: CardService) {
-    this.id = activateRoute.snapshot.params['id'];
+    this.cardId = +activateRoute.snapshot.params['id'];
   }
 
   ngOnInit(): void {
-    this.cards = this.cardService.getCardById(this.id)
+    this.card = this.cardService.getCardById(this.cardId)
   }
 
 }
