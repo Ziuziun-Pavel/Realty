@@ -4,7 +4,7 @@ import {PageComponent} from "./features/home/components/advertisement/page/page.
 import {HomeComponent} from "./features/home/home.component";
 
 const routes: Routes = [
-  {path: 'page', component: PageComponent},
+  {path: 'page/:id', component: PageComponent},
   {path: '', component: HomeComponent}
 ];
 

@@ -3,5 +3,7 @@ export interface ICard {
   price: string,
   square: string,
   street: string,
-  metro: string
+  metro: string,
+  seller: string,
+  id: number
 }
