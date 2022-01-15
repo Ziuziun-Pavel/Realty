@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs";
 import { CardService } from "../../../services/card.service";
-import {ICard} from "../../../../../core/models/cards";
+import { ICard } from "../../../../../core/models/cards";
 
 @Component({
   selector: 'app-rent-cards',

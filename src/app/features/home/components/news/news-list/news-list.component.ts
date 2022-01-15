@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs";
-import {Item} from "../../../../../core/models/news";
-import {NewsService} from "../../../services/news.service";
+import { Item } from "../../../../../core/models/news";
+import { NewsService } from "../../../services/news.service";
 
 @Component({
   selector: 'app-news-list',

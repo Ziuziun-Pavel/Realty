@@ -9,14 +9,16 @@ import { ICard } from "../../../core/models/cards";
 })
 export class CardService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getCards(cardUrl: string): Observable<Array<ICard>> {
     return this.http.get(environment.baseUrl + cardUrl) as Observable<Array<ICard>>
   }
 
-  getCardById(cardId: number): Observable<ICard | undefined> {
+  getSellCardById(cardId: number): Observable<ICard | undefined> {
     return this.http.get<ICard[]>(environment.baseUrl + 'sellCards.json')
-      .pipe(map(data => data.find(({id}) =>  cardId === id)))
+      .pipe(map(data => data.find(({id}) => cardId === id)))
   }
+
 }
