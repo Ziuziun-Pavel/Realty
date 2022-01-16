@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from "../../../../../core/models/news";
 import { Observable } from "rxjs";
 import { NewsService } from "../../../services/news.service";
-import {ActivatedRoute} from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-page-for-news-card',

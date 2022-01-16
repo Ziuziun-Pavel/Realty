@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { map, Observable} from "rxjs";
+import { map, Observable } from "rxjs";
 import { Item } from "../../../core/models/news";
 import { environment } from "../../../../environments/environment";
 
