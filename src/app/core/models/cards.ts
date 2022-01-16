@@ -14,5 +14,5 @@ export interface ICard {
   yearOfBuilding: number,
   telNumber: string,
   description: string,
-  id: number,
+  id: string,
 }
