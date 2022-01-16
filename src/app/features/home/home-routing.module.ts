@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageComponent } from "./components/advertisement/page/page.component";
+import { PageForFlat } from "./components/advertisement/page/page-for-flat.component";
 import { HomeComponent } from "./home.component";
 
 const routes: Routes = [
-  {path: 'page', component: PageComponent},
+  {path: 'page', component: PageForFlat},
   {path: '', component: HomeComponent}
 ];
 

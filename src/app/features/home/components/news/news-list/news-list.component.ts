@@ -10,12 +10,12 @@ import { NewsService } from "../../../services/news.service";
 })
 export class NewsListComponent implements OnInit {
 
-  cards: Observable<Array<Item>> | undefined;
+  newsCards: Observable<Array<Item>> | undefined;
 
   constructor(private readonly cardService: NewsService) { }
 
   ngOnInit(): void {
-    this.cards = this.cardService.showCards();
+    this.newsCards = this.cardService.showCards();
   }
 
 }

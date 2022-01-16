@@ -6,12 +6,12 @@ import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss']
+  templateUrl: './page-for-flat.component.html',
+  styleUrls: ['./page-for-flat.component.scss']
 })
-export class PageComponent implements OnInit {
+export class PageForFlat implements OnInit {
 
-  card?: Observable<ICard|undefined> ;
+  card?: Observable<ICard|undefined>;
   cardId: string;
 
   constructor(private readonly activateRoute: ActivatedRoute, private readonly cardService: CardService) {
@@ -19,7 +19,7 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.card = this.cardService.getSellCardById(this.cardId)
+    this.card = this.cardService.getCardById(this.cardId)
   }
 
 }

@@ -13,7 +13,8 @@ import { HomeComponent } from "./home.component";
 import { CardComponent } from './components/advertisement/card/card.component';
 import { RentCardsComponent } from './components/advertisement/rent-cards/rent-cards.component';
 import { NewsListComponent } from './components/news/news-list/news-list.component';
-import { PageComponent } from './components/advertisement/page/page.component';
+import { PageForFlat } from './components/advertisement/page/page-for-flat.component';
+import { PageForNewsComponent } from './components/news/page-for-news-card/page-for-news.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { PageComponent } from './components/advertisement/page/page.component';
         CardComponent,
         RentCardsComponent,
         NewsListComponent,
-        PageComponent
+        PageForFlat,
+        PageForNewsComponent
     ],
     exports: [HomeComponent]
 })
