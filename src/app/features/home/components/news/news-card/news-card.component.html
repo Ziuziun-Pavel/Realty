@@ -1,4 +1,13 @@
+<<<<<<< HEAD
 <div class="card">
   <a href="#"><img src="{{ card?.url }}" alt="realty" class="card-photo"></a>
   <p class="text">{{ card?.description }}</p>
 </div>
+=======
+<a [routerLink]="['news', card?.id ]">
+  <div class="card">
+    <a href="#"><img src="{{ card?.url }}" alt="realty" class="card-photo"></a>
+    <p class="text">{{ card?.title }}</p>
+  </div>
+</a>
+>>>>>>> 9c9e099 (extract duplicate code to new function)

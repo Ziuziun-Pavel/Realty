@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CardService } from '../../../services/card.service';
 import { Observable } from 'rxjs';
+<<<<<<< HEAD
 import {ICard} from "../../../../../core/models/cards";
+=======
+import { ICard } from '../../../../../core/models/cards';
+>>>>>>> 9c9e099 (extract duplicate code to new function)
 
 @Component({
   selector: 'app-sell-card',
@@ -15,7 +19,7 @@ export class SellCardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.cards = this.cardService.getCards('sellCards.json')
+    this.cards = this.cardService.getSellCards()
   }
 
 }
