@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Input } from "@angular/core";
-import { ICard } from "../../../../../core/models/cards";
+import { Input } from '@angular/core';
+import { ICard } from '../../../../../core/models/cards';
 
 @Component({
   selector: 'app-card',

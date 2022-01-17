@@ -6,8 +6,8 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './features/home/home.module';
 
 import { AppComponent } from './app.component';
-import { HttpClientModule } from "@angular/common/http";
-import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageForFlat } from './page-for-flat.component';
+import { NewsPageComponent } from './news-page.component';
 
-describe('PageComponent', () => {
-  let component: PageForFlat;
-  let fixture: ComponentFixture<PageForFlat>;
+describe('PageForNewsCardComponent', () => {
+  let component: NewsPageComponent;
+  let fixture: ComponentFixture<NewsPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageForFlat ]
+      declarations: [ NewsPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageForFlat);
+    fixture = TestBed.createComponent(NewsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
