@@ -1,4 +1,5 @@
 export interface ICard {
+  type: string;
   url: string,
   price: string,
   square: string,
@@ -14,5 +15,5 @@ export interface ICard {
   yearOfBuilding: number,
   telNumber: string,
   description: string,
-  id: string,
+  id: string
 }

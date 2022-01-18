@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { NewsItem } from '../../../core/models/news';
 import { environment } from '../../../../environments/environment';
+import { findCardById } from "../../../shared/utilits/findCardById";
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,6 @@ export class NewsService {
   }
 
   getNewsById(newsCardId: string | undefined): Observable<NewsItem | undefined> {
-      return this.http.get<NewsItem[]>( environment.baseUrl + 'newsCards.json')
-        .pipe(map(data => data.find(({id}) => newsCardId === id)))
+    return findCardById(this.http.get<NewsItem[]>(environment.baseUrl + "newsCards.json"), newsCardId)
   }
 }
