@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ICard } from '../../../../../core/models/cards';
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../../../services/card.service';
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-flat-page',
@@ -12,20 +12,22 @@ import { Observable } from 'rxjs';
 export class FlatPageComponent implements OnInit {
 
   card?: Observable<ICard | undefined>;
-  cardId: string | undefined;
+  flatCardType:string;
+  cardId: string;
 
   constructor(private readonly activateRoute: ActivatedRoute, private readonly cardService: CardService) {
   }
 
   ngOnInit(): void {
     this.cardId = this.activateRoute.snapshot.params['id'];
+    this.flatCardType = this.activateRoute.snapshot.params['type'];
 
-    if(this.cardId?.includes('s')) {
+
+    if(this.flatCardType == 'sell') {
       this.card = this.cardService.getSellCardById(this.cardId);
     } else {
       this.card = this.cardService.getRentCardById(this.cardId);
     }
-
   }
 
 
