@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { CardType, ICard } from '../../../../../core/models/cards';
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../../../services/card.service';
