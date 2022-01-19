@@ -1,5 +1,5 @@
 export interface ICard {
-  type: CardType.sell | CardType.rent,
+  type: CardType,
   url: string,
   price: string,
   square: string,
