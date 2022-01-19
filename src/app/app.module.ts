@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './features/home/home.module';
+import { AccountModule } from "./account/account.module";
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +20,8 @@ import { BrowserModule } from '@angular/platform-browser';
     HomeModule,
     CoreModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    AccountModule
   ],
   providers: [],
   bootstrap: [AppComponent]
