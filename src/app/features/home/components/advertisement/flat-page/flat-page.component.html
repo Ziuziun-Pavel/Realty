@@ -1,0 +1,61 @@
+<section *ngIf="card | async as cardItem" class="card">
+  <div class="container">
+    <h2 class="title">Квартира по адресу <span>{{ cardItem.street }}</span></h2>
+    <h3 class="price">{{ cardItem.price }}</h3>
+    <img class="subway" src="assets/icons/socials/subway.svg"><span class="metro">{{ cardItem.metro }}</span>
+    <div class="contacts-wrapper">
+      <img src="{{ cardItem.url }}" alt="flat" class="card-photo">
+
+      <div class="contacts">
+        <h2 class="title">Контакты:</h2>
+        <div>
+          <p class="name">{{ cardItem.seller }}</p><br>
+          <p class="mobile"><img src="assets/icons/socials/a1.svg" alt=""> <a href="tel:+375295554433"> +375 29
+            {{ cardItem.telNumber }}</a></p><br>
+          <p class="mobile"><img src="assets/icons/socials/mts.svg" alt=""> <a href="tel:+375335554433"> +375 33
+            {{ cardItem.telNumber }}</a></p><br>
+          <div class="socials">
+            <a href="/"><img alt="social" src="assets/icons/socials/viber_logo.svg"></a>
+            <a href="/"><img alt="social" src="assets/icons/socials/vk_logo.svg"></a>
+            <a href="/"><img alt="social" src="assets/icons/socials/wharsapp_logo.svg"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="info">
+        <h2 class="title">Общая информация</h2>
+        <table class="table">
+          <tr>
+            <td>Комнат всего</td>
+            <td>{{ cardItem.numberOfRooms }}-комнатная квартира</td>
+          </tr>
+          <tr>
+            <td>Этаж / этажность</td>
+            <td>{{ cardItem.floor }} / {{ cardItem.maxFloor }}</td>
+          </tr>
+          <tr>
+            <td>Тип дома</td>
+            <td>{{ cardItem.typeOfHouse }}</td>
+          </tr>
+          <tr>
+            <td>Балкон</td>
+            <td>{{ cardItem.balcony }}</td>
+          </tr>
+          <tr>
+            <td>Высота потолков</td>
+            <td>{{ cardItem.heightOfCeiling }} м</td>
+          </tr>
+          <tr>
+            <td>Год постройки</td>
+            <td>{{ cardItem.yearOfBuilding }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <h2 class="title">Описание</h2>
+    <p class="description">
+      {{ cardItem.description }}
+    </p>
+  </div>
+</section>

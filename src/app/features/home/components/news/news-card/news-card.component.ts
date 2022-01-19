@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {Item} from "../../../../../core/models/news";
+import { Component, Input } from '@angular/core';
+import { NewsItem } from '../../../../../core/models/news';
 
 @Component({
   selector: 'app-news-card',
@@ -7,7 +7,5 @@ import {Item} from "../../../../../core/models/news";
   styleUrls: ['./news-card.component.scss']
 })
 export class NewsCardComponent {
-  @Input()  card?: Item;
-  constructor() { }
-
+  @Input()  card?: NewsItem;
 }
