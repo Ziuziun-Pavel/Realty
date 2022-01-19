@@ -1,5 +1,5 @@
 export interface ICard {
-  type: string;
+  type: CardType,
   url: string,
   price: string,
   square: string,
@@ -16,4 +16,9 @@ export interface ICard {
   telNumber: string,
   description: string,
   id: string
+}
+
+export enum CardType {
+  sell = 'sell',
+  rent = 'rent',
 }
