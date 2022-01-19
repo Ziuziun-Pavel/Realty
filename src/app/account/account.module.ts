@@ -18,7 +18,7 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     AccountRoutingModule
   ],
-  exports: [AccountComponent]
+  exports: [AccountComponent, RegisterComponent]
 })
 
 export class AccountModule {}

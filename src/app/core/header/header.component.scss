@@ -39,9 +39,9 @@ nav {
   height: 40px;
 }
 .menu {
-  width: 610px;
+  width: 380px;
   height: 100%;
-  margin-right: 255px;
+  margin-right: 250px;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -67,7 +67,7 @@ nav {
 .account {
   display: block;
   position: absolute;
-  right: 179px;
+  right: 299px;
   top: 22%;
   width: 30px;
   height: 30px;
@@ -125,11 +125,28 @@ nav {
     background-color: rgba(102,102,102,.1);
   }
 }
-.btn-signin {
+.btn-signin, .btn-registr {
   position: relative;
   margin-top: 10px;
   padding: 0 5px;
   width: 80px;
+  height: 40px;
+  border-radius: 10px;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  background-color:  rgba($color: #FFD02F, $alpha: 1);
+  text-align: end;
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.btn-registr {
+  position: relative;
+  margin-top: 10px;
+  padding: 0 5px;
+  width: 100px;
   height: 40px;
   border-radius: 10px;
   color: #000;

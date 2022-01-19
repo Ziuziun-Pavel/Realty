@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="account-container">
+  <div class="overlay">
+    <form [formGroup]="loginForm" >
+      <h2 class="title">Войдите в аккаунт</h2>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          formControlName="userEmail"
+          class="form-input"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Пароль</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="form-input"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn-register">
+        Войти
+      </button>
+      <p>У вас уже есть аккаунт?<a> Создать аккаунт</a></p>
+    </form>
+  </div>
+</div>
