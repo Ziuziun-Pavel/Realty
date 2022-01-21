@@ -15,6 +15,7 @@
     font-size: 35px;
   }
   form {
+    font-family: 'Lato', sans-serif;
     position: absolute;
     padding: 50px;
     left: 50%;
@@ -62,15 +63,15 @@
       color: #59abe3;
     }
   }
-  p {
-    text-align: center;
-    font-family: 'Lato', sans-serif;
-    margin-top: 15px;
-    a {
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  .invalid-feedback {
+    color: red;
   }
+  a {
+    color: #4D76A1;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
 
 }

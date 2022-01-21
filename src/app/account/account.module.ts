@@ -6,6 +6,11 @@ import { AccountRoutingModule } from "./account-routing.module";
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account.component';
 import { RegisterComponent } from './register/register.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { UserService } from "../core/services/user.service";
+import { InterceptorService } from "../core/interceptors/jwt.interceptor";
 
 @NgModule({
   declarations: [
@@ -16,9 +21,11 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
-  exports: [AccountComponent, RegisterComponent]
+  providers: [UserService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
 })
 
 export class AccountModule {}

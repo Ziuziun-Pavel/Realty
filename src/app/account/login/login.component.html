@@ -1,6 +1,9 @@
 <div class="account-container">
   <div class="overlay">
-    <form [formGroup]="loginForm" >
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
       <h2 class="title">Войдите в аккаунт</h2>
 
       <div class="form-group">
@@ -8,9 +11,13 @@
         <input
           type="text"
           formControlName="userEmail"
-          class="form-input"
-          required
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.userEmail.errors }"
         />
+        <div *ngIf="submitted && formControls.userEmail.errors" class="invalid-feedback">
+          <div *ngIf="formControls.userEmail.errors.required">Это поле обязательно</div>
+          <div *ngIf="formControls.userEmail.errors.email">Введите верную электронную почту</div>
+        </div>
       </div>
 
       <div class="form-group">
@@ -19,14 +26,22 @@
           type="password"
           formControlName="password"
           class="form-input"
-          required
+          [ngClass]="{ 'is-invalid': submitted && formControls.password.errors }"
         />
+        <div  *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
+          <div *ngIf="formControls.password.errors.required">Это поле обязательно</div>
+        </div>
       </div>
 
-      <button type="submit" class="btn-register">
-        Войти
-      </button>
-      <p>У вас уже есть аккаунт?<a> Создать аккаунт</a></p>
+      <div class="form-group">
+        <button
+          class="btn-register"
+          [disabled]="loading">
+          Войти
+        </button>
+      </div>
+
+      <span>У вас еще нет аккаунта?<a routerLink="/register"> Создать аккаунт</a></span>
     </form>
   </div>
 </div>
