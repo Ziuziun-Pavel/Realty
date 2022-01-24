@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs";
-import { IUser } from "../../core/models/user";
-import { UserService } from "../../core/services/user.service";
+import { Observable } from 'rxjs';
+import { IUser } from '../../core/models/user';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-details',
@@ -9,16 +9,16 @@ import { UserService } from "../../core/services/user.service";
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  user: Observable<IUser>;
+  user: Observable<IUser[]>;
   currentUser: IUser;
   error: string;
 
   constructor(
     private userService: UserService
     ) {
-    this.user = this.userService.getUser();
+    this.user = this.userService.getUsers();
     this.user.subscribe(
-      (user) => (this.currentUser = user),
+      (user) => (this.currentUser = user[0]),
       (error) => {
         this.error = error;
       }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { Router } from "@angular/router";
 // import { AuthenticationService } from "../core/services/authentication.service";
-import { IUser } from "../core/models/user";
+import { IUser } from '../core/models/user';
 
 @Component({
   selector: 'app-account',
