@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
-import { AuthenticationService } from "../../core/services/authentication.service";
-import { ToastrService } from "ngx-toastr";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../../core/services/authentication.service';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private userService: UserService,
     private router:Router,
     private route: ActivatedRoute,
     private authenticationService : AuthenticationService,
@@ -40,17 +42,21 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.formControls.userEmail.value, this.formControls.password.value)
-      .subscribe(
-        () => {
-          alert("yaaaaaa")
-          this.router.navigate(['/']);
-        },
-        error => {
-          alert("foooooo")
-          this.toastr.error(error.error.message, 'Error');
-          this.loading = false;
-        });
+    this.userService.login(this.formControls.userEmail.value, this.formControls.password.value);
+
+    // this.authenticationService.login(this.formControls.userEmail.value, this.formControls.password.value)
+    //   .subscribe(
+    //     () => {
+    //       alert("yaaaaaa")
+    //       this.router.navigate(['/']);
+    //     },
+    //     error => {
+    //       alert("foooooo")
+    //       this.toastr.error(error.error.message, 'Error');
+    //       this.loading = false;
+    //     });
+
+
   }
 }
 

@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { UserService } from "../../core/services/user.service";
-import { ToastrService } from "ngx-toastr";
-import { checkPasswords } from "../../shared/utilits/checkPassword";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../../core/services/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { checkPasswords } from '../../shared/utilits/checkPassword';
 
 @Component({
   selector: 'app-register',
@@ -45,13 +45,13 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.userService.register(this.registerForm.value).subscribe(
+    this.userService.register(this.registerForm.value)
+      .subscribe(
       ()=>{
         alert('User Registered successfully!!');
         this.router.navigate(['/login']);
       },
       (error)=>{
-        alert('fooooooo');
         this.toastr.error(error.error.message, 'Error');
         this.loading = false;
       }

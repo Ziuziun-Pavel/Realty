@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NewsItem } from '../../../core/models/news';
 import { environment } from '../../../../environments/environment';
-import { findCardById } from "../../../shared/utilits/findCardById";
+import { findItemById } from '../../../shared/utilits/findItemById';
 
 
 @Injectable({
@@ -18,6 +18,6 @@ export class NewsService {
   }
 
   getNewsById(newsCardId: string | undefined): Observable<NewsItem | undefined> {
-    return findCardById(this.http.get<NewsItem[]>(environment.baseUrl + "newsCards.json"), newsCardId)
+    return findItemById(this.http.get<NewsItem[]>(environment.baseUrl + "newsCards.json"), newsCardId)
   }
 }
