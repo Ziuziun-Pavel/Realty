@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from '../models/user';
 
 @Injectable({
@@ -18,22 +18,4 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  // login(email: string, password: string) {
-  //   return this.http.post<any>('../assets/data/users.ts', {
-  //     email,
-  //     password
-  //   })
-  //     .pipe(map(user => {
-  //       if (user && user.token) {
-  //         localStorage.setItem('currentUser', JSON.stringify(user.result));
-  //         this.currentUserSubject.next(user);
-  //       }
-  //       return user;
-  //     }));
-  // }
-
-  logout() {
-    localStorage.removeItem('currentUser');
-    // this.currentUserSubject.next(null);
-  }
 }
