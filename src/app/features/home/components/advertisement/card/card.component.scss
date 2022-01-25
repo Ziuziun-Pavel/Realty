@@ -28,14 +28,14 @@
     font-size: 18px;
     font-weight: 700;
   }
-  &-square {
+  &-street {
     margin-left: 8px;
     font-size: 15px;
     line-height: 35px;
     font-weight: 500;
     margin-top: 8px;
   }
-  &-street {
+  &-square {
     margin-left: 8px;
     font-size: 15px;
     line-height: 26px;
@@ -45,6 +45,7 @@
     padding-left: 23px;
     line-height: 32px;
     font-size: 14px;
+    color: #73787A;
     &::before {
       content: '';
       position: absolute;

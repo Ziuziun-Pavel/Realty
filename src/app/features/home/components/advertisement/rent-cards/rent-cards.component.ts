@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { Observable } from "rxjs";
-import { CardService } from "../../../services/card.service";
-import {ICard} from "../../../../../core/models/cards";
-=======
+
 import { Observable } from 'rxjs';
 import { CardService } from '../../../services/card.service';
 import { ICard } from '../../../../../core/models/cards';
->>>>>>> 9c9e099 (extract duplicate code to new function)
 
 @Component({
   selector: 'app-rent-cards',

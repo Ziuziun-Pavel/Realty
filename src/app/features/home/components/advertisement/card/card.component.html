@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-<a href="">
-=======
-<a [routerLink]="['page', card?.id ]" >
->>>>>>> 9c9e099 (extract duplicate code to new function)
+<a [routerLink]="['page/', card?.type, card?.id ]" >
   <div class="item">
     <div class="overlay"></div>
     <img class="item-photo" src="{{ card?.url }}">
     <img src="assets/icons/heart-outline.svg" alt="heart" class="fav-icon">
     <span class="item-price">{{ card?.price }}</span><br>
-    <span class="item-square">{{ card?.square }}<sup>2</sup></span><br>
     <span class="item-street">{{ card?.street }}</span><br>
-    <span class="item-location">{{ card?.metro }}</span>
+    <span class="item-square">{{ card?.square }}<sup>2</sup></span><br>
+    <span class="item-location">{{ card?.metro }} </span>
   </div>
-
 </a>
