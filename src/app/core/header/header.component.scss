@@ -125,6 +125,7 @@ nav {
     background-color: rgba(102,102,102,.1);
   }
 }
+
 .btn-signin, .btn-registr {
   position: relative;
   margin-top: 10px;
@@ -140,6 +141,9 @@ nav {
   border: none;
   cursor: pointer;
   transition: all .3s;
+  span {
+    margin-right: 5px;
+  }
 }
 
 .btn-registr {

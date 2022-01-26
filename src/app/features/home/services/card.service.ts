@@ -6,7 +6,7 @@ import { sellCards } from '../../../../assets/data/sellCard';
 import { rentCards } from '../../../../assets/data/rentCards';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CardService {
 
@@ -27,4 +27,3 @@ export class CardService {
   }
 
 }
-
