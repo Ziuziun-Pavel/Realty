@@ -8,15 +8,15 @@ import { ProfileRoutingModule } from '../profile/profile-routing.module';
 
 
 @NgModule({
-	imports: [CommonModule, AccountRoutingModule, ProfileRoutingModule],
-    declarations: [
-        HeaderComponent,
-        FooterComponent
-    ],
-    exports: [
-        HeaderComponent,
-        FooterComponent
-    ]
+  imports: [CommonModule, AccountRoutingModule, ProfileRoutingModule],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+  ],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+  ],
 })
 
 export class CoreModule { }

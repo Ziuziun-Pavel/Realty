@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'assets/data/',
-  fakeApiUrl: ''
+  fakeApiUrl: '',
 };
 
 /*

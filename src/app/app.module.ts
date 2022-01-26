@@ -5,7 +5,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './features/home/home.module';
 import { AccountModule } from './account/account.module';
-import { ProfileModule } from './profile/profile.module'
+import { ProfileModule } from './profile/profile.module';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,9 +23,9 @@ import { BrowserModule } from '@angular/platform-browser';
     SharedModule,
     HttpClientModule,
     AccountModule,
-    ProfileModule
+    ProfileModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

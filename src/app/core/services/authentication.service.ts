@@ -3,14 +3,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { IUser } from '../models/user';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<IUser>;
+
   public currentUser: Observable<IUser>;
 
   constructor() {
-    this.currentUserSubject = new BehaviorSubject<IUser>(JSON.parse(localStorage.getItem('currentUser') || "{}"));
+    this.currentUserSubject = new BehaviorSubject<IUser>(JSON.parse(localStorage.getItem('currentUser') || '{}'));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
