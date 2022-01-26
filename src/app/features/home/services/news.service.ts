@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { NewsItem } from '../../../core/models/news';
-import { environment } from '../../../../environments/environment';
-import { findItemById } from '../../../shared/utilits/findItemById';
-
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Item} from "../../../core/models/news";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class NewsService {
 

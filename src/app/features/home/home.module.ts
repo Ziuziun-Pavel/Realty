@@ -21,7 +21,7 @@ import { NewsPageComponent } from './components/news/news-page/news-page.compone
     CommonModule,
     HomeRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule
   ],
   declarations: [
     AdsComponent,
@@ -34,10 +34,9 @@ import { NewsPageComponent } from './components/news/news-page/news-page.compone
     RentCardsComponent,
     NewsListComponent,
     FlatPageComponent,
-    NewsPageComponent,
+    NewsPageComponent
   ],
-  exports: [HomeComponent],
+  exports: [HomeComponent]
 })
 
-export class HomeModule {
-}
+export class HomeModule { }

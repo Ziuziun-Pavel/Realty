@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { ICard } from '../../../core/models/cards';
-import { findItemById } from '../../../shared/utilits/findItemById';
-import { sellCards } from '../../../../assets/data/sellCard';
-import { rentCards } from '../../../../assets/data/rentCards';
+import { findCardById } from '../../../shared/utilits/findCardById';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CardService {
+  constructor() { }
 
   getSellCards(): Observable<Array<ICard>> {
     return of(sellCards);
@@ -27,4 +28,3 @@ export class CardService {
   }
 
 }
-

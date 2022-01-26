@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-flat-page',
   templateUrl: './flat-page.component.html',
-  styleUrls: ['./flat-page.component.scss'],
+  styleUrls: ['./flat-page.component.scss']
 })
 export class FlatPageComponent implements OnInit {
 
