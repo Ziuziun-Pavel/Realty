@@ -13,31 +13,28 @@ export class UserService {
 
   constructor(
     private router: Router,
-  ) { }
+  ) {
+  }
 
   getUsers(): Observable<IUser[]> {
     return of(this.users);
   }
 
-  login(enteredEmail:string, enteredPassword: string) {
+  login(enteredEmail: string, enteredPassword: string) {
 
-    let flag = false;
-    for (let i = 0; i < this.users.length; i++) {
-      if (enteredEmail === (this.users[i].userEmail.toLowerCase()) && enteredPassword === (this.users[i].password)) {
-        flag = true;
-        break;
-      }
-    }
+    let user = this.users.find(item => item.userEmail.toLowerCase() === enteredEmail
+      && enteredPassword === (item.password));
 
-    if (flag) {
+    if (user) {
       alert('Добро пожаловать');
       this.router.navigate(['/']);
     } else {
       alert('Неверный логин или пароль');
     }
+
   }
 
-  register(user:IUser): Observable<IUser[]> {
+  register(user: IUser): Observable<IUser[]> {
     user.id = this.users.length ? Math.max(...this.users.map(x => x.id)) + 1 : 1;
     this.users.push(user);
     return of(this.users);

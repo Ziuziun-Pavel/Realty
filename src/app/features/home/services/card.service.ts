@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment';
+import { Observable, of } from 'rxjs';
 import { ICard } from '../../../core/models/cards';
-import { findCardById } from '../../../shared/utilits/findCardById';
+import { rentCards } from '../../../../assets/data/rentCards';
+import { sellCards } from '../../../../assets/data/sellCard';
+import { findItemById } from '../../../shared/utilits/findItemById';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardService {
   constructor() { }
