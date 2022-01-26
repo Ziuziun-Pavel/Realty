@@ -5,25 +5,27 @@ import { UserService } from '../../core/services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
 
   loading = false;
+
   submitted = false;
+
   loginForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
-    ) { }
+    private userService: UserService,
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
       {
-        userEmail: ['', [Validators.required,Validators.email]],
+        userEmail: ['', [Validators.required, Validators.email]],
         password: ['', Validators.required],
-      }
+      },
     );
   }
 

@@ -2,13 +2,13 @@ import { FormGroup } from '@angular/forms';
 
 export function checkPasswords(
   controlName: string,
-  matchingControlName: string
+  matchingControlName: string,
 ) {
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
     const matchingControl = formGroup.controls[matchingControlName];
 
-    if (matchingControl.errors && !matchingControl.errors["mustMatch"]) {
+    if (matchingControl.errors && !matchingControl.errors.mustMatch) {
       return;
     }
 

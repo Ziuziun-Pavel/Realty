@@ -6,17 +6,17 @@ import { environment } from '../../../../environments/environment';
 import { findItemById } from '../../../shared/utilits/findItemById';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NewsService {
 
   constructor(private http: HttpClient) { }
 
   getNews(): Observable<Array<NewsItem>> {
-    return this.http.get( environment.baseUrl + 'newsCards.json') as Observable<Array<NewsItem>>
+    return this.http.get( environment.baseUrl + 'newsCards.json') as Observable<Array<NewsItem>>;
   }
 
   getNewsById(newsCardId: string | undefined): Observable<NewsItem | undefined> {
-    return findItemById(this.http.get<NewsItem[]>(environment.baseUrl + "newsCards.json"), newsCardId)
+    return findItemById(this.http.get<NewsItem[]>(environment.baseUrl + 'newsCards.json'), newsCardId);
   }
 }

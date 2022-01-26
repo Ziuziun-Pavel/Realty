@@ -19,7 +19,6 @@ export class FlatPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.cardId = this.activateRoute.snapshot.params['id'];
     this.flatCardType = this.activateRoute.snapshot.params['type'];
 
@@ -28,8 +27,5 @@ export class FlatPageComponent implements OnInit {
     } else {
       this.card = this.cardService.getRentCardById(this.cardId);
     }
-
   }
-
-
 }

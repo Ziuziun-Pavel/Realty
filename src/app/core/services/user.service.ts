@@ -4,14 +4,15 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class UserService {
 
   private users: Array<IUser> = [];
+
   constructor(
-    private router: Router
+    private router: Router,
   ) { }
 
   getUsers(): Observable<IUser[]> {
@@ -39,8 +40,7 @@ export class UserService {
   register(user:IUser): Observable<IUser[]> {
     user.id = this.users.length ? Math.max(...this.users.map(x => x.id)) + 1 : 1;
     this.users.push(user);
-    console.log(this.users);
-    return of(this.users)
+    return of(this.users);
   }
 }
 

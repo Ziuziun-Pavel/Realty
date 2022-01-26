@@ -13,7 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     LoginComponent,
     AccountComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
@@ -21,7 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     AccountRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-  ]
+  ],
 })
 
 export class AccountModule {}
