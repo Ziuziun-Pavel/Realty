@@ -22,10 +22,8 @@ export class UserService {
 
   login(enteredEmail: string, enteredPassword: string) {
 
-    let user = this.users.find(item => item.userEmail.toLowerCase() === enteredEmail
-      && enteredPassword === (item.password));
-
-    if (user) {
+    if (this.users.find(item => item.userEmail.toLowerCase() === enteredEmail
+      && enteredPassword === (item.password))) {
       alert('Добро пожаловать');
       this.router.navigate(['/']);
     } else {
