@@ -67,7 +67,7 @@ nav {
 .account {
   display: block;
   position: absolute;
-  right: 299px;
+  right: 304px;
   top: 22%;
   width: 30px;
   height: 30px;
@@ -141,16 +141,13 @@ nav {
   border: none;
   cursor: pointer;
   transition: all .3s;
-  span {
-    margin-right: 5px;
-  }
 }
 
 .btn-registr {
   position: relative;
   margin-top: 10px;
   padding: 0 5px;
-  width: 100px;
+  width: 107px;
   height: 40px;
   border-radius: 10px;
   color: #000;
