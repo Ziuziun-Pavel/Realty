@@ -6,7 +6,6 @@ import { FooterComponent } from './footer/footer.component';
 import { AccountRoutingModule } from '../account/account-routing.module';
 import { ProfileRoutingModule } from '../profile/profile-routing.module';
 
-
 @NgModule({
   imports: [CommonModule, AccountRoutingModule, ProfileRoutingModule],
   declarations: [

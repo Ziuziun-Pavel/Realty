@@ -4,6 +4,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -15,5 +16,6 @@ import { ProfileComponent } from './profile.component';
     CommonModule,
     RouterModule,
   ],
+  providers: [AuthGuard]
 })
 export class ProfileModule { }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '../models/user';
 import { Observable, of } from 'rxjs';
-import { Router } from '@angular/router';
+import { regUsers } from '../../../assets/data/users';
 
 @Injectable({
   providedIn: 'root',
@@ -9,33 +9,22 @@ import { Router } from '@angular/router';
 
 export class UserService {
 
-  private users: Array<IUser> = [];
+  constructor() {
+  }
 
-  constructor(
-    private router: Router,
-  ) {
+  getLoggedUser(): Observable<IUser> {
+    return of(JSON.parse(localStorage.getItem('logUser')||'{}'));
   }
 
   getUsers(): Observable<IUser[]> {
-    return of(this.users);
-  }
-
-  login(enteredEmail: string, enteredPassword: string) {
-
-    if (this.users.find(item => item.userEmail.toLowerCase() === enteredEmail
-      && enteredPassword === (item.password))) {
-      alert('Добро пожаловать');
-      this.router.navigate(['/']);
-    } else {
-      alert('Неверный логин или пароль');
-    }
-
+    return of(regUsers);
   }
 
   register(user: IUser): Observable<IUser[]> {
-    user.id = this.users.length ? Math.max(...this.users.map(x => x.id)) + 1 : 1;
-    this.users.push(user);
-    return of(this.users);
+    user.id = regUsers.length ? Math.max(...regUsers.map(x => x.id)) + 1 : 1;
+    regUsers.push(user);
+    localStorage.clear();
+    return of(regUsers);
   }
 }
 

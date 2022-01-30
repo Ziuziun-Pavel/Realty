@@ -9,7 +9,7 @@ import { UserService } from '../../core/services/user.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-  user: Observable<IUser[]>;
+  user: Observable<IUser>;
 
   currentUser: IUser;
 
@@ -18,9 +18,9 @@ export class DetailsComponent {
   constructor(
     private userService: UserService,
   ) {
-    this.user = this.userService.getUsers();
+    this.user = this.userService.getLoggedUser();
     this.user.subscribe(
-      (user) => (this.currentUser = user[0]),
+      (user) => (this.currentUser = user),
       (error) => {
         this.error = error;
       },

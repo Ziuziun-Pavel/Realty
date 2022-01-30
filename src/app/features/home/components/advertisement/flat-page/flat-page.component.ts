@@ -12,17 +12,19 @@ import { Observable } from 'rxjs';
 export class FlatPageComponent implements OnInit {
 
   card?: Observable<ICard | undefined>;
+
   flatCardType:string;
+
   cardId: string;
 
   constructor(private readonly activateRoute: ActivatedRoute, private readonly cardService: CardService) {
   }
 
   ngOnInit(): void {
-    this.cardId = this.activateRoute.snapshot.params['id'];
-    this.flatCardType = this.activateRoute.snapshot.params['type'];
+    this.cardId = this.activateRoute.snapshot.params.id;
+    this.flatCardType = this.activateRoute.snapshot.params.type;
 
-    if(this.flatCardType === CardType.sell) {
+    if (this.flatCardType === CardType.sell) {
       this.card = this.cardService.getSellCardById(this.cardId);
     } else {
       this.card = this.cardService.getRentCardById(this.cardId);

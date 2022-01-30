@@ -6,7 +6,7 @@ import { findItemById } from '../../../shared/utilits/findItemById';
 import { environment } from '../../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NewsService {
 

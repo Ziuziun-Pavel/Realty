@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ICard } from '../../../core/models/cards';
-import { findItemById } from '../../../shared/utilits/findItemById';
 import { sellCards } from '../../../../assets/data/sellCard';
 import { rentCards } from '../../../../assets/data/rentCards';
+import { findItemById } from '../../../shared/utilits/findItemById';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardService {
 
