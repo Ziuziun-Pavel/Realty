@@ -16,6 +16,6 @@ import { AuthGuard } from '../core/guards/auth.guard';
     CommonModule,
     RouterModule,
   ],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
 })
 export class ProfileModule { }

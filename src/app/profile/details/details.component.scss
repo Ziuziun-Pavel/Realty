@@ -23,15 +23,18 @@
     font-size: 35px;
   }
 
-  button {
-    display: block;
+  .btns {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btn {
     margin: 0 auto;
     color: #FFFFFF;
     font-size: 16px;
     font-weight: bold;
     height: 50px;
     padding: 6px 12px;
-    width: 200px;
+    width: 150px;
     background-color: #59abe3;
     border: 2px solid #59abe3;
     transition: all .3s;

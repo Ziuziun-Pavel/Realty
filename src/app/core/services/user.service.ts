@@ -9,11 +9,8 @@ import { regUsers } from '../../../assets/data/users';
 
 export class UserService {
 
-  constructor() {
-  }
-
   getLoggedUser(): Observable<IUser> {
-    return of(JSON.parse(localStorage.getItem('logUser')||'{}'));
+    return of(JSON.parse(localStorage.getItem('logUser') || '{}'));
   }
 
   getUsers(): Observable<IUser[]> {
@@ -23,7 +20,6 @@ export class UserService {
   register(user: IUser): Observable<IUser[]> {
     user.id = regUsers.length ? Math.max(...regUsers.map(x => x.id)) + 1 : 1;
     regUsers.push(user);
-    localStorage.clear();
     return of(regUsers);
   }
 }

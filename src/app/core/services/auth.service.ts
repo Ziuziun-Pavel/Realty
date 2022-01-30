@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { regUsers } from '../../../assets/data/users';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
 
@@ -18,11 +18,16 @@ export class AuthService {
       && enteredPassword === (item.password));
     if (loggedUser) {
       alert('Добро пожаловать');
-      localStorage.setItem(`logUser`, JSON.stringify(loggedUser));
+      localStorage.setItem('logUser', JSON.stringify(loggedUser));
       this.router.navigate(['/']);
     } else {
       alert('Неверный логин или пароль');
     }
     return of(loggedUser);
+  }
+
+  logout() {
+    localStorage.removeItem('logUser');
+    this.router.navigate(['/login']);
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser } from '../../core/models/user';
 import { UserService } from '../../core/services/user.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-details',
@@ -17,6 +18,7 @@ export class DetailsComponent {
 
   constructor(
     private userService: UserService,
+    public authService: AuthService
   ) {
     this.user = this.userService.getLoggedUser();
     this.user.subscribe(
