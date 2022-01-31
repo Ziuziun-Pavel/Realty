@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../core/services/user.service';
@@ -10,9 +10,10 @@ import { checkPasswords } from '../../shared/utilits/checkPassword';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent {
+export class EditComponent implements OnInit {
 
   loading = false;
+
   submitted = false;
 
   editForm: FormGroup;
@@ -50,7 +51,7 @@ export class EditComponent {
     this.userService.keepChanges(this.editForm.value)
       .subscribe(
         ()=>{
-          this.toastr.success('Ваш профиль успешно изменён',this.userService.getLoggedUser().userName + ',')
+          this.toastr.success('Ваш профиль успешно изменён', this.userService.getLoggedUser().userName + ',');
           this.router.navigate(['/details']);
         },
         (error)=>{

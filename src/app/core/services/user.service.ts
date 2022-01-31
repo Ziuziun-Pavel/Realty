@@ -30,10 +30,10 @@ export class UserService {
       if (propName === 'id') {
         continue;
       }
-      user[propName] = newUser[propName]
+      user[propName] = newUser[propName];
     }
-    localStorage.setItem('logUser', JSON.stringify(user))
-    return of(user)
+    localStorage.setItem('logUser', JSON.stringify(user));
+    return of(user);
   }
 }
 

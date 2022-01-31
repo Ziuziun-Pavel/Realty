@@ -16,7 +16,7 @@ export class DetailsComponent {
 
   constructor(
     private userService: UserService,
-    public authService: AuthService
+    public authService: AuthService,
   ) {
     this.currentUser = this.userService.getLoggedUser();
   }
