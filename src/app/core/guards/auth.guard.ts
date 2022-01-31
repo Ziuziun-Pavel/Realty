@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
     private router: Router,
   ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     const currentUser = JSON.parse(localStorage.getItem('logUser') || '{}');
 
     if (currentUser.userEmail ) {
