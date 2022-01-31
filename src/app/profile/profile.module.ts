@@ -5,6 +5,7 @@ import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { AuthGuard } from '../core/guards/auth.guard';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
   providers: [AuthGuard],
 })
