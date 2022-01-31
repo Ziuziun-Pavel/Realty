@@ -50,11 +50,11 @@ export class EditComponent {
     this.userService.keepChanges(this.editForm.value)
       .subscribe(
         ()=>{
-          alert('Пользователь успешно изменён!!');
+          this.toastr.success('Ваш профиль успешно изменён',this.userService.getLoggedUser().userName + ',')
           this.router.navigate(['/details']);
         },
         (error)=>{
-          this.toastr.error(error.error.message, 'Error');
+          this.toastr.error(error.error.message, 'Ошибка');
           this.loading = false;
         },
       );
