@@ -5,13 +5,13 @@
       </div>
       <img class="user-photo" src="assets/icons/user.png">
       <h2 class="title-name">{{ currentUser.userName }} {{ currentUser.userSurname }}</h2>
-      <p class="title-email">@{{ currentUser.userEmail }}</p>
+      <p class="title-email">{{ currentUser.userEmail }}</p>
       <div class="btns">
-        <button routerLink="edit" class="btn">
+        <button routerLink="/edit" class="btn">
           Изменить
         </button>
         <button (click)="authService.logout()" class="btn btn-logout">
-          Выйти
+          Удалить
         </button>
       </div>
     </div>

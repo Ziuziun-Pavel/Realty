@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { IUser } from '../../core/models/user';
 import { UserService } from '../../core/services/user.service';
 import { AuthService } from '../../core/services/auth.service';
@@ -10,7 +9,6 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent {
-  user: Observable<IUser>;
 
   currentUser: IUser;
 
@@ -20,13 +18,7 @@ export class DetailsComponent {
     private userService: UserService,
     public authService: AuthService
   ) {
-    this.user = this.userService.getLoggedUser();
-    this.user.subscribe(
-      (user) => (this.currentUser = user),
-      (error) => {
-        this.error = error;
-      },
-    );
+    this.currentUser = this.userService.getLoggedUser();
   }
 
 }
