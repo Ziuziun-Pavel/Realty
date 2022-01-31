@@ -27,6 +27,9 @@ export class UserService {
     let user = this.getLoggedUser() as any;
 
     for (let propName in user) {
+      if (propName === 'id') {
+        continue;
+      }
       user[propName] = newUser[propName]
     }
     localStorage.setItem('logUser', JSON.stringify(user))
