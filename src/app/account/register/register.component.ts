@@ -1,26 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../core/services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { checkPasswords } from '../../shared/utilits/checkPassword';
+import { Subject, takeUntil } from 'rxjs';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
-  loading = false;
+export class RegisterComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<boolean> = new Subject();
 
-  submitted = false;
+  public loading = false;
 
-  registerForm: FormGroup;
+  public submitted = false;
+
+  public registerForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private readonly formBuilder: FormBuilder,
     private router:Router,
-    private userService: UserService,
+    private readonly authService: AuthService,
     private toastr: ToastrService,
   ) { }
 
@@ -34,29 +36,35 @@ export class RegisterComponent implements OnInit {
         confirmPassword: ['', Validators.required],
       },
       {
-        validator: checkPasswords('password', 'confirmPassword'),
+        validator: this.authService.checkPasswords('password', 'confirmPassword'),
       },
     );
   }
 
   get formControls() { return this.registerForm.controls; }
 
-  onSubmit(): void {
-    this.submitted = true;
+  public onSubmit(): void {
     if (this.registerForm.invalid) {
       return;
     }
+    this.submitted = true;
     this.loading = true;
-    this.userService.register(this.registerForm.value)
+    this.authService.register(this.registerForm.value)
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         ()=>{
+          this.loading = false;
           alert('Пользователь успешно зарегистрирован!!');
           this.router.navigate(['/login']);
         },
         (error)=>{
-          this.toastr.error(error.error.message, 'Error');
+          this.toastr.error(error.error.message, 'Ошибка');
           this.loading = false;
         },
       );
+  }
+  ngOnDestroy() {
+    this.ngUnsubscribe.next(true);
+    this.ngUnsubscribe.complete();
   }
 }

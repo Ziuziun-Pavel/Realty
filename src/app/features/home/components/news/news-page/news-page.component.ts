@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NewsPageComponent implements OnInit {
 
-  newsCard?: Observable<NewsItem | undefined>;
+  newsCard: Observable<NewsItem | undefined>;
 
   newsCardId: string | undefined;
 

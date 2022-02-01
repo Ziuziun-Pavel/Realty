@@ -1,32 +1,40 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { IUser } from '../../core/models/user';
 import { UserService } from '../../core/services/user.service';
-import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
 })
-export class DetailsComponent {
-  user: Observable<IUser>;
+export class DetailsComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<boolean> = new Subject();
 
-  currentUser: IUser;
+  private user: Observable<IUser>;
 
-  error: string;
+  public currentUser: IUser;
+
+  private error: string;
 
   constructor(
-    private userService: UserService,
-    public authService: AuthService
-  ) {
+    private readonly userService: UserService
+  ) {  }
+
+  ngOnInit(): void {
     this.user = this.userService.getLoggedUser();
-    this.user.subscribe(
-      (user) => (this.currentUser = user),
-      (error) => {
-        this.error = error;
-      },
-    );
+    this.user
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(user => {
+        this.currentUser = user},
+            error => {
+              this.error = error;
+            }
+      );
   }
 
+  ngOnDestroy() {
+    this.ngUnsubscribe.next(true);
+    this.ngUnsubscribe.complete();
+  }
 }

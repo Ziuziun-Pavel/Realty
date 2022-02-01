@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<boolean> = new Subject();
 
-  submitted = false;
+  public submitted = false;
 
-  loginForm: FormGroup;
+  public loginForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private readonly formBuilder: FormBuilder,
+    private readonly authService: AuthService,
+    private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -29,12 +35,26 @@ export class LoginComponent implements OnInit {
 
   get formControls() { return this.loginForm.controls; }
 
-  onSubmit() {
-    this.submitted = true;
+  public onSubmit() {
     if (this.loginForm.invalid) {
       return;
     }
+    this.submitted = true;
 
-    this.authService.login(this.formControls.userEmail.value, this.formControls.password.value);
+    this.authService.login(this.loginForm.value)
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(
+      () => {
+        alert('Добро пожаловать');
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        this.toastr.error(error.error.message, 'Ошибка');
+      }
+    );
+  }
+  ngOnDestroy() {
+    this.ngUnsubscribe.next(true);
+    this.ngUnsubscribe.complete();
   }
 }

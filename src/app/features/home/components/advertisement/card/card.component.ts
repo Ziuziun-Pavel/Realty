@@ -7,5 +7,5 @@ import { ICard } from '../../../../../core/models/cards';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() card?: ICard;
+  @Input() card: ICard;
 }
