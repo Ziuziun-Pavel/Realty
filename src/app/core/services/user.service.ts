@@ -17,12 +17,6 @@ export class UserService {
     return of(regUsers);
   }
 
-  register(user: IUser): Observable<IUser[]> {
-    user.id = regUsers.length ? Math.max(...regUsers.map(x => x.id)) + 1 : 1;
-    regUsers.push(user);
-    return of(regUsers);
-  }
-
   keepChanges(newUser: any ): Observable<IUser> {
     let user = this.getLoggedUser() as any;
 

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class FlatPageComponent implements OnInit {
 
-  card?: Observable<ICard | undefined>;
+  card: Observable<ICard | undefined>;
 
   flatCardType:string;
 

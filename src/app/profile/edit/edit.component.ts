@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../core/services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { checkPasswords } from '../../shared/utilits/checkPassword';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-edit',
@@ -22,6 +22,7 @@ export class EditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router:Router,
     public userService: UserService,
+    private readonly authService: AuthService,
     private toastr: ToastrService,
   ) { }
 
@@ -35,7 +36,7 @@ export class EditComponent implements OnInit {
         confirmPassword: [this.userService.getLoggedUser().confirmPassword],
       },
       {
-        validator: checkPasswords('password', 'confirmPassword'),
+        validator: this.authService.checkPasswords('password', 'confirmPassword'),
       },
     );
   }
