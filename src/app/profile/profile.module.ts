@@ -6,12 +6,14 @@ import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddAdvertsComponent } from './add-adverts/add-adverts.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     DetailsComponent,
     EditComponent,
+    AddAdvertsComponent,
   ],
   imports: [
     CommonModule,
