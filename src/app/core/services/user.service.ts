@@ -9,11 +9,11 @@ import { regUsers } from '../../../assets/data/users';
 
 export class UserService {
 
-  getLoggedUser(): Observable<IUser> {
+  public getLoggedUser(): Observable<IUser> {
     return of(JSON.parse(localStorage.getItem('logUser') || '{}'));
   }
 
-  getUsers(): Observable<IUser[]> {
+  public getUsers(): Observable<IUser[]> {
     return of(regUsers);
   }
 

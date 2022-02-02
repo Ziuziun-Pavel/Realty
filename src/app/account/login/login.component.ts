@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Subject, takeUntil } from 'rxjs';
+import { catchError, Subject, takeUntil, throwError } from 'rxjs';
+import { LoaderService } from '../../shared/services/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -20,9 +21,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly authService: AuthService,
+    private readonly loaderService: LoaderService,
     private router: Router,
-    private toastr: ToastrService,
-  ) { }
+    private readonly toastr: ToastrService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -33,26 +36,32 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
   }
 
-  get formControls() { return this.loginForm.controls; }
+  public get formControls() {
+    return this.loginForm.controls;
+  }
 
   public onSubmit() {
     if (this.loginForm.invalid) {
       return;
     }
     this.submitted = true;
+    this.loaderService.show();
 
     this.authService.login(this.loginForm.value)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
-      () => {
-        alert('Добро пожаловать');
-        this.router.navigate(['/']);
-      },
-      (error) => {
-        this.toastr.error(error.error.message, 'Ошибка');
-      }
-    );
+        () => {
+          this.loaderService.hide();
+          alert('Добро пожаловать');
+          this.router.navigate(['/']);
+        },
+        () => {
+          this.loaderService.hide();
+          this.toastr.error('Неверный логин или пароль');
+        }
+      );
   }
+
   ngOnDestroy() {
     this.ngUnsubscribe.next(true);
     this.ngUnsubscribe.complete();

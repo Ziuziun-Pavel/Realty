@@ -10,19 +10,19 @@ import { findItemById } from '../../../shared/utilits/findItemById';
 })
 export class CardService {
 
-  getSellCards(): Observable<Array<ICard>> {
+  public getSellCards(): Observable<Array<ICard>> {
     return of(sellCards);
   }
 
-  getRentCards(): Observable<Array<ICard>> {
+  public getRentCards(): Observable<Array<ICard>> {
     return of(rentCards);
   }
 
-  getSellCardById(cardId: string): Observable<ICard | undefined> {
+  public getSellCardById(cardId: string): Observable<ICard | undefined> {
     return findItemById(of(sellCards), cardId);
   }
 
-  getRentCardById(cardId: string): Observable<ICard | undefined> {
+  public getRentCardById(cardId: string): Observable<ICard | undefined> {
     return findItemById(of(rentCards), cardId);
   }
 
