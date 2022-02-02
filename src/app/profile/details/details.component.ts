@@ -18,7 +18,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private error: string;
 
   constructor(
-    private readonly userService: UserService
+    private readonly userService: UserService,
   ) {  }
 
   ngOnInit(): void {
@@ -26,10 +26,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.user
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(user => {
-        this.currentUser = user},
-            error => {
-              this.error = error;
-            }
+        this.currentUser = user;
+      },
+      error => {
+        this.error = error;
+      },
       );
   }
 

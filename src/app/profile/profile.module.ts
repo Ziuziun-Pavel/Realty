@@ -16,7 +16,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
   ],
   providers: [AuthGuard],
 })

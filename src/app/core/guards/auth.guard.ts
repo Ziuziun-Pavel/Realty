@@ -7,13 +7,13 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
 
-    if(this.authService.isUserAuthorised()) {
-      return of(true)
+    if (this.authService.isUserAuthorised()) {
+      return of(true);
     }
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
     return of(false);
