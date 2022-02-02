@@ -3,7 +3,6 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 import { IUser } from '../../core/models/user';
 import { UserService } from '../../core/services/user.service';
 
-
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',

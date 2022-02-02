@@ -14,14 +14,13 @@ export class AuthService {
   constructor(private router: Router) {  }
 
   public isUserAuthorised(): Observable<boolean> {
-    const currentUser = JSON.parse(localStorage.getItem('logUser') || '{}')
-    if(currentUser.userEmail) {
+    const currentUser = JSON.parse(localStorage.getItem('logUser') || '{}');
+    if (currentUser.userEmail) {
       return of(true);
     } else {
       return of(false);
     }
   }
-
   public login(user: IUser):Observable<IUser | undefined> {
 
     let loggedUser = regUsers.find(item => item.userEmail.toLowerCase() === user.userEmail
@@ -46,7 +45,7 @@ export class AuthService {
       userName,
       userSurname,
       userEmail,
-      password
+      password,
     });
     return of(regUsers);
   }
