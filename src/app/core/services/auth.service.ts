@@ -1,5 +1,6 @@
+import * as uniqid from 'uniqid';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { IUser } from '../models/user';
 import { Router } from '@angular/router';
 import { regUsers } from '../../../assets/data/users';
@@ -12,7 +13,17 @@ export class AuthService {
 
   constructor(private router: Router) {  }
 
+  public isUserAuthorised(): Observable<boolean> {
+    const currentUser = JSON.parse(localStorage.getItem('logUser') || '{}')
+    if(currentUser.userEmail) {
+      return of(true);
+    } else {
+      return of(false);
+    }
+  }
+
   public login(user: IUser):Observable<IUser | undefined> {
+
     let loggedUser = regUsers.find(item => item.userEmail.toLowerCase() === user.userEmail
       && user.password === (item.password));
 
@@ -20,15 +31,23 @@ export class AuthService {
       localStorage.setItem('logUser', JSON.stringify(loggedUser));
       return of(loggedUser);
     } else {
-      alert('Неверный логин или пароль')
-      throw new Error('неверный пароль');
+      return throwError('Неверный логин или пароль');
     }
-
   }
 
-  public register(user: IUser): Observable<IUser[]> {
-    user.id = regUsers.length ? Math.max(...regUsers.map(x => x.id)) + 1 : 1;
-    regUsers.push(user);
+  public register(
+    userName: string,
+    userSurname: string,
+    userEmail: string,
+    password: string): Observable<IUser[]> {
+    let id = uniqid();
+    regUsers.push({
+      id,
+      userName,
+      userSurname,
+      userEmail,
+      password
+    });
     return of(regUsers);
   }
 

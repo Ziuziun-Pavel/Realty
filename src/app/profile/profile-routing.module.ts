@@ -10,8 +10,8 @@ const routes: Routes = [
     children: [
       { path: 'details', component: DetailsComponent, canActivate: [AuthGuard] },
       { path: 'edit', component: EditComponent },
-    ] },
-
+ ]
+  },
 ];
 
 @NgModule({

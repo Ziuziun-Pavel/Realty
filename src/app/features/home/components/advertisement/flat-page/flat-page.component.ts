@@ -11,11 +11,11 @@ import { Observable } from 'rxjs';
 })
 export class FlatPageComponent implements OnInit {
 
-  card: Observable<ICard | undefined>;
+  public card: Observable<ICard | undefined>;
 
-  flatCardType:string;
+  public flatCardType:string;
 
-  cardId: string;
+  public cardId: string;
 
   constructor(private readonly activateRoute: ActivatedRoute, private readonly cardService: CardService) {
   }

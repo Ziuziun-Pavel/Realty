@@ -3,11 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AccountRoutingModule } from '../account/account-routing.module';
-import { ProfileRoutingModule } from '../profile/profile-routing.module';
+import { RouterModule } from '@angular/router';
+
+const accountModule = () =>
+  import('../account/account.module').then((x) => x.AccountModule);
+
+const profileModule = () =>
+  import('../profile/profile.module').then((x) => x.ProfileModule);
 
 @NgModule({
-  imports: [CommonModule, AccountRoutingModule, ProfileRoutingModule],
+  imports: [CommonModule, RouterModule.forChild([
+    { path: 'account', loadChildren: accountModule },
+    { path: 'profile', loadChildren: profileModule },
+  ])],
   declarations: [
     HeaderComponent,
     FooterComponent,

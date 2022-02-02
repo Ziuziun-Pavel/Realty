@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
+import { LoaderService } from '../../shared/services/loader.service';
 
 @Component({
   selector: 'app-register',
@@ -21,10 +22,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private router:Router,
+    private router: Router,
     private readonly authService: AuthService,
-    private toastr: ToastrService,
-  ) { }
+    private readonly loaderService: LoaderService,
+    private readonly toastr: ToastrService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group(
@@ -41,7 +44,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     );
   }
 
-  get formControls() { return this.registerForm.controls; }
+  public get formControls() {
+    return this.registerForm.controls;
+  }
 
   public onSubmit(): void {
     if (this.registerForm.invalid) {
@@ -49,20 +54,29 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
     this.submitted = true;
     this.loading = true;
-    this.authService.register(this.registerForm.value)
+    this.loaderService.show();
+    this.authService.register(
+      this.formControls.userName.value,
+      this.formControls.userSurname.value,
+      this.formControls.userEmail.value,
+      this.formControls.password.value,
+    )
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
-        ()=>{
+        () => {
           this.loading = false;
+          this.loaderService.hide();
           alert('Пользователь успешно зарегистрирован!!');
           this.router.navigate(['/login']);
         },
-        (error)=>{
+        (error) => {
           this.toastr.error(error.error.message, 'Ошибка');
           this.loading = false;
-        },
+          this.loaderService.hide();
+        }
       );
   }
+
   ngOnDestroy() {
     this.ngUnsubscribe.next(true);
     this.ngUnsubscribe.complete();
