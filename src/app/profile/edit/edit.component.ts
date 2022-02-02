@@ -33,7 +33,7 @@ export class EditComponent implements OnInit {
         userSurname: [this.userService.getLoggedUser().userSurname],
         userEmail: [this.userService.getLoggedUser().userEmail, [Validators.email]],
         password: [this.userService.getLoggedUser().password, [Validators.minLength(6)]],
-        confirmPassword: [this.userService.getLoggedUser().confirmPassword],
+        confirmPassword: [''],
       },
       {
         validator: this.authService.checkPasswords('password', 'confirmPassword'),

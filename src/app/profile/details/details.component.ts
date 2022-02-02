@@ -24,14 +24,14 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentUser = this.userService.getLoggedUser();
-    // this.user
-    //   .pipe(takeUntil(this.ngUnsubscribe))
-    //   .subscribe(user => {
-    //     this.currentUser = user},
-    //         error => {
-    //           this.error = error;
-    //         }
-    //   );
+    this.user
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(user => {
+        this.currentUser = user},
+            error => {
+              this.error = error;
+            }
+      );
   }
 
   ngOnDestroy() {
