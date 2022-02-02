@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, Subject, takeUntil, throwError } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { LoaderService } from '../../shared/services/loader.service';
 
 @Component({
