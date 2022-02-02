@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProfileRoutingModule } from './profile-routing.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    ProfileRoutingModule
   ],
   providers: [AuthGuard],
 })
