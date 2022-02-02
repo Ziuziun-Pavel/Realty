@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.toastr.error(error.error.message, 'Ошибка');
           this.loading = false;
           this.loaderService.hide();
-        }
+        },
       );
   }
 

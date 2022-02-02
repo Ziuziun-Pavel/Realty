@@ -5,12 +5,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderService } from './services/loader.service';
 
 @NgModule({
-  imports: [CommonModule,MatProgressSpinnerModule],
+  imports: [CommonModule, MatProgressSpinnerModule],
   declarations: [
-    LoaderComponent
+    LoaderComponent,
   ],
   exports: [LoaderComponent],
-  providers: [LoaderService]
+  providers: [LoaderService],
 })
 
 export class SharedModule {

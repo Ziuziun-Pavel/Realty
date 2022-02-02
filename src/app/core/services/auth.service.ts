@@ -21,6 +21,7 @@ export class AuthService {
       return of(false);
     }
   }
+
   public login(user: IUser):Observable<IUser | undefined> {
 
     let loggedUser = regUsers.find(item => item.userEmail.toLowerCase() === user.userEmail

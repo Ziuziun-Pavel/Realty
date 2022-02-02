@@ -18,7 +18,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
   ],
   providers: [AuthGuard],
 })

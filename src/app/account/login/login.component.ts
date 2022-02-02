@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         () => {
           this.loaderService.hide();
           this.toastr.error('Неверный логин или пароль');
-        }
+        },
       );
   }
 
