@@ -17,7 +17,7 @@ export class UserService {
     return of(regUsers);
   }
 
-  keepChanges(newUser: any ): Observable<IUser> {
+  public keepChanges(newUser: any ): Observable<IUser> {
     let user = JSON.parse(localStorage.getItem('logUser') || '{}');
 
     for (let propName in user) {
