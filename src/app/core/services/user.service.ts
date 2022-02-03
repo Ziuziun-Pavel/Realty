@@ -9,8 +9,8 @@ import { regUsers } from '../../../assets/data/users';
 
 export class UserService {
 
-  public getLoggedUser(): IUser {
-    return JSON.parse(localStorage.getItem('logUser') || '{}');
+  public getLoggedUser(): Observable<IUser> {
+    return of(JSON.parse(localStorage.getItem('logUser') || '{}'));
   }
 
   public getUsers(): Observable<IUser[]> {
@@ -18,7 +18,7 @@ export class UserService {
   }
 
   keepChanges(newUser: any ): Observable<IUser> {
-    let user = this.getLoggedUser() as any;
+    let user = JSON.parse(localStorage.getItem('logUser') || '{}');
 
     for (let propName in user) {
       if (propName === 'id') {
