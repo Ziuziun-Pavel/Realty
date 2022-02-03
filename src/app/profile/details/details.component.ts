@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { IUser } from '../../core/models/user';
 import { UserService } from '../../core/services/user.service';
 import { AuthService } from '../../core/services/auth.service';
@@ -8,17 +9,39 @@ import { AuthService } from '../../core/services/auth.service';
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<boolean> = new Subject();
 
-  currentUser: IUser;
+  private user: Observable<IUser>;
 
-  error: string;
+  public currentUser: IUser;
+
+  private error: string;
 
   constructor(
-    private userService: UserService,
-    public authService: AuthService,
-  ) {
-    this.currentUser = this.userService.getLoggedUser();
+    private readonly userService: UserService,
+    private readonly authService: AuthService,
+  ) {  }
+
+  public deleteAccount():void {
+    this.authService.logout();
   }
 
+  ngOnInit(): void {
+    this.user = this.userService.getLoggedUser();
+    this.user
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(user => {
+        this.currentUser = user;
+      },
+      error => {
+        this.error = error;
+      },
+      );
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next(true);
+    this.ngUnsubscribe.complete();
+  }
 }

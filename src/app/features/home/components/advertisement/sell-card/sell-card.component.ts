@@ -9,7 +9,7 @@ import { ICard } from '../../../../../core/models/cards';
   styleUrls: ['./sell-card.component.scss'],
 })
 export class SellCardComponent implements OnInit {
-  cards: Observable<Array<ICard>> | undefined;
+  public cards: Observable<Array<ICard>>;
 
   constructor(private readonly cardService: CardService) {  }
 

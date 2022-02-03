@@ -35,7 +35,8 @@
 
       <div class="form-group">
         <button
-          class="btn-register">
+          class="btn-register"
+        [disabled]="loginForm.invalid">
           Войти
         </button>
       </div>
@@ -43,4 +44,6 @@
       <span>У вас еще нет аккаунта?<a routerLink="/register"> Создать аккаунт</a></span>
     </form>
   </div>
+  <app-loader></app-loader>
+
 </div>

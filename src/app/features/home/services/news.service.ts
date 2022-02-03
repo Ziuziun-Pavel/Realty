@@ -12,11 +12,11 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getNews(): Observable<Array<NewsItem>> {
+  public getNews(): Observable<Array<NewsItem>> {
     return this.http.get( environment.baseUrl + 'newsCards.json') as Observable<Array<NewsItem>>;
   }
 
-  getNewsById(newsCardId: string | undefined): Observable<NewsItem | undefined> {
+  public getNewsById(newsCardId: string | undefined): Observable<NewsItem | undefined> {
     return findItemById(this.http.get<NewsItem[]>(environment.baseUrl + 'newsCards.json'), newsCardId);
   }
 }

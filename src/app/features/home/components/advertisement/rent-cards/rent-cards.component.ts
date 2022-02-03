@@ -10,7 +10,7 @@ import { ICard } from '../../../../../core/models/cards';
 })
 export class RentCardsComponent implements OnInit {
 
-  cards: Observable<Array<ICard>> | undefined;
+  public cards: Observable<Array<ICard>>;
 
   constructor(private readonly cardService: CardService) { }
 

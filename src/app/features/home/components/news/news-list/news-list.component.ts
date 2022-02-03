@@ -10,7 +10,7 @@ import { NewsService } from '../../../services/news.service';
 })
 export class NewsListComponent implements OnInit {
 
-  newsCards: Observable<Array<NewsItem>> | undefined;
+  public newsCards: Observable<Array<NewsItem>>;
 
   constructor(private readonly cardService: NewsService) { }
 
