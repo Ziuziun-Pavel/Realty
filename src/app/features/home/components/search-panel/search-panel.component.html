@@ -2,16 +2,42 @@
   <div class="container">
     <h2 class="title">Лучший сайт по подбору жилья по всей Беларуси</h2>
     <div class="wrapper">
-      <div class="btns">
-        <button class="btn btn-rooms">Кол-во комнат</button>
+      <div class="filters">
 
-        <button class="btn btn-price">Цена</button>
+        <div class="select">
+          <label class="select-label" for="rooms">Кол-во комнат</label>
+          <select class="select-rooms">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
 
-        <input class="input" placeholder="Укажите город,адрес или район" type="text">
-        <img src="assets/icons/3844432-magnifier-search-zoom_110300.svg" class="loupe">
-        <button type="submit" class="btn-search">Искать</button>
+        <div class="select">
+          <label class="select-label" for="price">Цена</label>
+          <select class="select-price">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+
+
+        <input placeholder="Укажите город,адрес или район" type="text">
+
       </div>
-      <button type="reset" class="btn-reset">Очистить</button>
+      <div class="btns">
+        <button type="submit" class="btn btn-search">Искать</button>
+        <button type="reset" class="btn btn-reset">Очистить</button>
+      </div>
     </div>
   </div>
 </section>
