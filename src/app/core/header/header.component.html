@@ -1,6 +1,6 @@
 <div class="container">
     <nav>
-        <a href="#" class="logo"><img src="../../assets/icons/main_logo.svg" alt="house"></a>
+        <a routerLink="/" class="logo"><img src="../../assets/icons/main_logo.svg" alt="house"></a>
             <ul class="menu">
                 <a href="#" class="menu-item">
                     <li>Аренда</li>
@@ -25,9 +25,13 @@
         </div>
 
         <div class="signin">
-            <button class="btn-signin"><span>Войти</span></button>
+            <button class="btn-signin" routerLink="login"><span>Войти</span></button>
             <img src="../../assets/icons/user_logo.svg" alt="user" class="account">
         </div>
+
+      <div class="signin">
+        <button class="btn-registr" routerLink="details"><span>Мой профиль</span></button>
+      </div>
 
     </nav>
 </div>

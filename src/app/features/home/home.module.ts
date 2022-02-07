@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
@@ -21,22 +21,23 @@ import { NewsPageComponent } from './components/news/news-page/news-page.compone
     CommonModule,
     HomeRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-    declarations: [
-        AdsComponent,
-        SearchPanelComponent,
-        NewsComponent,
-        SellCardComponent,
-        NewsCardComponent,
-        HomeComponent,
-        CardComponent,
-        RentCardsComponent,
-        NewsListComponent,
-        FlatPageComponent,
-        NewsPageComponent
-    ],
-    exports: [HomeComponent]
+  declarations: [
+    AdsComponent,
+    SearchPanelComponent,
+    NewsComponent,
+    SellCardComponent,
+    NewsCardComponent,
+    HomeComponent,
+    CardComponent,
+    RentCardsComponent,
+    NewsListComponent,
+    FlatPageComponent,
+    NewsPageComponent,
+  ],
+  exports: [HomeComponent],
 })
 
-export class HomeModule { }
+export class HomeModule {
+}

@@ -7,17 +7,18 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-flat-news-page',
   templateUrl: './news-page.component.html',
-  styleUrls: ['./news-page.component.scss']
+  styleUrls: ['./news-page.component.scss'],
 })
 export class NewsPageComponent implements OnInit {
 
-  newsCard?: Observable<NewsItem|undefined>;
-  newsCardId: string | undefined;
+  public newsCard: Observable<NewsItem | undefined>;
+
+  public newsCardId: string | undefined;
 
   constructor(private readonly activateRoute: ActivatedRoute, private readonly cardService: NewsService) {  }
 
   ngOnInit(): void {
-    this.newsCardId = this.activateRoute.snapshot.params['id'];
+    this.newsCardId = this.activateRoute.snapshot.params.id;
     this.newsCard = this.cardService.getNewsById(this.newsCardId);
   }
 

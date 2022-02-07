@@ -1,32 +1,29 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment';
+import { Observable, of } from 'rxjs';
 import { ICard } from '../../../core/models/cards';
-import { findCardById } from '../../../shared/utilits/findCardById';
+import { sellCards } from '../../../../assets/data/sellCard';
+import { rentCards } from '../../../../assets/data/rentCards';
+import { findItemById } from '../../../shared/utilits/findItemById';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardService {
-  constructor(private http: HttpClient) { }
 
-  getSellCards(): Observable<Array<ICard>> {
-    return this.http.get(environment.baseUrl + 'sellCards.json') as Observable<Array<ICard>>
+  public getSellCards(): Observable<Array<ICard>> {
+    return of(sellCards);
   }
 
-  getRentCards(): Observable<Array<ICard>> {
-    return this.http.get(environment.baseUrl + 'rentCards.json') as Observable<Array<ICard>>
+  public getRentCards(): Observable<Array<ICard>> {
+    return of(rentCards);
   }
 
-  getSellCardById(cardId: string | undefined): Observable<ICard | undefined> {
-      return findCardById(this.http.get<ICard[]>(environment.baseUrl + 'sellCards.json'), cardId)
+  public getSellCardById(cardId: string): Observable<ICard | undefined> {
+    return findItemById(of(sellCards), cardId);
   }
 
-  getRentCardById(cardId: string | undefined): Observable<ICard | undefined> {
-      return findCardById(this.http.get<ICard[]>(environment.baseUrl + 'rentCards.json'), cardId)
+  public getRentCardById(cardId: string): Observable<ICard | undefined> {
+    return findItemById(of(rentCards), cardId);
   }
-
 
 }
-

@@ -8,9 +8,9 @@ describe('SearchPanelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchPanelComponent ]
+      declarations: [ SearchPanelComponent ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,0 +1,49 @@
+<div class="account-container">
+  <div class="overlay">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <h2 class="title">Войдите в аккаунт</h2>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          formControlName="userEmail"
+          class="form-control"
+          [class.is-invalid]="submitted && formControls.userEmail.errors"
+        />
+        <div *ngIf="submitted && formControls.userEmail.errors" class="invalid-feedback">
+          <div *ngIf="formControls.userEmail.errors.required">Это поле обязательно</div>
+          <div *ngIf="formControls.userEmail.errors.email">Введите верную электронную почту</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Пароль</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="form-input"
+          [class.is-invalid]="submitted && formControls.password.errors"
+        />
+        <div  *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
+          <div *ngIf="formControls.password.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button
+          class="btn-register"
+        [disabled]="loginForm.invalid">
+          Войти
+        </button>
+      </div>
+
+      <span>У вас еще нет аккаунта?<a routerLink="/register"> Создать аккаунт</a></span>
+    </form>
+  </div>
+  <app-loader></app-loader>
+
+</div>
