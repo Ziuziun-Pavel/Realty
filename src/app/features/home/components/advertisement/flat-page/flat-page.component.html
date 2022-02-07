@@ -1,7 +1,7 @@
 <section *ngIf="card | async as cardItem" class="card">
   <div class="container">
     <h2 class="title">Квартира по адресу <span>{{ cardItem.street }}</span></h2>
-    <h3  *ngIf="cardItem.type === 'sell'" class="price">{{ cardItem.price }}$</h3>
+    <h3  *ngIf="cardItem.type === 'sell'" class="price">{{ cardItem.price }} $</h3>
     <h3  *ngIf="cardItem.type === 'rent'" class="price">{{ cardItem.price }}$/сут</h3>
     <img class="subway" src="assets/icons/socials/subway.svg"><span class="metro">{{ cardItem.metro }}</span>
     <div class="contacts-wrapper">
