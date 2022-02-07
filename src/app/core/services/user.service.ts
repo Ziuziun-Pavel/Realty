@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { IUser } from '../models/user';
 import { Observable, of } from 'rxjs';
 import { regUsers } from '../../../assets/data/users';
-import { ICard } from '../models/cards';
+import { CardType, ICard } from '../models/cards';
 import * as uniqid from 'uniqid';
 import { findItemById } from '../../shared/utilits/findItemById';
+import { sellCards } from '../../../assets/data/sellCard';
+import { rentCards } from '../../../assets/data/rentCards';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,6 @@ import { findItemById } from '../../shared/utilits/findItemById';
 export class UserService {
 
   private arrayOfNewCards: ICard[] = [];
-  public cardsFromLocalStorage: ICard[] = [];
 
   public getLoggedUser(): Observable<IUser> {
     return of(JSON.parse(localStorage.getItem('logUser') || '{}'));
@@ -38,25 +39,17 @@ export class UserService {
 
   public addNewCard(card: ICard): Observable<ICard[]> {
     card.id = uniqid();
+    if(card.type === CardType.sell) {
+      sellCards.push(card);
+    } else {
+      rentCards.push(card)
+    }
     this.arrayOfNewCards.push(card);
-    this.arrayOfNewCards.forEach((item) => {
-      localStorage.setItem(`newCard${localStorage.length}`, JSON.stringify(item));
-    });
     return of(this.arrayOfNewCards);
   }
 
-  public AddCards(): void {
-    for (let i = 0; i < localStorage.length - 1; i++) {
-        this.cardsFromLocalStorage.push(JSON.parse(localStorage.getItem(`newCard${i + 1}`) || '{}'));
-    }
-  }
-
   public getAddedCards(): Observable<ICard[]> {
-    return of(this.cardsFromLocalStorage);
-  }
-
-  public getAddedCardById(cardId: string): Observable<ICard | undefined> {
-    return findItemById(of(this.cardsFromLocalStorage), cardId);
+    return of(this.arrayOfNewCards);
   }
 
 }

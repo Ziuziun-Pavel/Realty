@@ -14,10 +14,6 @@ export class AdvertsListComponent implements OnInit {
   constructor(private readonly userService: UserService) { }
 
   ngOnInit(): void {
-    if (!JSON.parse(localStorage.getItem(`newCard`) || '{}')) {
-      this.userService.AddCards();
-    }
-
     this.cards = this.userService.getAddedCards();
   }
 

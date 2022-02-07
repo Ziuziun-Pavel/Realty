@@ -33,7 +33,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'page/:type/:id',
+        path: 'advertsList/page/:type/:id',
         component: FlatPageComponent
       },
 
