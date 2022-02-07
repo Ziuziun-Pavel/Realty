@@ -32,7 +32,7 @@ export class AddAdvertsComponent implements OnInit, OnDestroy {
     this.addingForm = this.formBuilder.group(
       {
         type: ['', Validators.required],
-        price: ['', Validators.required],
+        price: ['#', Validators.required],
         square: ['', Validators.required],
         street: ['ул.', Validators.required],
         metro: ['Ст.м. ', Validators.required],
@@ -45,7 +45,7 @@ export class AddAdvertsComponent implements OnInit, OnDestroy {
         balcony: ['', Validators.required],
         heightOfCeiling: ['', Validators.required],
         yearOfBuilding: ['', Validators.required],
-        telNumber: ['+375 ', Validators.required],
+        telNumber: ['', Validators.required],
         description: ['', Validators.required],
       }
     );
