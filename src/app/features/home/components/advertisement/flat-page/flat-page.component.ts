@@ -3,7 +3,6 @@ import { CardType, ICard } from '../../../../../core/models/cards';
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../../../services/card.service';
 import { Observable } from 'rxjs';
-import { UserService } from '../../../../../core/services/user.service';
 
 @Component({
   selector: 'app-flat-page',

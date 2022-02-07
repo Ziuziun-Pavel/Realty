@@ -25,7 +25,7 @@ export class EditComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly router:Router,
+    private readonly router: Router,
     private readonly userService: UserService,
     private readonly authService: AuthService,
     private readonly loaderService: LoaderService,
