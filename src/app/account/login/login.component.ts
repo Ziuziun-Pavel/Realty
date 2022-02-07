@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
 import { LoaderService } from '../../shared/services/loader.service';
-import { IUser } from '../../core/models/user';
 
 @Component({
   selector: 'app-login',

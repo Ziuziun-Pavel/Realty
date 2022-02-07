@@ -44,7 +44,7 @@ export class AuthService {
     return of(regUsers);
   }
 
-  public logout() {
+  public logout(): void {
     localStorage.removeItem('logUser');
     this.router.navigate(['/register']);
   }
