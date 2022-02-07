@@ -11,7 +11,7 @@
         <select
           formControlName="type"
           class="form-control form-select"
-          [ngClass]="{ 'is-invalid': submitted && formControls.type.errors }">
+          [class.is-invalid]="submitted && formControls.type.errors">
           <option value="sell">Продажа</option>
           <option value="rent">Аренда</option>
           <div *ngIf="submitted && formControls.type.errors" class="invalid-feedback">
@@ -26,7 +26,7 @@
           type="number" min="0" max="100000000" step="1000"
           formControlName="price"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
+          [class.is-invalid]="submitted && formControls.price.errors">
 
           <div *ngIf="submitted && formControls.price.errors" class="invalid-feedback">
             <div *ngIf="formControls.price.errors.required">Это поле обязательно</div>
@@ -40,7 +40,8 @@
           type="number" min="0.0" max="1000.0" step="0.1"
           formControlName="square"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
+          [class.is-invalid]="submitted && formControls.square.errors">
+
 
         <div *ngIf="submitted && formControls.square.errors" class="invalid-feedback">
           <div *ngIf="formControls.square.errors.required">Это поле обязательно</div>
@@ -53,7 +54,7 @@
           type="text"
           formControlName="street"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.street.errors }">
+          [class.is-invalid]="submitted && formControls.street.errors">
         <div *ngIf="submitted && formControls.street.errors" class="invalid-feedback">
           <div *ngIf="formControls.street.errors.required">Это поле обязательно</div>
         </div>
@@ -65,7 +66,7 @@
           type="text"
           formControlName="metro"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.metro.errors }">
+          [class.is-invalid]="submitted && formControls.metro.errors">
         <div *ngIf="submitted && formControls.metro.errors" class="invalid-feedback">
           <div *ngIf="formControls.metro.errors.required">Это поле обязательно</div>
         </div>
@@ -77,7 +78,7 @@
           type="text"
           formControlName="url"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.url.errors }">
+          [class.is-invalid]="submitted && formControls.url.errors">
         <div *ngIf="submitted && formControls.url.errors" class="invalid-feedback">
           <div *ngIf="formControls.url.errors.required">Это поле обязательно</div>
         </div>
@@ -89,7 +90,7 @@
           type="text"
           formControlName="seller"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.seller.errors }">
+          [class.is-invalid]="submitted && formControls.seller.errors">
         <div *ngIf="submitted && formControls.seller.errors" class="invalid-feedback">
           <div *ngIf="formControls.seller.errors.required">Это поле обязательно</div>
         </div>
@@ -101,7 +102,7 @@
           type="number"
           formControlName="floor"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.floor.errors }">
+          [class.is-invalid]="submitted && formControls.floor.errors">
         <div *ngIf="submitted && formControls.floor.errors" class="invalid-feedback">
           <div *ngIf="formControls.floor.errors.required">Это поле обязательно</div>
         </div>
@@ -113,7 +114,7 @@
           type="number"
           formControlName="maxFloor"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.maxFloor.errors }">
+          [class.is-invalid]="submitted && formControls.maxFloor.errors">
         <div *ngIf="submitted && formControls.maxFloor.errors" class="invalid-feedback">
           <div *ngIf="formControls.maxFloor.errors.required">Это поле обязательно</div>
         </div>
@@ -125,7 +126,7 @@
           type="text"
           formControlName="typeOfHouse"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.maxFloor.errors }">
+          [class.is-invalid]="submitted && formControls.typeOfHouse.errors">
         <div *ngIf="submitted && formControls.typeOfHouse.errors" class="invalid-feedback">
           <div *ngIf="formControls.typeOfHouse.errors.required">Это поле обязательно</div>
         </div>
@@ -138,7 +139,7 @@
           type="number" min="0" max="10" step="1"
           formControlName="numberOfRooms"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.numberOfRooms.errors }">
+          [class.is-invalid]="submitted && formControls.numberOfRooms.errors">
         <div *ngIf="submitted && formControls.numberOfRooms.errors" class="invalid-feedback">
           <div *ngIf="formControls.numberOfRooms.errors.required">Это поле обязательно</div>
         </div>
@@ -149,7 +150,7 @@
           <select
             formControlName="balcony"
             class="form-control form-select"
-            [ngClass]="{ 'is-invalid': submitted && formControls.typeOfAdd.errors }">
+            [class.is-invalid]="submitted && formControls.balcony.errors">
             <option value=""></option>
             <option value="null">нет</option>
             <option value="1">1</option>
@@ -167,7 +168,7 @@
           type="number" min="0.0" max="100.0" step="0.1"
           formControlName="heightOfCeiling"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
+          [class.is-invalid]="submitted && formControls.heightOfCeiling.errors">
 
         <div *ngIf="submitted && formControls.heightOfCeiling.errors" class="invalid-feedback">
           <div *ngIf="formControls.heightOfCeiling.errors.required">Это поле обязательно</div>
@@ -180,7 +181,7 @@
           type="number" min="1950" max="2022" step="1"
           formControlName="yearOfBuilding"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.yearOfBuilding.errors }">
+          [class.is-invalid]="submitted && formControls.yearOfBuilding.errors">
         <div *ngIf="submitted && formControls.yearOfBuilding.errors" class="invalid-feedback">
           <div *ngIf="formControls.yearOfBuilding.errors.required">Это поле обязательно</div>
         </div>
@@ -192,7 +193,7 @@
           type="tel"
           formControlName="telNumber"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.telNumber.errors }">
+          [class.is-invalid]="submitted && formControls.telNumber.errors">
         <div *ngIf="submitted && formControls.telNumber.errors" class="invalid-feedback">
           <div *ngIf="formControls.telNumber.errors.required">Это поле обязательно</div>
         </div>
@@ -204,7 +205,8 @@
         <textarea
           formControlName="description"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.description.errors }"></textarea>
+          [class.is-invalid]="submitted && formControls.description.errors">
+        </textarea>
         <div *ngIf="submitted && formControls.description.errors" class="invalid-feedback">
           <div *ngIf="formControls.description.errors.required">Это поле обязательно</div>
         </div>

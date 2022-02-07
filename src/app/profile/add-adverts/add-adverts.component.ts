@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../core/services/user.service';
 import { ToastrService } from 'ngx-toastr';
@@ -18,10 +18,10 @@ export class AddAdvertsComponent implements OnInit {
   addingForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private router:Router,
-    private userService: UserService,
-    private toastr: ToastrService,
+    private readonly formBuilder: FormBuilder,
+    private readonly router:Router,
+    private readonly userService: UserService,
+    private readonly toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class AddAdvertsComponent implements OnInit {
     );
   }
 
-  get formControls() { return this.addingForm.controls; }
+  get formControls(): {[key: string]: AbstractControl} { return this.addingForm.controls; }
 
   onSubmit(): void {
     this.submitted = true;
