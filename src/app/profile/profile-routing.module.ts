@@ -5,14 +5,40 @@ import { EditComponent } from './edit/edit.component';
 import { ProfileComponent } from './profile.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { AddAdvertsComponent } from './add-adverts/add-adverts.component';
+import { AdvertsListComponent } from './adverts-list/adverts-list.component';
+import { FlatPageComponent } from '../features/home/components/advertisement/flat-page/flat-page.component';
 
 const routes: Routes = [
-  { path: '', component: ProfileComponent,
+  {
+    path: '',
+    component: ProfileComponent,
     children: [
-      { path: 'details', component: DetailsComponent, canActivate: [AuthGuard] },
-      { path: 'edit', component: EditComponent },
-      { path: 'adding', component: AddAdvertsComponent, canActivate: [AuthGuard] },
-    ] },
+      {
+        path: 'details',
+        component: DetailsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'edit',
+        component: EditComponent
+      },
+      {
+        path: 'adding',
+        component: AddAdvertsComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'advertsList',
+        component: AdvertsListComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'page/:type/:id',
+        component: FlatPageComponent
+      },
+
+    ]
+  },
 
 ];
 
@@ -21,4 +47,5 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 
-export class ProfileRoutingModule {}
+export class ProfileRoutingModule {
+}

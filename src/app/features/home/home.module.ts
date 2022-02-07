@@ -36,7 +36,7 @@ import { NewsPageComponent } from './components/news/news-page/news-page.compone
     FlatPageComponent,
     NewsPageComponent,
   ],
-  exports: [HomeComponent],
+  exports: [HomeComponent, CardComponent],
 })
 
 export class HomeModule {

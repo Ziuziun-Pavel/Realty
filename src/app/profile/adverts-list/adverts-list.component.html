@@ -1,0 +1,4 @@
+<h1 class="title">Мои объявления</h1>
+<div class="container">
+  <app-card [id]="card.id" *ngFor="let card of cards | async" [card]="card"></app-card>
+</div>

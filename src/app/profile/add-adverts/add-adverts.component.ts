@@ -27,11 +27,22 @@ export class AddAdvertsComponent implements OnInit {
   ngOnInit(): void {
     this.addingForm = this.formBuilder.group(
       {
-        typeOfRealty: ['', Validators.required],
-        userSurname: ['', Validators.required],
-        userEmail: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required],
+        type: ['', Validators.required],
+        price: ['', Validators.required],
+        square: ['', Validators.required],
+        street: ['ул.', Validators.required],
+        metro: ['Ст.м. ', Validators.required],
+        seller: ['', Validators.required],
+        url: ['', Validators.required],
+        floor: ['', Validators.required],
+        maxFloor: ['', Validators.required],
+        typeOfHouse: ['', Validators.required],
+        numberOfRooms: ['', Validators.required],
+        balcony: ['', Validators.required],
+        heightOfCeiling: ['', Validators.required],
+        yearOfBuilding: ['', Validators.required],
+        telNumber: ['+375 ', Validators.required],
+        description: ['', Validators.required],
       }
     );
   }
@@ -40,20 +51,20 @@ export class AddAdvertsComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-  //   if (this.registerForm.invalid) {
-  //     return;
-  //   }
-  //   this.loading = true;
-  //   this.userService.register(this.registerForm.value)
-  //     .subscribe(
-  //       ()=>{
-  //         alert('Пользователь успешно зарегистрирован!!');
-  //         this.router.navigate(['/login']);
-  //       },
-  //       (error)=>{
-  //         this.toastr.error(error.error.message, 'Error');
-  //         this.loading = false;
-  //       },
-  //     );
+    if (this.addingForm.invalid) {
+      return;
+    }
+     this.loading = true;
+    this.userService.addNewCard(this.addingForm.value)
+      .subscribe(
+        ()=>{
+          alert('Объявление добавлено!!');
+          this.router.navigate(['/details']);
+        },
+        (error)=>{
+          this.toastr.error(error.error.message, 'Error');
+          this.loading = false;
+        },
+      );
   }
 }

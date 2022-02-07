@@ -7,6 +7,9 @@ import { ProfileComponent } from './profile.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddAdvertsComponent } from './add-adverts/add-adverts.component';
+import { ProfileRoutingModule } from './profile-routing.module';
+import { AdvertsListComponent } from './adverts-list/adverts-list.component';
+import { HomeModule } from '../features/home/home.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,14 @@ import { AddAdvertsComponent } from './add-adverts/add-adverts.component';
     DetailsComponent,
     EditComponent,
     AddAdvertsComponent,
+    AdvertsListComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    ProfileRoutingModule,
+    HomeModule
   ],
   providers: [AuthGuard],
 })

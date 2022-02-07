@@ -5,84 +5,217 @@
       (ngSubmit)="onSubmit()"
       novalidate>
       <h2 class="title">Добавить объявление</h2>
-      <div class="form-group">
-        <label for="type">Тип недвижимости</label>
-        <input
-          type="text"
-          formControlName="typeOfRealty"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.userName.errors }"
-        />
-        <div *ngIf="submitted && formControls.userName.errors" class="invalid-feedback">
-          <div *ngIf="formControls.userName.errors.required">Это поле обязательно</div>
-        </div>
-      </div>
 
       <div class="form-group">
-        <label for="surname">Фамилия</label>
-        <input
-          type="text"
-          formControlName="userSurname"
-          class="form-control"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input
-          type="text"
-          formControlName="userEmail"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.userEmail.errors }"
-        />
-        <div *ngIf="submitted && formControls.userEmail.errors" class="invalid-feedback">
-          <div *ngIf="formControls.userEmail.errors.required">Это поле обязательно</div>
-          <div *ngIf="formControls.userEmail.errors.email">Введите верную электронную почту</div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="password">Пароль</label>
-        <input
-          type="password"
-          formControlName="password"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.password.errors }"
-        />
-        <div *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
-          <div *ngIf="formControls.password.errors.required">Это поле обязательно</div>
-          <div *ngIf="formControls.password.errors.minLength">Пароль должен иметь не менее 6 символов</div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="confirmPassword">Повторите пароль</label>
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.confirmPassword.errors }"
-        />
-        <div
-          *ngIf="submitted && formControls.confirmPassword.errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="formControls.confirmPassword.errors.required">
-            Подтвердите пароль
+        <label class="select-label" for="type">Тип недвижимости</label>
+        <select
+          formControlName="type"
+          class="form-control form-select"
+          [ngClass]="{ 'is-invalid': submitted && formControls.type.errors }">
+          <option value="sell">Продажа</option>
+          <option value="rent">Аренда</option>
+          <div *ngIf="submitted && formControls.type.errors" class="invalid-feedback">
+            <div *ngIf="formControls.type.errors.required">Это поле обязательно</div>
           </div>
-          <div *ngIf="formControls.confirmPassword.errors.mustMatch">
-            Пароли должны совпадать
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="price">Цена($)</label>
+        <input
+          type="number" min="0" max="100000000" step="1000"
+          formControlName="price"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
+
+          <div *ngIf="submitted && formControls.price.errors" class="invalid-feedback">
+            <div *ngIf="formControls.price.errors.required">Это поле обязательно</div>
           </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="select-label" for="square">Площадь(кв.м)</label>
+        <input
+          type="number" min="0.0" max="1000.0" step="0.1"
+          formControlName="square"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
+
+        <div *ngIf="submitted && formControls.square.errors" class="invalid-feedback">
+          <div *ngIf="formControls.square.errors.required">Это поле обязательно</div>
         </div>
       </div>
 
       <div class="form-group">
+        <label class="select-label" for="street">Адрес</label>
+        <input
+          type="text"
+          formControlName="street"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.street.errors }">
+        <div *ngIf="submitted && formControls.street.errors" class="invalid-feedback">
+          <div *ngIf="formControls.street.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="metro">Метро</label>
+        <input
+          type="text"
+          formControlName="metro"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.metro.errors }">
+        <div *ngIf="submitted && formControls.metro.errors" class="invalid-feedback">
+          <div *ngIf="formControls.metro.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="url">Введите url изображения</label>
+        <input
+          type="text"
+          formControlName="url"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.url.errors }">
+        <div *ngIf="submitted && formControls.url.errors" class="invalid-feedback">
+          <div *ngIf="formControls.url.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="seller">Имя</label>
+        <input
+          type="text"
+          formControlName="seller"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.seller.errors }">
+        <div *ngIf="submitted && formControls.seller.errors" class="invalid-feedback">
+          <div *ngIf="formControls.seller.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="floor">Этаж</label>
+        <input
+          type="number"
+          formControlName="floor"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.floor.errors }">
+        <div *ngIf="submitted && formControls.floor.errors" class="invalid-feedback">
+          <div *ngIf="formControls.floor.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="maxFloor">Этажность дома</label>
+        <input
+          type="number"
+          formControlName="maxFloor"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.maxFloor.errors }">
+        <div *ngIf="submitted && formControls.maxFloor.errors" class="invalid-feedback">
+          <div *ngIf="formControls.maxFloor.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="typeOfHouse">Тип дома</label>
+        <input
+          type="text"
+          formControlName="typeOfHouse"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.maxFloor.errors }">
+        <div *ngIf="submitted && formControls.typeOfHouse.errors" class="invalid-feedback">
+          <div *ngIf="formControls.typeOfHouse.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="select-label" for="numberOfRooms">Количество комнат</label>
+        <input
+          type="number" min="0" max="10" step="1"
+          formControlName="numberOfRooms"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.numberOfRooms.errors }">
+        <div *ngIf="submitted && formControls.numberOfRooms.errors" class="invalid-feedback">
+          <div *ngIf="formControls.numberOfRooms.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+        <div class="form-group">
+          <label class="select-label" for="balcony">Балкон</label>
+          <select
+            formControlName="balcony"
+            class="form-control form-select"
+            [ngClass]="{ 'is-invalid': submitted && formControls.typeOfAdd.errors }">
+            <option value=""></option>
+            <option value="null">нет</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <div *ngIf="submitted && formControls.balcony.errors" class="invalid-feedback">
+              <div *ngIf="formControls.balcony.errors.required">Это поле обязательно</div>
+            </div>
+          </select>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="heightOfCeiling">Высота потолков(м)</label>
+        <input
+          type="number" min="0.0" max="100.0" step="0.1"
+          formControlName="heightOfCeiling"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.price.errors }">
+
+        <div *ngIf="submitted && formControls.heightOfCeiling.errors" class="invalid-feedback">
+          <div *ngIf="formControls.heightOfCeiling.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="yearOfBuilding">Год постройки</label>
+        <input
+          type="number" min="1950" max="2022" step="1"
+          formControlName="yearOfBuilding"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.yearOfBuilding.errors }">
+        <div *ngIf="submitted && formControls.yearOfBuilding.errors" class="invalid-feedback">
+          <div *ngIf="formControls.yearOfBuilding.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="telNumber">Номер телефона</label>
+        <input
+          type="tel"
+          formControlName="telNumber"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.telNumber.errors }">
+        <div *ngIf="submitted && formControls.telNumber.errors" class="invalid-feedback">
+          <div *ngIf="formControls.telNumber.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+
+      <div class="form-group block">
+        <label class="select-label" for="description">Описание</label>
+        <textarea
+          formControlName="description"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && formControls.description.errors }"></textarea>
+        <div *ngIf="submitted && formControls.description.errors" class="invalid-feedback">
+          <div *ngIf="formControls.description.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group block">
         <button
           class="btn-register"
           [disabled]="loading">
-          Создать аккаунт
+          Добавить
         </button>
-        <span>У вас уже есть аккаунт?<a routerLink="/login" class="btn btn-link"> Войти</a></span>
       </div>
     </form>
   </div>

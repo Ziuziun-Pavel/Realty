@@ -1,53 +1,82 @@
 .adding-container {
-  height: 100vh;
+  height: 900px;
+  position: relative;
   background: url("../../../assets/img/registr_bg.jpg") center (center / cover) no-repeat;
+
   .overlay {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, .5);
   }
+
   .title {
+    margin-bottom: 10px;
     text-align: center;
-    font-size: 30px;
+    font-size: 28px;
   }
+
   form {
+    display: block;
     font-family: 'Lato', sans-serif;
-    position: absolute;
+    width: 700px;
     padding: 25px;
-    left: 50%;
-    top: 10%;
-    transform: translate(-50%);
-    background-color: rgba(255,255,255,0.6);
+    margin: 80px auto;
+    background-color: rgba(255, 255, 255, 0.6);
+    overflow: hidden;
   }
-  .form-group {
+
+  .form-group:not(.block) {
     display: inline;
     float: left;
-    width: 100%;
-    margin-bottom: 20px;
+    margin: 0 13px 15px;
+    width: 29%;
   }
+
+  .block {
+    margin: 0 13px 15px;
+    display: block;
+  }
+
+  option {
+    font-size: 15px;
+    height: 25px;
+  }
+
   label {
     color: #000;
     display: inline-block;
     text-align: left;
-    max-width: 100%;
+    width: 100%;
     margin-bottom: 5px;
     font-weight: bold;
+    font-size: 14px;
   }
-  input {
-    border: none;
-    color: #555;
-    margin-bottom: 10px;
-    height: 35px;
-    padding: 5px;
+
+  input, select, textarea {
+    display: block;
+    height: 40px;
     width: 100%;
+    color: #73787A;
+    padding: 7px 5px 7px 12px;
+    border: 1px solid #E8EAED;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 1px 3px -2px #9098A9;
+    font-size: 15px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    resize: none;
   }
   button {
     display: block;
-    margin: 0 auto;
-    margin-bottom: 10px;
+    margin: 30px auto 10px;
     color: #FFFFFF;
     font-size: 16px;
     font-weight: bold;
@@ -58,15 +87,18 @@
     border: 2px solid #59abe3;
     transition: all .3s;
     cursor: pointer;
+
     &:hover {
       background-color: #FFFFFF;
       color: #59abe3;
     }
   }
+
   .invalid-feedback {
     color: red;
     font-weight: bold;
   }
+
   span {
     a {
       color: #4D76A1;
