@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
 import { LoaderService } from '../../shared/services/loader.service';
+import { IUser } from '../../core/models/user';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private readonly formBuilder: FormBuilder,
     private readonly authService: AuthService,
     private readonly loaderService: LoaderService,
-    private router: Router,
+    private readonly router: Router,
     private readonly toastr: ToastrService,
   ) {
   }
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
   }
 
-  public get formControls() {
+  public get formControls(): { [key: string]: AbstractControl; } {
     return this.loginForm.controls;
   }
 

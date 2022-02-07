@@ -6,14 +6,12 @@ import { Router } from '@angular/router';
 import { regUsers } from '../../../assets/data/users';
 import { FormGroup } from '@angular/forms';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AuthService {
 
   constructor(private router: Router) {  }
 
-  public isUserAuthorised() {
+  public isUserAuthorised(): boolean {
     return localStorage.getItem('logUser') !== null;
   }
 

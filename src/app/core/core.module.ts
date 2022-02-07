@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
@@ -15,6 +17,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     FooterComponent,
   ],
+  providers: [AuthGuard, AuthService],
 })
 
 export class CoreModule { }
