@@ -8,8 +8,8 @@ import { Subject } from 'rxjs';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss'],
 })
-export class LoaderComponent  {
-  public color = 'primary'  ;
+export class LoaderComponent {
+  public color = 'primary';
 
   public mode: ProgressSpinnerMode = 'indeterminate';
 
