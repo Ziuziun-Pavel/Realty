@@ -12,7 +12,7 @@
           type="text"
           formControlName="userEmail"
           class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && formControls.userEmail.errors }"
+          [class.is-invalid]="submitted && formControls.userEmail.errors"
         />
         <div *ngIf="submitted && formControls.userEmail.errors" class="invalid-feedback">
           <div *ngIf="formControls.userEmail.errors.required">Это поле обязательно</div>
@@ -26,7 +26,7 @@
           type="password"
           formControlName="password"
           class="form-input"
-          [ngClass]="{ 'is-invalid': submitted && formControls.password.errors }"
+          [class.is-invalid]="submitted && formControls.password.errors"
         />
         <div  *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
           <div *ngIf="formControls.password.errors.required">Это поле обязательно</div>

@@ -1,6 +1,6 @@
 import * as uniqid from 'uniqid';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject, takeUntil } from 'rxjs';
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private router: Router,
+    private readonly router: Router,
     private readonly authService: AuthService,
     private readonly loaderService: LoaderService,
     private readonly toastr: ToastrService,
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     );
   }
 
-  public get formControls() {
+  public get formControls(): { [key: string]: AbstractControl; }  {
     return this.registerForm.controls;
   }
 
