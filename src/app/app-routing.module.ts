@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'page/:type/:id', component: FlatPageComponent },
   { path: '', component: HomeComponent },
   { path: 'news/:id', component: NewsPageComponent },
-  { path: 'profile', loadChildren: profileModule},
+  { path: 'profile', loadChildren: profileModule },
   { path: 'account', loadChildren: accountModule },
 ];
 
