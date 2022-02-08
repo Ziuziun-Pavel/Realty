@@ -81,10 +81,10 @@ export class UserFormComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
+    this.submitted = true;
     if (this.userForm.invalid) {
       return;
     }
-    this.submitted = true;
     this.loading = true;
     this.loaderService.show();
     if (this.formConfig.register) {
@@ -109,7 +109,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
           },
         );
     } else {
-      this.userService.keepChanges(this.userForm.value)
+      this.userService.updateUser(this.userForm.value)
         .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe(
           () => {

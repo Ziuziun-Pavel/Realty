@@ -17,15 +17,17 @@ export class UserService {
     return of(regUsers);
   }
 
-  public keepChanges(newUser: any ): Observable<IUser> {
+  public updateUser(newUser: IUser): Observable<IUser> {
     let user = JSON.parse(localStorage.getItem('logUser') || '{}');
 
-    for (let propName in user) {
-      if (propName === 'id') {
-        continue;
-      }
-      user[propName] = newUser[propName];
-    }
+    user = {
+      userName: newUser.userName,
+      userSurname: newUser.userSurname,
+      userEmail: newUser.userEmail,
+      password: newUser.password,
+      id: user.id
+    };
+
     localStorage.setItem('logUser', JSON.stringify(user));
     return of(user);
   }
