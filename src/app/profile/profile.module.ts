@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
     RouterModule,
     ReactiveFormsModule,
     ProfileRoutingModule,
+    SharedModule,
   ],
   providers: [AuthGuard],
 })
