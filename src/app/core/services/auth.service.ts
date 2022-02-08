@@ -4,7 +4,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { IUser } from '../models/user';
 import { Router } from '@angular/router';
 import { regUsers } from '../../../assets/data/users';
-import { FormGroup } from '@angular/forms';
 
 @Injectable()
 export class AuthService {
