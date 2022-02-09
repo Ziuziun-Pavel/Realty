@@ -1,77 +1,66 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UserService } from '../../core/services/user.service';
-import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../../core/services/auth.service';
-import { LoaderService } from '../../shared/services/loader.service';
+import { Component, OnDestroy } from '@angular/core';
+import { FormConfig } from '../../core/models/formConfig';
 import { Subject, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
+import { UserService } from '../../core/services/user.service';
+import { LoaderService } from '../../shared/services/loader.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
 })
-export class EditComponent implements OnInit, OnDestroy {
+export class EditComponent implements OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();
-
-  private user = JSON.parse(localStorage.getItem('logUser') || '{}');
-
-  public loading = false;
 
   public submitted = false;
 
-  public editForm: FormGroup;
+  public loading = false;
+
+  public formConfig: FormConfig = {
+    title: 'Изменить профиль',
+    submitted: this.submitted,
+    loading: this.loading,
+    register: false,
+    edit: true,
+  };
 
   constructor(
-    private readonly formBuilder: FormBuilder,
     private readonly router: Router,
-    private readonly userService: UserService,
     private readonly authService: AuthService,
+    private readonly userService: UserService,
     private readonly loaderService: LoaderService,
     private readonly toastr: ToastrService,
-  ) { }
-
-  ngOnInit(): void {
-    this.editForm = this.formBuilder.group(
-      {
-        userName: [this.user.userName, [Validators.required]],
-        userSurname: [this.user.userSurname],
-        userEmail: [this.user.userEmail, [Validators.required, Validators.email]],
-        password: [this.user.password, [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required],
-      },
-      {
-        validator: this.authService.checkPasswords('password', 'confirmPassword'),
-      },
-    );
+  ) {
   }
 
-  public get formControls():{ [key: string]: AbstractControl; } { return this.editForm.controls; }
-
-  public onSubmit(): void {
-    if (this.editForm.invalid) {
+  public onSubmit(userForm: FormGroup): void {
+    this.submitted = true;
+    if (userForm.invalid) {
       return;
     }
-    this.submitted = true;
     this.loading = true;
     this.loaderService.show();
-    this.userService.keepChanges(this.editForm.value)
+    this.userService.updateUser(userForm.value)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
-        ()=>{
+        () => {
           this.loading = false;
           this.loaderService.hide();
-          this.toastr.success('Ваш профиль успешно изменён', this.user.userName + ',');
+          this.toastr.success('Ваш профиль успешно изменён', userForm.controls.userName.value + ',');
           this.router.navigate(['/details']);
         },
-        (error)=>{
+        (error) => {
           this.toastr.error(error.error.message, 'Ошибка');
           this.loading = false;
           this.loaderService.hide();
         },
       );
   }
+
   ngOnDestroy() {
     this.ngUnsubscribe.next(true);
     this.ngUnsubscribe.complete();

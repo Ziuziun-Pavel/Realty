@@ -4,7 +4,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { IUser } from '../models/user';
 import { Router } from '@angular/router';
 import { regUsers } from '../../../assets/data/users';
-import { FormGroup } from '@angular/forms';
 
 @Injectable()
 export class AuthService {
@@ -49,23 +48,4 @@ export class AuthService {
     this.router.navigate(['/register']);
   }
 
-  public checkPasswords(
-    controlName: string,
-    matchingControlName: string,
-  ) {
-    return (formGroup: FormGroup) => {
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
-
-      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-        return;
-      }
-
-      if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ mustMatch: true });
-      } else {
-        matchingControl.setErrors(null);
-      }
-    };
-  }
 }
