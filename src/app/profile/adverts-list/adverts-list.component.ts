@@ -6,7 +6,7 @@ import { UserService } from '../../core/services/user.service';
 @Component({
   selector: 'app-adverts-list',
   templateUrl: './adverts-list.component.html',
-  styleUrls: ['./adverts-list.component.scss']
+  styleUrls: ['./adverts-list.component.scss'],
 })
 export class AdvertsListComponent implements OnInit {
   public cards: Observable<ICard[]>;

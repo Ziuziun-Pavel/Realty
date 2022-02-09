@@ -4,7 +4,6 @@ import { Observable, of } from 'rxjs';
 import { regUsers } from '../../../assets/data/users';
 import { CardType, ICard } from '../models/cards';
 import * as uniqid from 'uniqid';
-import { findItemById } from '../../shared/utilits/findItemById';
 import { sellCards } from '../../../assets/data/sellCard';
 import { rentCards } from '../../../assets/data/rentCards';
 
@@ -13,6 +12,7 @@ import { rentCards } from '../../../assets/data/rentCards';
 })
 
 export class UserService {
+  private arrayOfNewCards: ICard[] = [];
 
   public getLoggedUser(): Observable<IUser> {
     return of(JSON.parse(localStorage.getItem('logUser') || '{}'));
@@ -39,10 +39,10 @@ export class UserService {
 
   public addNewCard(card: ICard): Observable<ICard[]> {
     card.id = uniqid();
-    if(card.type === CardType.sell) {
+    if (card.type === CardType.sell) {
       sellCards.push(card);
     } else {
-      rentCards.push(card)
+      rentCards.push(card);
     }
     this.arrayOfNewCards.push(card);
     return of(this.arrayOfNewCards);

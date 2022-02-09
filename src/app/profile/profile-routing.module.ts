@@ -16,28 +16,28 @@ const routes: Routes = [
       {
         path: 'details',
         component: DetailsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'edit',
-        component: EditComponent
+        component: EditComponent,
       },
       {
         path: 'adding',
         component: AddAdvertsComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'advertsList',
         component: AdvertsListComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'advertsList/page/:type/:id',
-        component: FlatPageComponent
+        component: FlatPageComponent,
       },
 
-    ]
+    ],
   },
 ];
 

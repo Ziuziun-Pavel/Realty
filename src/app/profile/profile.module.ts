@@ -25,7 +25,7 @@ import { SharedModule } from '../shared/shared.module';
     RouterModule,
     ReactiveFormsModule,
     ProfileRoutingModule,
-    HomeModule
+    HomeModule,
     SharedModule,
   ],
   providers: [AuthGuard],
