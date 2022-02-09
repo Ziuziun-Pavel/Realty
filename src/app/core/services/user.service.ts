@@ -25,7 +25,7 @@ export class UserService {
       userSurname: newUser.userSurname,
       userEmail: newUser.userEmail,
       password: newUser.password,
-      id: user.id
+      id: user.id,
     };
 
     localStorage.setItem('logUser', JSON.stringify(user));

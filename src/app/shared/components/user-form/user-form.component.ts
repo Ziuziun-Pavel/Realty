@@ -1,44 +1,27 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
-import { LoaderService } from '../../services/loader.service';
-import { ToastrService } from 'ngx-toastr';
 import { FormConfig } from '../../../core/models/formConfig';
-import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+  styleUrls: ['./user-form.component.scss'],
 })
 
-export class UserFormComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe: Subject<boolean> = new Subject();
-
-  private user = JSON.parse(localStorage.getItem('logUser') || '{}');
-
-  public loading = false;
-
-  public submitted = false;
-
-  public userForm: FormGroup;
-
-  @Input() formConfig: FormConfig = {
+export class UserFormComponent implements OnInit {
+  @Input() public formConfig: FormConfig = {
     title: '',
+    submitted: false,
+    loading: false,
     register: true,
     edit: true,
   };
 
-  constructor(
-    private readonly formBuilder: FormBuilder,
-    private readonly router: Router,
-    private readonly authService: AuthService,
-    private readonly userService: UserService,
-    private readonly loaderService: LoaderService,
-    private readonly toastr: ToastrService,
-  ) {
+  @Output() public Submit = new EventEmitter<FormGroup>();
+
+  public userForm: FormGroup;
+
+  constructor(private readonly formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -80,55 +63,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
     };
   }
 
-  public onSubmit(): void {
-    this.submitted = true;
-    if (this.userForm.invalid) {
-      return;
-    }
-    this.loading = true;
-    this.loaderService.show();
-    if (this.formConfig.register) {
-      this.authService.register(
-        this.formControls.userName.value,
-        this.formControls.userSurname.value,
-        this.formControls.userEmail.value,
-        this.formControls.password.value,
-      )
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(
-          () => {
-            this.loading = false;
-            this.loaderService.hide();
-            alert('Пользователь успешно зарегистрирован!!');
-            this.router.navigate(['/login']);
-          },
-          (error) => {
-            this.toastr.error(error.error.message, 'Ошибка');
-            this.loading = false;
-            this.loaderService.hide();
-          },
-        );
-    } else {
-      this.userService.updateUser(this.userForm.value)
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(
-          () => {
-            this.loading = false;
-            this.loaderService.hide();
-            this.toastr.success('Ваш профиль успешно изменён',this.formControls.userName.value + ',');
-            this.router.navigate(['/details']);
-          },
-          (error) => {
-            this.toastr.error(error.error.message, 'Ошибка');
-            this.loading = false;
-            this.loaderService.hide();
-          },
-        );
-    }
+  public onSubmit() {
+    this.Submit.emit(this.userForm);
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next(true);
-    this.ngUnsubscribe.complete();
-  }
 }

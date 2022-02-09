@@ -1,1 +1,3 @@
-<app-user-form [formConfig]="formConfig" ></app-user-form>
+<app-user-form
+  [formConfig]="formConfig"
+  (Submit)="onSubmit($event)"></app-user-form>

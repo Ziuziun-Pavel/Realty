@@ -12,9 +12,9 @@
           type="text"
           formControlName="userName"
           class="form-control"
-          [class.is-invalid]="submitted && formControls.userName.errors"
+          [class.is-invalid]="formConfig.submitted && formControls.userName.errors"
         />
-        <div *ngIf="submitted && formControls.userName.errors" class="invalid-feedback">
+        <div *ngIf="formConfig.submitted && formControls.userName.errors" class="invalid-feedback">
           <div *ngIf="formControls.userName.errors.required">Это поле обязательно</div>
         </div>
       </div>
@@ -34,9 +34,9 @@
           type="text"
           formControlName="userEmail"
           class="form-control"
-          [class.is-invalid]="submitted && formControls.userEmail.errors"
+          [class.is-invalid]="formConfig.submitted && formControls.userEmail.errors"
         />
-        <div *ngIf="submitted && formControls.userEmail.errors" class="invalid-feedback">
+        <div *ngIf="formConfig.submitted && formControls.userEmail.errors" class="invalid-feedback">
           <div *ngIf="formControls.userEmail.errors.required">Это поле обязательно</div>
           <div *ngIf="formControls.userEmail.errors.email">Введите верную электронную почту</div>
         </div>
@@ -48,9 +48,9 @@
           type="password"
           formControlName="password"
           class="form-control"
-          [class.is-invalid]="submitted && formControls.password.errors"
+          [class.is-invalid]="formConfig.submitted && formControls.password.errors"
         />
-        <div *ngIf="submitted && formControls.password.errors" class="invalid-feedback">
+        <div *ngIf="formConfig.submitted && formControls.password.errors" class="invalid-feedback">
           <div *ngIf="formControls.password.errors.required">Это поле обязательно</div>
           <div *ngIf="formControls.password.errors.minLength">Пароль должен иметь не менее 6 символов</div>
         </div>
@@ -62,10 +62,10 @@
           type="password"
           formControlName="confirmPassword"
           class="form-control"
-          [class.is-invalid]="submitted && formControls.confirmPassword.errors"
+          [class.is-invalid]="formConfig.submitted && formControls.confirmPassword.errors"
         />
         <div
-          *ngIf="submitted && formControls.confirmPassword.errors"
+          *ngIf="formConfig.submitted && formControls.confirmPassword.errors"
           class="invalid-feedback"
         >
           <div *ngIf="formControls.confirmPassword.errors.required">
@@ -80,7 +80,7 @@
       <div *ngIf="formConfig.register" class="form-group">
         <button
           class="btn-register"
-          [disabled]="loading">
+          [disabled]="formConfig.loading">
           Создать аккаунт
         </button>
 
@@ -91,7 +91,7 @@
         <div class="btns">
           <button
             class="btn btn-save"
-            [disabled]="loading">
+            [disabled]="formConfig.loading">
             Сохранить
           </button>
           <button
