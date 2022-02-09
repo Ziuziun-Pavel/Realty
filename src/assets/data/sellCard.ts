@@ -4,7 +4,7 @@ export const sellCards:  Array<ICard> =  [
   {
     'id': '1s',
     'url': '../../assets/img/flatsForSelling/1617587576_17-p-stil-kontemporari-v-interere-kvartiri-18.jpg',
-    'price': 450000 ,
+    'price': 450000,
     'square': 76,
     'street': 'ул. Тимирязева',
     'metro': 'Ст.м. Михалова',

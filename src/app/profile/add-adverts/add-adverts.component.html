@@ -163,6 +163,18 @@
       </div>
 
       <div class="form-group">
+        <label class="select-label" for="yearOfBuilding">Год постройки</label>
+        <input
+          type="number" min="1950" max="2022" step="1"
+          formControlName="yearOfBuilding"
+          class="form-control"
+          [class.is-invalid]="submitted && formControls.yearOfBuilding.errors">
+        <div *ngIf="submitted && formControls.yearOfBuilding.errors" class="invalid-feedback">
+          <div *ngIf="formControls.yearOfBuilding.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label class="select-label" for="heightOfCeiling">Высота потолков(м)</label>
         <input
           type="number" min="0.0" max="100.0" step="0.1"
@@ -172,18 +184,6 @@
 
         <div *ngIf="submitted && formControls.heightOfCeiling.errors" class="invalid-feedback">
           <div *ngIf="formControls.heightOfCeiling.errors.required">Это поле обязательно</div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="select-label" for="yearOfBuilding">Год постройки</label>
-        <input
-          type="number" min="1950" max="2022" step="1"
-          formControlName="yearOfBuilding"
-          class="form-control"
-          [class.is-invalid]="submitted && formControls.yearOfBuilding.errors">
-        <div *ngIf="submitted && formControls.yearOfBuilding.errors" class="invalid-feedback">
-          <div *ngIf="formControls.yearOfBuilding.errors.required">Это поле обязательно</div>
         </div>
       </div>
 
@@ -200,7 +200,7 @@
       </div>
 
 
-      <div class="form-group block">
+      <div id="textarea" class="form-group  ">
         <label class="select-label" for="description">Описание</label>
         <textarea
           formControlName="description"
@@ -212,7 +212,7 @@
         </div>
       </div>
 
-      <div class="form-group block">
+      <div id="add" class="form-group">
         <button
           class="btn-register"
           [disabled]="loading">

@@ -10,6 +10,7 @@ import { AddAdvertsComponent } from './add-adverts/add-adverts.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { AdvertsListComponent } from './adverts-list/adverts-list.component';
 import { HomeModule } from '../features/home/home.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeModule } from '../features/home/home.module';
     RouterModule,
     ReactiveFormsModule,
     ProfileRoutingModule,
-    HomeModule
+    HomeModule,
+    SharedModule,
   ],
   providers: [AuthGuard],
 })

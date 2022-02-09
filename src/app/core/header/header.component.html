@@ -1,38 +1,43 @@
 <div class="container">
-    <nav>
-        <a routerLink="/" class="logo"><img src="../../assets/icons/main_logo.svg" alt="house"></a>
-            <ul class="menu">
-                <a href="#" class="menu-item">
-                    <li>Аренда</li>
-                </a>
-                <a href="#" class="menu-item">
-                    <li>Продажа</li>
-                </a>
-                <a href="#" class="menu-item">
-                    <li>Коммерческая недвижимость</li>
-                </a>
-              <a href="#" class="menu-item">
-                <li>Новости</li>
-              </a>
-            </ul>
-         <div class="favourite">
-           <img src="\assets\icons\heart-outline.svg" alt="heart">
-           <span>Избранное</span>
-         </div>
+  <nav>
+    <a routerLink="/" class="logo"><img src="../../assets/icons/main_logo.svg" alt="house"></a>
+    <ul class="menu">
+      <a href="#" class="menu-item">
+        <li>Аренда</li>
+      </a>
+      <a href="#" class="menu-item">
+        <li>Продажа</li>
+      </a>
+      <a href="#" class="menu-item">
+        <li>Коммерческая недвижимость</li>
+      </a>
+      <a href="#" class="menu-item">
+        <li>Новости</li>
+      </a>
+    </ul>
+    <div class="favourite">
+      <img src="assets/icons/heart-outline.svg" alt="heart">
+      <span>Избранное</span>
+    </div>
 
-        <div class="adding">
-          <button class="btn" routerLink="/adding"><span>Добавить объявление</span></button>
-        </div>
+    <div class="adding">
+      <button class="btn" routerLink="adding"><span>Добавить объявление</span></button>
+    </div>
 
-        <div class="signin">
-            <button class="btn-signin" routerLink="/login"><span>Войти</span></button>
-            <img src="../../assets/icons/user_logo.svg" alt="user" class="account">
-        </div>
+    <div *ngIf="isAuthorized()" class="signin">
+      <button class="btn-registr" routerLink="details"><span>Мой профиль</span></button>
+    </div>
 
-      <div class="signin">
-        <button class="btn-registr" routerLink="/details"><span>Мой профиль</span></button>
-      </div>
+    <div *ngIf="!isAuthorized()" class="signin">
+      <button class="btn-signin" routerLink="login"><span>Войти</span></button>
+      <img src="../../assets/icons/user_logo.svg" alt="user" class="account">
+    </div>
 
-    </nav>
+    <div *ngIf="isAuthorized()" class="signin">
+      <button class="btn-signin" (click)="signOut()"><span>Выйти</span></button>
+      <img src="../../assets/icons/user_logo.svg" alt="user" class="account">
+    </div>
+
+  </nav>
 </div>
 
