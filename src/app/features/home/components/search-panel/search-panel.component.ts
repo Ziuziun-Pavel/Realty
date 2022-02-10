@@ -9,10 +9,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SearchPanelComponent implements OnInit {
   public searchingForm: FormGroup;
 
-  public dropdownName: Array<string> = ['Кол-во комнат', 'Область', 'Цена'];
+  public dropdownName: Array<string> = ['','Кол-во комнат', 'Область', 'Цена'];
 
   public dropMenuOptions = {
-    'price': ['','assa','assa'],
+    'type': ['Снять', 'Купить'],
+    'price': ['менее 50 000 $','менее 150 000 $','более 150 000 $'],
     'rooms': ['1-комнатную','2-комнатную','3-комнатную','4-комнатную','5-комнатную','6-комнатную'],
     'region': ['г.Минск','Минская','Гродненская','Могилёвская','Брестская','Витебская','Гомельская'],
   }
@@ -26,7 +27,6 @@ export class SearchPanelComponent implements OnInit {
     this.searchingForm = this.formBuilder.group({
       search: [''],
       dropdownControl: [''],
-
     })
   }
 }

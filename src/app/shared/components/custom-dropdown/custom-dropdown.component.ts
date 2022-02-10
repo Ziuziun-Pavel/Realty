@@ -22,21 +22,12 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
 
   constructor() { }
 
-  ngOnInit() {
-
-    // this.options = [
-    //   'option 1',
-    //   'option 2',
-    //   'option 3',
-    // ];
-
-    //this.selectedOption = this.options[0];
-
-  }
+  ngOnInit() {  }
 
 
   writeValue(value: string) {
-   // this.selectedOption = value;
+    if(this.selectedOption === '')
+   this.selectedOption = this.options[0];
   }
 
   registerOnChange(fn: (_: any) => {}) {
@@ -44,7 +35,7 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
   }
 
   changeSelectedOption(option: string) {
-    //this.selectedOption = option;
+    this.selectedOption = option;
     this.onChange(option);
   }
 
