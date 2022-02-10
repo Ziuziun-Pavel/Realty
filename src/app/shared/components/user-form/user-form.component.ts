@@ -28,7 +28,7 @@ export class UserFormComponent implements OnInit {
     this.userForm = this.formBuilder.group(
       {
         userName: ['', Validators.required],
-        userSurname: ['', Validators.required],
+        userSurname: [''],
         userEmail: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
@@ -63,7 +63,11 @@ export class UserFormComponent implements OnInit {
     };
   }
 
-  public onSubmit() {
+  public onChange(): void {
+    this.formConfig.submitted = true;
+  }
+
+  public onSubmit(): void {
     this.Submit.emit(this.userForm);
   }
 

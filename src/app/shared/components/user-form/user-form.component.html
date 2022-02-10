@@ -2,7 +2,7 @@
   <div class="overlay">
     <form
       [formGroup]="userForm"
-      (ngSubmit)="onSubmit()"
+      (ngSubmit)="userForm.valid && onSubmit()"
       novalidate>
       <h2 class="title">{{ formConfig.title }}</h2>
 
@@ -20,7 +20,7 @@
       </div>
 
       <div class="form-group">
-        <label for="surname">Фамилия</label>
+        <label class="notReq" for="surname">Фамилия</label>
         <input
           type="text"
           formControlName="userSurname"
@@ -80,6 +80,7 @@
       <div *ngIf="formConfig.register" class="form-group">
         <button
           class="btn-register"
+          (click)="onChange()"
           [disabled]="formConfig.loading">
           Создать аккаунт
         </button>
@@ -91,6 +92,7 @@
         <div class="btns">
           <button
             class="btn btn-save"
+            (click)="onChange()"
             [disabled]="formConfig.loading">
             Сохранить
           </button>
