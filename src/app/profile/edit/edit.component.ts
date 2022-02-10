@@ -24,8 +24,6 @@ export class EditComponent implements OnDestroy {
     title: 'Изменить профиль',
     submitted: this.submitted,
     loading: this.loading,
-    register: false,
-    edit: true,
   };
 
   constructor(

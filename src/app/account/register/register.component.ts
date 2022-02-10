@@ -24,8 +24,6 @@ export class RegisterComponent implements OnDestroy {
     title: 'Создать аккаунт',
     submitted: this.submitted,
     loading: this.loading,
-    register: true,
-    edit: false,
   };
 
   constructor(
