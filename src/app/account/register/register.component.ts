@@ -38,10 +38,6 @@ export class RegisterComponent implements OnDestroy {
   }
 
   public onSubmit(userForm: FormGroup): void {
-    this.submitted = true;
-    if (userForm.invalid) {
-      return;
-    }
     this.loading = true;
     this.loaderService.show();
     this.authService.register(

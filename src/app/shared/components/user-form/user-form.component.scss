@@ -34,21 +34,28 @@
   }
 
   label {
+    position: relative;
     color: #000;
     display: inline-block;
     text-align: left;
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: bold;
+    &:not(.notReq)::after {
+      color: #d00;
+      content: "*";
+      position: absolute;
+      margin-left: 5px;
+    }
   }
 
   input {
-    border: none;
     color: #555;
     margin-bottom: 10px;
     height: 35px;
     padding: 5px;
     width: 100%;
+    border: none;
   }
 
   button {
