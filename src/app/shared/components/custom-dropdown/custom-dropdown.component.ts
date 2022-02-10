@@ -26,8 +26,9 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
 
 
   writeValue(value: string) {
-    if(this.selectedOption === '')
-   this.selectedOption = this.options[0];
+    if(this.selectedOption === value){
+      this.selectedOption = this.options[0];
+    }
   }
 
   registerOnChange(fn: (_: any) => {}) {
