@@ -13,8 +13,6 @@ export class UserFormComponent implements OnInit {
     title: '',
     submitted: false,
     loading: false,
-    register: true,
-    edit: true,
   };
 
   @Output() public Submit = new EventEmitter<FormGroup>();
@@ -63,12 +61,11 @@ export class UserFormComponent implements OnInit {
     };
   }
 
-  public onChange(): void {
-    this.formConfig.submitted = true;
-  }
-
   public onSubmit(): void {
-    this.Submit.emit(this.userForm);
+    this.formConfig.submitted = true;
+    if (this.userForm.valid) {
+      this.Submit.emit(this.userForm);
+    }
   }
 
 }

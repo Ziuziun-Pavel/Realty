@@ -1,3 +1,18 @@
 <app-user-form
   [formConfig]="formConfig"
-  (Submit)="onSubmit($event)"></app-user-form>
+  (Submit)="onSubmit($event)">
+  <div class="form-group">
+    <div class="btns">
+      <button
+        class="btn btn-save"
+        [disabled]="loading">
+        Сохранить
+      </button>
+      <button
+        routerLink="/details"
+        class="btn btn-cancel">
+        Отмена
+      </button>
+    </div>
+  </div>
+</app-user-form>

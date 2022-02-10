@@ -19,7 +19,7 @@
   form {
     font-family: 'Lato', sans-serif;
     position: absolute;
-    padding: 15px 25px 0 25px;
+    padding: 15px 25px 10px 25px;
     left: 50%;
     top: 10%;
     transform: translate(-50%);
@@ -58,68 +58,8 @@
     border: none;
   }
 
-  button {
-    display: block;
-    margin: 0 auto;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: bold;
-    height: 50px;
-    padding: 6px 12px;
-    width: 200px;
-    background-color: #59abe3;
-    border: 2px solid #59abe3;
-    transition: all .3s;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #FFFFFF;
-      color: #59abe3;
-    }
-  }
-
   .invalid-feedback {
     color: red;
   }
 
-  span {
-    a {
-      color: #4D76A1;
-      text-align: center;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  }
-
-  .btns {
-    display: flex;
-  }
-
-  .btn {
-    margin: 0 auto;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: bold;
-    height: 50px;
-    padding: 6px 12px;
-    width: 200px;
-    background-color: #4682B4;
-    border: 2px solid #4682B4;
-    transition: all .3s;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #B0C4DE;
-      color: #FFFFFF;
-    }
-  }
-
-  .btn-cancel {
-    background-color: #B22222;
-    border: 2px solid #B22222;
-
-    &:hover {
-      background-color: #F08080;
-    }
-  }
 }

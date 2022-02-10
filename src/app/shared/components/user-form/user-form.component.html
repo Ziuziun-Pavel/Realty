@@ -2,7 +2,7 @@
   <div class="overlay">
     <form
       [formGroup]="userForm"
-      (ngSubmit)="userForm.valid && onSubmit()"
+      (ngSubmit)="onSubmit()"
       novalidate>
       <h2 class="title">{{ formConfig.title }}</h2>
 
@@ -76,33 +76,7 @@
           </div>
         </div>
       </div>
-
-      <div *ngIf="formConfig.register" class="form-group">
-        <button
-          class="btn-register"
-          (click)="onChange()"
-          [disabled]="formConfig.loading">
-          Создать аккаунт
-        </button>
-
-        <span>У вас уже есть аккаунт?<a routerLink="/login" class="btn-link"> Войти</a></span>
-      </div>
-
-      <div *ngIf="formConfig.edit" class="form-group">
-        <div class="btns">
-          <button
-            class="btn btn-save"
-            (click)="onChange()"
-            [disabled]="formConfig.loading">
-            Сохранить
-          </button>
-          <button
-            routerLink="/details"
-            class="btn btn-cancel">
-            Отмена
-          </button>
-        </div>
-      </div>
+      <ng-content></ng-content>
     </form>
   </div>
   <app-loader></app-loader>
