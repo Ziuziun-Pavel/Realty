@@ -2,38 +2,16 @@
   <div class="container">
     <h2 class="title">Лучший сайт по подбору жилья по всей Беларуси</h2>
     <div class="wrapper">
-      <div class="filters">
+      <form
+        [formGroup]="searchingForm"
+        class="filters"
+        novalidate>
+        <app-custom-dropdown [options]="dropMenuOptions.rooms" [selectedOption]="dropdownName[0]" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [options]="dropMenuOptions.region" [selectedOption]="dropdownName[1]" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [options]="dropMenuOptions.price" [selectedOption]="dropdownName[2]" formControlName="dropdownControl"></app-custom-dropdown>
 
-        <div class="select">
-          <label class="select-label" for="rooms">Кол-во комнат</label>
-          <select class="select-rooms">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-        </div>
-
-        <div class="select">
-          <label class="select-label" for="price">Цена</label>
-          <select class="select-price">
-            <option value=""></option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>
-        </div>
-
-
-        <input placeholder="Укажите город,адрес или район" type="text">
-
-      </div>
+        <input placeholder="Укажите адрес или район" type="text" formControlName="search">
+      </form>
       <div class="btns">
         <button type="submit" class="btn btn-search">Искать</button>
         <button type="reset" class="btn btn-reset">Очистить</button>
@@ -41,3 +19,4 @@
     </div>
   </div>
 </section>
+
