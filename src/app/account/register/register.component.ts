@@ -1,85 +1,48 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { Component, OnDestroy } from '@angular/core';
+import { FormConfig } from '../../core/models/formConfig';
 import { Subject, takeUntil } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
+import { UserService } from '../../core/services/user.service';
 import { LoaderService } from '../../shared/services/loader.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();
-
-  public loading = false;
 
   public submitted = false;
 
-  public registerForm: FormGroup;
+  public loading = false;
+
+  public formConfig: FormConfig = {
+    title: 'Создать аккаунт',
+    submitted: this.submitted,
+    loading: this.loading,
+  };
 
   constructor(
-    private readonly formBuilder: FormBuilder,
     private readonly router: Router,
     private readonly authService: AuthService,
+    private readonly userService: UserService,
     private readonly loaderService: LoaderService,
     private readonly toastr: ToastrService,
   ) {
   }
 
-  ngOnInit(): void {
-    this.registerForm = this.formBuilder.group(
-      {
-        userName: ['', Validators.required],
-        userSurname: ['', Validators.required],
-        userEmail: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required],
-      },
-      {
-        validator: this.checkPasswords('password', 'confirmPassword'),
-      },
-    );
-  }
-
-  public get formControls(): { [key: string]: AbstractControl; }  {
-    return this.registerForm.controls;
-  }
-
-  public checkPasswords(
-    controlName: string,
-    matchingControlName: string,
-  ) {
-    return (formGroup: FormGroup) => {
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
-
-      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-        return;
-      }
-
-      if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ mustMatch: true });
-      } else {
-        matchingControl.setErrors(null);
-      }
-    };
-  }
-
-  public onSubmit(): void {
-    if (this.registerForm.invalid) {
-      return;
-    }
-    this.submitted = true;
+  public onSubmit(userForm: FormGroup): void {
     this.loading = true;
     this.loaderService.show();
     this.authService.register(
-      this.formControls.userName.value,
-      this.formControls.userSurname.value,
-      this.formControls.userEmail.value,
-      this.formControls.password.value,
+      userForm.controls.userName.value,
+      userForm.controls.userSurname.value,
+      userForm.controls.userEmail.value,
+      userForm.controls.password.value,
     )
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(

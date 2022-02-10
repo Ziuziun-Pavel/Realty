@@ -1,0 +1,38 @@
+.form-group {
+  display: inline;
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.btns {
+  display: flex;
+}
+
+.btn {
+  margin: 0 auto;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  padding: 6px 12px;
+  width: 200px;
+  background-color: #4682B4;
+  border: 2px solid #4682B4;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #B0C4DE;
+    color: #FFFFFF;
+  }
+}
+
+.btn-cancel {
+  background-color: #B22222;
+  border: 2px solid #B22222;
+
+  &:hover {
+    background-color: #F08080;
+  }
+}

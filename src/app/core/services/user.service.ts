@@ -17,7 +17,20 @@ export class UserService {
     return of(regUsers);
   }
 
+  public updateUser(newUser: IUser): Observable<IUser> {
+    let user = JSON.parse(localStorage.getItem('logUser') || '{}');
 
+    user = {
+      userName: newUser.userName,
+      userSurname: newUser.userSurname,
+      userEmail: newUser.userEmail,
+      password: newUser.password,
+      id: user.id,
+    };
+
+    localStorage.setItem('logUser', JSON.stringify(user));
+    return of(user);
+  }
 }
 
 

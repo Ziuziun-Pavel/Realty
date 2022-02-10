@@ -1,14 +1,18 @@
 <div class="profile-container">
   <div class="overlay">
     <div class="profile-modal">
-      <h2 class="title">{{ currentUser.userName }} {{ currentUser.userSurname }}</h2>
-      <p class="title">{{ currentUser.userEmail }}</p>
+      <a routerLink="/" class="cross"></a>
+      <div class="modal-overlay">
+      </div>
+      <img class="user-photo" src="assets/icons/user.png">
+      <h2 class="title-name">{{ currentUser.userName }} {{ currentUser.userSurname }}</h2>
+      <p class="title-email">{{ currentUser.userEmail }}</p>
       <div class="btns">
-        <button routerLink="edit" class="btn">
-          Изменить профиль
+        <button routerLink="/edit" class="btn">
+          Изменить
         </button>
-        <button  class="btn btn-logout">
-          Выйти
+        <button (click)="deleteAccount()" class="btn btn-logout">
+          Удалить
         </button>
       </div>
     </div>

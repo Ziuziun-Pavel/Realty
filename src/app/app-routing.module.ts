@@ -4,10 +4,17 @@ import { FlatPageComponent } from './features/home/components/advertisement/flat
 import { HomeComponent } from './features/home/home.component';
 import { NewsPageComponent } from './features/home/components/news/news-page/news-page.component';
 
+const accountModule = () =>
+  import('./account/account.module').then((x) => x.AccountModule);
+const profileModule = () =>
+  import('./profile/profile.module').then((x) => x.ProfileModule);
+
 const routes: Routes = [
   { path: 'page/:type/:id', component: FlatPageComponent },
   { path: '', component: HomeComponent },
   { path: 'news/:id', component: NewsPageComponent },
+  { path: 'profile', loadChildren: profileModule },
+  { path: 'account', loadChildren: accountModule },
 ];
 
 @NgModule({
