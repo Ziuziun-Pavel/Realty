@@ -1,0 +1,28 @@
+button {
+  display: block;
+  margin: 0 auto;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  padding: 6px 12px;
+  width: 200px;
+  background-color: #59abe3;
+  border: 2px solid #59abe3;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #FFFFFF;
+    color: #59abe3;
+  }
+}
+
+span {
+  a {
+    color: #4D76A1;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}

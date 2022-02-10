@@ -1,99 +1,38 @@
-.account-container {
-  height: 100vh;
-  background: url("../../../assets/img/registr_bg.jpg") center (center / cover) no-repeat;
+.form-group {
+  display: inline;
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
 
-  .overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .5);
-  }
+.btns {
+  display: flex;
+}
 
-  .title {
-    text-align: center;
-    font-size: 30px;
-  }
+.btn {
+  margin: 0 auto;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  padding: 6px 12px;
+  width: 200px;
+  background-color: #4682B4;
+  border: 2px solid #4682B4;
+  transition: all .3s;
+  cursor: pointer;
 
-  form {
-    font-family: 'Lato', sans-serif;
-    position: absolute;
-    padding: 25px;
-    left: 50%;
-    top: 10%;
-    transform: translate(-50%);
-    background-color: rgba(255, 255, 255, 0.6);
-  }
-
-  .form-group {
-    display: inline;
-    float: left;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  label {
-    color: #000;
-    display: inline-block;
-    text-align: left;
-    max-width: 100%;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-
-  input {
-    border: none;
-    color: #555;
-    margin-bottom: 10px;
-    height: 35px;
-    padding: 5px;
-    width: 100%;
-  }
-
-  .btns {
-    display: flex;
-  }
-
-  .btn {
-    margin: 0 auto;
-    margin-bottom: 10px;
+  &:hover {
+    background-color: #B0C4DE;
     color: #FFFFFF;
-    font-size: 16px;
-    font-weight: bold;
-    height: 50px;
-    padding: 6px 12px;
-    width: 200px;
-    background-color: #4682B4;
-    border: 2px solid #4682B4;
-    transition: all .3s;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #B0C4DE;
-      color: #FFFFFF;
-    }
   }
+}
 
-  .btn-cancel {
-    background-color: #B22222;
-    border: 2px solid #B22222;
+.btn-cancel {
+  background-color: #B22222;
+  border: 2px solid #B22222;
 
-    &:hover {
-      background-color: #F08080;
-    }
-  }
-
-  .invalid-feedback {
-    color: #de1717;
-  }
-
-  span {
-    a {
-      color: #4D76A1;
-      text-align: center;
-      cursor: pointer;
-      font-weight: bold;
-    }
+  &:hover {
+    background-color: #F08080;
   }
 }
