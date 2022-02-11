@@ -24,7 +24,6 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit() {  }
 
-
   writeValue(value: string) {
     if(this.selectedOption === value){
       this.selectedOption = this.options[0];

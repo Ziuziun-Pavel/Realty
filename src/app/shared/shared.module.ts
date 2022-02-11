@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   imports: [CommonModule, MatProgressSpinnerModule, ReactiveFormsModule, RouterModule, BsDropdownModule],
@@ -15,8 +16,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     LoaderComponent,
     UserFormComponent,
     CustomDropdownComponent,
+    FilterPipe,
   ],
-  exports: [LoaderComponent, UserFormComponent, CustomDropdownComponent],
+  exports: [LoaderComponent, UserFormComponent, CustomDropdownComponent, FilterPipe],
   providers: [LoaderService],
 })
 

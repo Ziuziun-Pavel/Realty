@@ -1,1 +1,5 @@
-<app-card [id]="card.id" *ngFor="let card of cards | async" [card]="card"></app-card>
+<app-search-panel
+  [cards]="cards"
+  (filtered)="filteredMovies = $event"
+></app-search-panel>
+<app-card [id]="card.id" *ngFor="let card of filteredMovies" [card]="card"></app-card>

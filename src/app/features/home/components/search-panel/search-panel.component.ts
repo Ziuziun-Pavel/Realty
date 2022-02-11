@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { ICard } from '../../../../core/models/cards';
 
 @Component({
   selector: 'app-search-panel',
@@ -8,6 +9,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class SearchPanelComponent implements OnInit {
   public searchingForm: FormGroup;
+  @Input('cards') cards: ICard[];
+  @Output('filtered') filtered: EventEmitter<ICard[]> = new EventEmitter<
+    ICard[]
+    >();
+  filteredMovies: ICard[];
 
   public dropdownName: Array<string> = ['','Кол-во комнат', 'Область', 'Цена'];
 
@@ -28,5 +34,17 @@ export class SearchPanelComponent implements OnInit {
       search: [''],
       dropdownControl: [''],
     })
+  }
+
+  public get formControls(): { [key: string]: AbstractControl; } {
+    return this.searchingForm.controls;
+  }
+
+  filter() {
+    let query = this.formControls.search.value.toLowerCase().trim();
+    this.filteredMovies = this.cards.filter((card) =>
+      card.street.toLowerCase().includes(query)
+    );
+    this.filtered.emit(this.filteredMovies);
   }
 }
