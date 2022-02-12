@@ -1,3 +1,10 @@
-<app-search-panel></app-search-panel>
-<app-advertisement></app-advertisement>
-<app-news></app-news>
+<app-search-panel
+  [cards]="cards"
+  (filtered)="filteredCards = $event"
+></app-search-panel>
+<app-cards-list [filteredCards]="filteredCards" *ngIf="isSearched | async;else ads"></app-cards-list>
+<ng-template #ads>
+  <app-advertisement></app-advertisement>
+  <app-news></app-news>
+</ng-template>
+

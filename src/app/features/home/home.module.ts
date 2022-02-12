@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 
 import { AdsComponent } from './components/advertisement/advertisement.component';
@@ -15,6 +15,8 @@ import { RentCardsComponent } from './components/advertisement/rent-cards/rent-c
 import { NewsListComponent } from './components/news/news-list/news-list.component';
 import { FlatPageComponent } from './components/advertisement/flat-page/flat-page.component';
 import { NewsPageComponent } from './components/news/news-page/news-page.component';
+import { CardsListComponent } from './components/cards-list/cards-list.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import { NewsPageComponent } from './components/news/news-page/news-page.compone
     HomeRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [
     AdsComponent,
@@ -35,8 +39,9 @@ import { NewsPageComponent } from './components/news/news-page/news-page.compone
     NewsListComponent,
     FlatPageComponent,
     NewsPageComponent,
+    CardsListComponent,
   ],
-  exports: [HomeComponent, CardComponent],
+  exports: [HomeComponent, CardComponent, SearchPanelComponent],
 })
 
 export class HomeModule {
