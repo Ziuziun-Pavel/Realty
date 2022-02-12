@@ -2,16 +2,21 @@
   <div class="container">
     <h2 class="title">Лучший сайт по подбору жилья по всей Беларуси</h2>
     <div class="wrapper">
+      <form
+        [formGroup]="searchingForm"
+        class="filters"
+        novalidate>
+        <app-custom-dropdown [options]="dropMenuOptions.type" [selectedOption]="dropdownName[0]" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [options]="dropMenuOptions.rooms" [selectedOption]="dropdownName[1]" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [options]="dropMenuOptions.region" [selectedOption]="dropdownName[2]" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [options]="dropMenuOptions.price" [selectedOption]="dropdownName[3]" formControlName="dropdownControl"></app-custom-dropdown>
+
+        <input placeholder="Укажите адрес или район" type="text" formControlName="search">
+      </form>
       <div class="btns">
-        <button class="btn btn-rooms">Кол-во комнат</button>
-
-        <button class="btn btn-price">Цена</button>
-
-        <input class="input" placeholder="Укажите город,адрес или район" type="text">
-        <img src="assets/icons/3844432-magnifier-search-zoom_110300.svg" class="loupe">
-        <button type="submit" class="btn-search">Искать</button>
+        <button (click)="filter()" type="submit" class="btn btn-search">Искать</button>
+        <button type="reset" class="btn btn-reset">Очистить</button>
       </div>
-      <button type="reset" class="btn-reset">Очистить</button>
     </div>
   </div>
 </section>
