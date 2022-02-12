@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ICard } from '../../core/models/cards';
 import { Observable, Subject } from 'rxjs';
 import { CardService } from './services/card.service';
@@ -8,12 +8,16 @@ import { CardService } from './services/card.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  public cards$: Observable<Array<ICard>>;
-  public filteredCards: ICard[] = [];
-  public cards: ICard[];
-  private error: string;
+export class HomeComponent implements OnInit {
   public isSearched: Subject<boolean> = this.cardService.isSearched;
+
+  public cards$: Observable<Array<ICard>>;
+
+  public filteredCards: ICard[] = [];
+
+  public cards: ICard[];
+
+  private error: string;
 
   constructor(private readonly cardService: CardService) { }
 
@@ -29,7 +33,4 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     );
   }
-  ngOnDestroy(): void {
-    this.isSearched.unsubscribe();
-}
 }

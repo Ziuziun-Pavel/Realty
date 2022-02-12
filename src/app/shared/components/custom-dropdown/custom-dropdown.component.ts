@@ -14,31 +14,29 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 
 export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
-
-  @Input() public selectedOption: string;
   @Input() public options: string[];
 
-  onChange: (_: any) => {};
+  public selectedOption: string;
+
+  private onChange: (_: any) => {};
 
   constructor() { }
 
   ngOnInit() {  }
 
-  writeValue(value: string) {
-    if(this.selectedOption === value){
+  public writeValue() {
       this.selectedOption = this.options[0];
-    }
   }
 
-  registerOnChange(fn: (_: any) => {}) {
+  public registerOnChange(fn: (_: any) => {}) {
     this.onChange = fn;
   }
 
-  changeSelectedOption(option: string) {
+  public changeSelectedOption(option: string) {
     this.selectedOption = option;
     this.onChange(option);
   }
 
-  registerOnTouched() { }
+  public registerOnTouched() { }
 
 }

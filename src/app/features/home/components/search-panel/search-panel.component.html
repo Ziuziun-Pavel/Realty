@@ -6,16 +6,16 @@
         [formGroup]="searchingForm"
         class="filters"
         novalidate>
-        <app-custom-dropdown [options]="dropMenuOptions.type" [selectedOption]="dropdownName[0]" formControlName="dropdownControl"></app-custom-dropdown>
-        <app-custom-dropdown [options]="dropMenuOptions.rooms" [selectedOption]="dropdownName[1]" formControlName="dropdownControl"></app-custom-dropdown>
-        <app-custom-dropdown [options]="dropMenuOptions.region" [selectedOption]="dropdownName[2]" formControlName="dropdownControl"></app-custom-dropdown>
-        <app-custom-dropdown [options]="dropMenuOptions.price" [selectedOption]="dropdownName[3]" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown *ngFor="let drop of dropdownNames" [options]="drop" formControlName="dropdownControl"></app-custom-dropdown>
+<!--        <app-custom-dropdown [options]="dropMenuOptions.rooms" [selectedOption]="dropdownName[1]" formControlName="dropdownControl"></app-custom-dropdown>-->
+<!--        <app-custom-dropdown [options]="dropMenuOptions.region" [selectedOption]="dropdownName[2]" formControlName="dropdownControl"></app-custom-dropdown>-->
+<!--        <app-custom-dropdown [options]="dropMenuOptions.price" [selectedOption]="dropdownName[3]" formControlName="dropdownControl"></app-custom-dropdown>-->
 
         <input placeholder="Укажите адрес или район" type="text" formControlName="search">
       </form>
       <div class="btns">
-        <button (click)="filter()" type="submit" class="btn btn-search">Искать</button>
-        <button type="reset" class="btn btn-reset">Очистить</button>
+        <button (click)="onSearch()" type="submit" class="btn btn-search">Искать</button>
+        <button (click)="onReset()" type="reset" class="btn btn-reset">Очистить</button>
       </div>
     </div>
   </div>

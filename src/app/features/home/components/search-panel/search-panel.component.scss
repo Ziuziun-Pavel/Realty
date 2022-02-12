@@ -16,7 +16,7 @@
   }
 
   .wrapper {
-    margin: 65px auto;
+    margin: 90px auto;
     padding: 50px 40px 0 50px;
     width: 86%;
     min-height: 250px;
@@ -51,6 +51,7 @@
   .btns {
     display: flex;
     justify-content: flex-end;
+    margin-top: 10px;
   }
 
   .btn {
@@ -58,7 +59,7 @@
     margin-left: 20px;
     width: 100px;
     border-radius: 10px;
-    height: 35px;
+    height: 40px;
     background-color: var(--primary-color);
     font-family: 'Lato', sans-serif;
     font-size: 18px;

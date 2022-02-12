@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { ICard } from '../../../../core/models/cards';
+import { CardType, ICard } from '../../../../core/models/cards';
 import { CardService } from '../../services/card.service';
+import { SelectedOption } from '../../../../core/models/selectedOption';
 
 @Component({
   selector: 'app-search-panel',
@@ -9,46 +10,47 @@ import { CardService } from '../../services/card.service';
   styleUrls: ['./search-panel.component.scss'],
 })
 export class SearchPanelComponent {
+  @Input() public cards: ICard[];
+
+  @Output('filtered') public filtered: EventEmitter<ICard[]> = new EventEmitter<ICard[]>();
+
   public searchingForm: FormGroup;
+
   public isSearched = false;
-  @Input() cards: ICard[];
-  @Output('filtered') filtered: EventEmitter<ICard[]> = new EventEmitter<
-    ICard[]
-    >();
-  filteredCards: ICard[];
 
-  public dropdownName: Array<string> = ['','Кол-во комнат', 'Область', 'Цена'];
-
-  public dropMenuOptions = {
-    'type': ['Снять', 'Купить'],
-    'price': ['менее 50 000$','менее 150 000$','более 150 000$'],
-    'rooms': ['1-комнатную','2-комнатную','3-комнатную','4-комнатную','5-комнатную','6-комнатную'],
-    'region': ['г.Минск','Минская','Гродненская','Могилёвская','Брестская','Витебская','Гомельская'],
-  }
+  public filteredCards: ICard[];
 
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly cardService: CardService,
-  ) {  }
+  ) {
+  }
 
   ngOnInit() {
 
     this.searchingForm = this.formBuilder.group({
       search: [''],
       dropdownControl: [''],
-    })
+    });
   }
 
   public get formControls(): { [key: string]: AbstractControl; } {
     return this.searchingForm.controls;
   }
 
-  filter() {
+  public onSearch(): void {
     this.cardService.show();
-    let query = this.formControls.search.value.toLowerCase().trim();
+    let query = this.formControls.search.value.toLowerCase()
+      .trim();
     this.filteredCards = this.cards.filter((card) =>
-      card.street.toLowerCase().includes(query)
+      card.street.toLowerCase()
+        .includes(query)
     );
     this.filtered.emit(this.filteredCards);
+  }
+
+  public onReset(): void {
+    this.searchingForm.reset();
+    this.cardService.hide();
   }
 }

@@ -2,8 +2,8 @@
 
 #button-basic{
   height: 60px;
-  width: 145px;
-  padding: 5px 15px 5px 5px;
+  //width: 145px;
+  padding: 5px 25px 5px 5px;
   font-size: 16px;
   text-align: left;
   color: #555555;
@@ -35,5 +35,13 @@ ul {
 
 li {
   cursor: pointer;
-  color: #000000;
+  word-break: break-word;
+  &:first-child span {
+    color: #73787A;
+  }
 }
+
+.dropdown-item {
+  color: black;
+}
+
