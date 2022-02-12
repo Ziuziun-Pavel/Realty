@@ -12,10 +12,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CardsListComponent } from './features/home/components/cards-list/cards-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CardsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,5 +34,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [
+    CardsListComponent
+  ]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ICard } from '../../../../core/models/cards';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-panel',
@@ -9,11 +10,11 @@ import { ICard } from '../../../../core/models/cards';
 })
 export class SearchPanelComponent implements OnInit {
   public searchingForm: FormGroup;
-  @Input('cards') cards: ICard[];
+  @Input() cards: ICard[];
   @Output('filtered') filtered: EventEmitter<ICard[]> = new EventEmitter<
     ICard[]
     >();
-  filteredMovies: ICard[];
+  filteredCards: ICard[];
 
   public dropdownName: Array<string> = ['','Кол-во комнат', 'Область', 'Цена'];
 
@@ -26,10 +27,11 @@ export class SearchPanelComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-  ) {
-  }
+    private readonly router: Router,
+  ) {  }
 
   ngOnInit() {
+
     this.searchingForm = this.formBuilder.group({
       search: [''],
       dropdownControl: [''],
@@ -42,9 +44,9 @@ export class SearchPanelComponent implements OnInit {
 
   filter() {
     let query = this.formControls.search.value.toLowerCase().trim();
-    this.filteredMovies = this.cards.filter((card) =>
+    this.filteredCards = this.cards.filter((card) =>
       card.street.toLowerCase().includes(query)
     );
-    this.filtered.emit(this.filteredMovies);
+    this.filtered.emit(this.filteredCards);
   }
 }
