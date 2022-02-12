@@ -1,0 +1,39 @@
+@import "~bootstrap/scss/bootstrap";
+
+#button-basic{
+  height: 60px;
+  width: 145px;
+  padding: 5px 15px 5px 5px;
+  font-size: 16px;
+  text-align: left;
+  color: #555555;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 0;
+  border-right: 1px solid #afaaaa;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  &:hover {
+    color: #555555;
+    border: 1px solid #fff;
+    border-right: 1px solid #afaaaa;
+    outline: none;
+    background: #e9f3fb;
+  }
+}
+.dropdown-toggle::after {
+  position: absolute;
+  right: 8px;
+  top: 43%;
+  transform: translateY(50%);
+}
+
+ul {
+  max-height: 300px;
+}
+
+li {
+  cursor: pointer;
+  color: #000000;
+}
