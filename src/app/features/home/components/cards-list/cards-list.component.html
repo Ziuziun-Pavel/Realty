@@ -1,0 +1,13 @@
+<app-search-panel
+  [cards]="cards"
+  (filtered)="filteredCards = $event"
+></app-search-panel>
+<div class="container">
+  <h1 class="title">Результаты поиска:</h1>
+  <div *ngIf="filteredCards.length === 0">
+    <h2 class="subtitle" >No flats found</h2>
+  </div>
+  <div class="wrapper">
+    <app-card [id]="card.id" *ngFor="let card of filteredCards" [card]="card"></app-card>
+  </div>
+</div>
