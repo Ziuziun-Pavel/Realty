@@ -1,7 +1,8 @@
 <section *ngIf="card | async as cardItem" class="card">
   <div class="container">
     <h2 class="title">Квартира по адресу <span>{{ cardItem.street }}</span></h2>
-    <h3 class="price">{{ cardItem.price }}</h3>
+    <h3  *ngIf="cardItem.type === 'sell'" class="price">{{ cardItem.price }} $</h3>
+    <h3  *ngIf="cardItem.type === 'rent'" class="price">{{ cardItem.price }}$/сут</h3>
     <img class="subway" src="assets/icons/socials/subway.svg"><span class="metro">{{ cardItem.metro }}</span>
     <div class="contacts-wrapper">
       <img src="{{ cardItem.url }}" alt="flat" class="card-photo">
@@ -10,9 +11,7 @@
         <h2 class="title">Контакты:</h2>
         <div>
           <p class="name">{{ cardItem.seller }}</p><br>
-          <p class="mobile"><img src="assets/icons/socials/a1.svg" alt=""> <a href="tel:+375295554433"> +375 29
-            {{ cardItem.telNumber }}</a></p><br>
-          <p class="mobile"><img src="assets/icons/socials/mts.svg" alt=""> <a href="tel:+375335554433"> +375 33
+          <p class="mobile"><img src="assets/icons/socials/a1.svg" alt=""> <a href="tel:{{ cardItem.telNumber }}">
             {{ cardItem.telNumber }}</a></p><br>
           <div class="socials">
             <a href="/"><img alt="social" src="assets/icons/socials/viber_logo.svg"></a>

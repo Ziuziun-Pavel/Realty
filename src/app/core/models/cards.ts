@@ -1,8 +1,8 @@
 export interface ICard {
   type: CardType,
   url: string,
-  price: string,
-  square: string,
+  price: number,
+  square: number,
   street: string,
   metro: string,
   seller: string,

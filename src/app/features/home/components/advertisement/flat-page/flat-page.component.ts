@@ -17,7 +17,10 @@ export class FlatPageComponent implements OnInit {
 
   public cardId: string;
 
-  constructor(private readonly activateRoute: ActivatedRoute, private readonly cardService: CardService) {
+  constructor(
+    private readonly activateRoute: ActivatedRoute,
+    private readonly cardService: CardService,
+  ) {
   }
 
   ngOnInit(): void {

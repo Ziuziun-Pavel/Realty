@@ -6,7 +6,10 @@ import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { AuthGuard } from '../core/guards/auth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddAdvertsComponent } from './add-adverts/add-adverts.component';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { AdvertsListComponent } from './adverts-list/adverts-list.component';
+import { HomeModule } from '../features/home/home.module';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -14,12 +17,15 @@ import { SharedModule } from '../shared/shared.module';
     ProfileComponent,
     DetailsComponent,
     EditComponent,
+    AddAdvertsComponent,
+    AdvertsListComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     ProfileRoutingModule,
+    HomeModule,
     SharedModule,
   ],
   providers: [AuthGuard],
