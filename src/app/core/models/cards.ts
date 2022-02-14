@@ -4,7 +4,7 @@ export interface ICard {
   price: number,
   square: number,
   street: string,
-  metro: string,
+  region: string,
   seller: string,
   numberOfRooms: number,
   floor: number,

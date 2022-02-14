@@ -3,7 +3,7 @@
     <h2 class="title">Квартира по адресу <span>{{ cardItem.street }}</span></h2>
     <h3  *ngIf="cardItem.type === 'sell'" class="price">{{ cardItem.price }} $</h3>
     <h3  *ngIf="cardItem.type === 'rent'" class="price">{{ cardItem.price }}$/сут</h3>
-    <img class="subway" src="assets/icons/socials/subway.svg"><span class="metro">{{ cardItem.metro }}</span>
+    <span class="metro">Область: {{ cardItem.region }}</span>
     <div class="contacts-wrapper">
       <img src="{{ cardItem.url }}" alt="flat" class="card-photo">
 
@@ -24,6 +24,10 @@
       <div class="info">
         <h2 class="title">Общая информация</h2>
         <table class="table">
+          <tr>
+            <td>Адрес</td>
+            <td>{{ cardItem.street }}</td>
+          </tr>
           <tr>
             <td>Комнат всего</td>
             <td>{{ cardItem.numberOfRooms }}-комнатная квартира</td>
