@@ -67,7 +67,7 @@ export class AddAdvertsComponent implements OnInit, OnDestroy {
           this.loading = false;
           this.loaderService.hide();
           alert('Объявление добавлено!!');
-          this.router.navigate(['/details'], {});
+          this.router.navigate(['/details']);
         },
         (error)=>{
           this.toastr.error(error.error.message, 'Error');
