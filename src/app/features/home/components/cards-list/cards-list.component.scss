@@ -6,14 +6,20 @@
   grid-auto-rows: minmax(300px, auto);
   gap: 15px;
 }
-.title, .subtitle {
+.title, .no-cards {
   font-family: 'Lato', sans-serif;
   font-size: 34px;
   margin: 20px 0;
 }
-.subtitle {
+.no-cards {
   margin: 0 auto;
   margin-top: 40px;
   text-align: center;
   color: #555555;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin: 20px 0 ;
+  font-weight: 400;
 }

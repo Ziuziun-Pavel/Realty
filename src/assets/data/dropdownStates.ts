@@ -1,15 +1,18 @@
-import { SelectedOption } from '../../app/core/models/selectedOption';
 import { CardType } from '../../app/core/models/cards';
+import { DropDownNames } from '../../app/core/models/dropDownNames';
 
-export const dropdownNames: Array<Array<SelectedOption>> = [
-  [{
+export const dropdownNames: DropDownNames = {
+  type: [{
+    state: 'Тип',
+    value: '',
+  },{
     state: 'Снять',
-    value: CardType.rent
+    value: CardType.rent,
   }, {
     state: 'Купить',
-    value: CardType.sell
+    value: CardType.sell,
   }],
-  [{
+  price: [{
     state: 'Цена',
     value: ''
   }, {
@@ -22,7 +25,7 @@ export const dropdownNames: Array<Array<SelectedOption>> = [
     state: 'более 150 000$',
     value: '150000'
   }],
-  [{
+  rooms: [{
     state: 'Кол-во комнат',
     value: ''
   }, {
@@ -44,7 +47,7 @@ export const dropdownNames: Array<Array<SelectedOption>> = [
     state: '6-комнатную',
     value: '6'
   }],
-  [{
+  region: [{
     state: 'Область',
     value: ''
   }, {
@@ -69,4 +72,4 @@ export const dropdownNames: Array<Array<SelectedOption>> = [
     state: 'Гомельская',
     value: 'Гомельская'
   }]
-];
+};

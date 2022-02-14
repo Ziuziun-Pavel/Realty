@@ -6,9 +6,14 @@
         [formGroup]="searchingForm"
         class="filters"
         novalidate>
-        <app-custom-dropdown *ngFor="let drop of dropdownNames"
-                             [filteredCardsFromSearch]="filteredCards$"
-                             [options]="drop" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [filteredCardsFromSearch]="filteredCards$"
+                             [options]="dropdownNames.type" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [filteredCardsFromSearch]="filteredCards$"
+                             [options]="dropdownNames.price" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [filteredCardsFromSearch]="filteredCards$"
+                             [options]="dropdownNames.rooms" formControlName="dropdownControl"></app-custom-dropdown>
+        <app-custom-dropdown [filteredCardsFromSearch]="filteredCards$"
+                             [options]="dropdownNames.region" formControlName="dropdownControl"></app-custom-dropdown>
 
         <input placeholder="Укажите адрес или район" type="text" formControlName="search">
       </form>

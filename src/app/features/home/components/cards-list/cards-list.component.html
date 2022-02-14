@@ -1,11 +1,23 @@
 <div class="container">
   <h1 class="title">Результаты поиска:</h1>
-  <div *ngIf="filteredCards.length === 0">
-    <h2 class="subtitle" >Ничего не найдено</h2>
+
+  <div class="sell">
+    <h1 class="subtitle">Продажа:</h1>
+    <div *ngIf="sellCards.length === 0" class="no-cards">Ничего не найдено</div>
+    <div class="wrapper">
+      <app-card [id]="card.id" *ngFor="let card of sellCards" [card]="card"></app-card>
+    </div>
   </div>
-  <div class="wrapper">
-    <app-card [id]="card.id" *ngFor="let card of filteredCards" [card]="card"></app-card>
+
+  <div class="rent">
+    <h1 class="subtitle">Аренда:</h1>
+    <div *ngIf="rentCards.length === 0" class="no-cards">Ничего не найдено</div>
+    <div class="wrapper">
+      <app-card [id]="card.id" *ngFor="let card of rentCards" [card]="card"></app-card>
+    </div>
   </div>
+
 </div>
+
 
 

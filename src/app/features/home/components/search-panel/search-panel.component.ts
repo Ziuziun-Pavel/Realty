@@ -1,11 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { ICard } from '../../../../core/models/cards';
+import { CardType, ICard } from '../../../../core/models/cards';
 import { CardService } from '../../services/card.service';
 import { SelectedOption } from '../../../../core/models/selectedOption';
-import { FilterService } from '../../services/filter.service';
 import { dropdownNames } from '../../../../../assets/data/dropdownStates';
-import { map, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import {
+  CustomDropdownComponent
+} from '../../../../shared/components/custom-dropdown/custom-dropdown.component';
+import { CardsListComponent } from '../cards-list/cards-list.component';
+import { DropDownNames } from '../../../../core/models/dropDownNames';
 
 @Component({
   selector: 'app-search-panel',
@@ -17,6 +21,9 @@ export class SearchPanelComponent {
 
   @Output('filtered') public filtered: EventEmitter<ICard[]> = new EventEmitter<ICard[]>();
 
+  @ViewChild(CustomDropdownComponent) custom: CustomDropdownComponent;
+  @ViewChild(CardsListComponent) cardlist: CardsListComponent;
+
   public searchingForm: FormGroup;
 
   public isSearched = false;
@@ -25,7 +32,7 @@ export class SearchPanelComponent {
 
   public filteredCards$: Observable<ICard[]>;
 
-  public dropdownNames: Array<Array<SelectedOption>> = dropdownNames;
+  public dropdownNames: DropDownNames = dropdownNames;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -47,23 +54,32 @@ export class SearchPanelComponent {
 
   public onSearch(): void {
     this.cardService.show();
-    let query = this.formControls.search.value.toLowerCase()
-      .trim();
+    let query: string;
+    if(this.formControls.search.value === null) {
+      query = '';
+    } else {
+      query = this.formControls.search.value.toLowerCase()
+        .trim();
+    }
 
-    this.filteredCards = this.cards.filter((card) =>
-      card.street.toLowerCase()
-        .includes(query)
-    );
-    this.filteredCards$ = of(this.filteredCards);
-    console.log(this.filteredCards);
+    this.filteredCards = this.cards
+      .filter((card) =>
+        card.street.toLowerCase()
+          .includes(query))
+      .filter(card =>
+        card.type === this.custom.selectedOption.value
+      )
+
     this.filtered.emit(this.filteredCards);
   }
 
+  // public findOption(option: DropDownNames) {
+  //   if (option.type === this.custom.selectedOption )
+  // }
+
   public onReset(): void {
     this.searchingForm.reset();
-    if (this.filteredCards.length >= 1) {
-      this.filteredCards.splice(0);
-    }
+    this.filteredCards.splice(0);
     this.cardService.hide();
   }
 }
