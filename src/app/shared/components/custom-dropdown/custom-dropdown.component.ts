@@ -1,5 +1,9 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SelectedOption } from '../../../core/models/selectedOption';
+import { map } from 'rxjs';
+import { CardService } from '../../../features/home/services/card.service';
+import { ICard } from '../../../core/models/cards';
 
 @Component({
   selector: 'app-custom-dropdown',
@@ -14,13 +18,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 
 export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
-  @Input() public options: string[];
+  @Input() public options: SelectedOption[];
 
-  public selectedOption: string;
+  public selectedOption: SelectedOption;
 
   private onChange: (_: any) => {};
 
-  constructor() { }
+  constructor(private readonly cardService: CardService) { }
 
   ngOnInit() {  }
 
@@ -32,9 +36,17 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
     this.onChange = fn;
   }
 
-  public changeSelectedOption(option: string) {
+  public changeSelectedOption(option: SelectedOption) {
     this.selectedOption = option;
     this.onChange(option);
+  }
+
+  public getFilteredArray() {
+    return this.cardService.getAllCards().pipe(
+      map(items => {
+        return items.filter(item => item.type === this.selectedOption.value)
+      })
+    )
   }
 
   public registerOnTouched() { }

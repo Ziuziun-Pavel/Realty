@@ -11,19 +11,10 @@ import { findItemById } from '../../../shared/utilits/findItemById';
 export class CardService {
   public allCards: Observable<ICard[]>;
 
-
   public isSearched = new Subject<boolean>();
 
   public getAllCards(): Observable<ICard[]> {
     return of([...sellCards,...rentCards]);
-  }
-
-  public filterOptions(options: string[], selectedOption: string) {
-    if(selectedOption == 'Снять') {
-      return this.getRentCards();
-    } else {
-      return this.getSellCards();
-    }
   }
 
   public getSellCards(): Observable<Array<ICard>> {

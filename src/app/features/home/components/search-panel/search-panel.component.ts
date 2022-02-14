@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
-import { CardType, ICard } from '../../../../core/models/cards';
+import { ICard } from '../../../../core/models/cards';
 import { CardService } from '../../services/card.service';
 import { SelectedOption } from '../../../../core/models/selectedOption';
+import { FilterService } from '../../services/filter.service';
+import { dropdownNames } from '../../../../../assets/data/dropdownStates';
 
 @Component({
   selector: 'app-search-panel',
@@ -18,11 +20,14 @@ export class SearchPanelComponent {
 
   public isSearched = false;
 
-  public filteredCards: ICard[];
+  @Input()public filteredCards: ICard[];
+
+  public dropdownNames: Array<Array<SelectedOption>> = dropdownNames;
 
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly cardService: CardService,
+    private readonly filterService: FilterService,
   ) {
   }
 
@@ -42,6 +47,7 @@ export class SearchPanelComponent {
     this.cardService.show();
     let query = this.formControls.search.value.toLowerCase()
       .trim();
+
     this.filteredCards = this.cards.filter((card) =>
       card.street.toLowerCase()
         .includes(query)
@@ -51,6 +57,9 @@ export class SearchPanelComponent {
 
   public onReset(): void {
     this.searchingForm.reset();
+    if (this.filteredCards.length >= 1) {
+      this.filteredCards.splice(0);
+    }
     this.cardService.hide();
   }
 }
