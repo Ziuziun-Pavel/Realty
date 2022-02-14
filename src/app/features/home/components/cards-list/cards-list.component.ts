@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { CardType, ICard } from '../../../../core/models/cards';
+import {
+  CustomDropdownComponent
+} from '../../../../shared/components/custom-dropdown/custom-dropdown.component';
 
 @Component({
   selector: 'app-cards-list',
@@ -8,6 +11,7 @@ import { CardType, ICard } from '../../../../core/models/cards';
 })
 export class CardsListComponent implements OnInit {
   @Input()filteredCards: ICard[] = [];
+  @ViewChild(CustomDropdownComponent) custom: CustomDropdownComponent;
 
   public rentCards: ICard[] = [];
 

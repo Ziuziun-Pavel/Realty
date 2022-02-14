@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectedOption } from '../../../core/models/selectedOption';
 import { CardService } from '../../../features/home/services/card.service';
@@ -20,18 +20,19 @@ import { Observable } from 'rxjs';
 export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
   @Input() public options: SelectedOption[];
 
-  @Input() public  filteredCardsFromSearch: Observable<ICard[]>;
-
   public selectedOption: SelectedOption;
 
   private onChange: (_: any) => {};
 
   constructor(private readonly cardService: CardService) { }
 
-  ngOnInit() {  }
+  ngOnInit() {
+    this.selectedOption = this.options[0];
+  }
 
-  public writeValue() {
-      this.selectedOption = this.options[0];
+  public writeValue(value: SelectedOption) {
+    console.log(value);
+    this.selectedOption = value;
   }
 
   public registerOnChange(fn: (_: any) => {}) {

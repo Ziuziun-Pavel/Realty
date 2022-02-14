@@ -16,14 +16,17 @@ export const dropdownNames: DropDownNames = {
     state: 'Цена',
     value: ''
   }, {
-    state: 'менее 50 000$',
+    state: 'до 50 000$',
     value: '50000'
   }, {
-    state: 'менее 150 000$',
+    state: 'до 150 000$',
     value: '150000'
   }, {
-    state: 'более 150 000$',
-    value: '150000'
+    state: 'до 300 000$',
+    value: '300000'
+  }, {
+    state: 'до 600 000$',
+    value: '600000'
   }],
   rooms: [{
     state: 'Кол-во комнат',
