@@ -1,9 +1,9 @@
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectedOption } from '../../../core/models/selectedOption';
-import { map } from 'rxjs';
 import { CardService } from '../../../features/home/services/card.service';
 import { ICard } from '../../../core/models/cards';
+import { map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-custom-dropdown',
@@ -19,6 +19,8 @@ import { ICard } from '../../../core/models/cards';
 
 export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
   @Input() public options: SelectedOption[];
+
+  @Input() public  filteredCardsFromSearch: Observable<ICard[]>;
 
   public selectedOption: SelectedOption;
 
@@ -39,14 +41,17 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
   public changeSelectedOption(option: SelectedOption) {
     this.selectedOption = option;
     this.onChange(option);
+    this.filterCardsWithType();
   }
 
-  public getFilteredArray() {
-    return this.cardService.getAllCards().pipe(
+  public filterCardsWithType() {
+    console.log(this.filteredCardsFromSearch);
+    return this.filteredCardsFromSearch.pipe(
       map(items => {
-        return items.filter(item => item.type === this.selectedOption.value)
+        return items.filter(item => item.type === "sell")
       })
     )
+    //return this.filteredCardsFromSearch.filter(item => item.type === this.selectedOption.value);
   }
 
   public registerOnTouched() { }

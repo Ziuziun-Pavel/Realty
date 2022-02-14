@@ -1,11 +1,7 @@
-import { Injectable, ViewChild } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CardService } from './card.service';
-import { filter, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ICard } from '../../../core/models/cards';
-import { SelectedOption } from '../../../core/models/selectedOption';
-import {
-  CustomDropdownComponent
-} from '../../../shared/components/custom-dropdown/custom-dropdown.component';
 
 @Injectable({
   providedIn: 'root'

@@ -5,6 +5,7 @@ import { CardService } from '../../services/card.service';
 import { SelectedOption } from '../../../../core/models/selectedOption';
 import { FilterService } from '../../services/filter.service';
 import { dropdownNames } from '../../../../../assets/data/dropdownStates';
+import { map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-search-panel',
@@ -20,14 +21,15 @@ export class SearchPanelComponent {
 
   public isSearched = false;
 
-  @Input()public filteredCards: ICard[];
+  public filteredCards: ICard[];
+
+  public filteredCards$: Observable<ICard[]>;
 
   public dropdownNames: Array<Array<SelectedOption>> = dropdownNames;
 
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly cardService: CardService,
-    private readonly filterService: FilterService,
   ) {
   }
 
@@ -52,6 +54,8 @@ export class SearchPanelComponent {
       card.street.toLowerCase()
         .includes(query)
     );
+    this.filteredCards$ = of(this.filteredCards);
+    console.log(this.filteredCards);
     this.filtered.emit(this.filteredCards);
   }
 
