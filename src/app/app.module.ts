@@ -11,7 +11,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AccountModule,
     ProfileModule,
     ToastrModule.forRoot(),
-    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
