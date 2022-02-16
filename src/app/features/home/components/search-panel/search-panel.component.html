@@ -4,20 +4,22 @@
     <div class="wrapper">
       <form
         [formGroup]="searchingForm"
+        (keyup.enter)="onSearch()"
+        (keyup.escape)="onReset()"
         class="filters"
         novalidate>
         <app-custom-dropdown
-                             [options]="dropdownNames.type"
-                             formControlName="dropdownControl"></app-custom-dropdown>
+          [options]="dropdownNames.type"
+          formControlName="dropdownType"></app-custom-dropdown>
         <app-custom-dropdown
-                             [options]="dropdownNames.price"
-                             formControlName="dropdownControl"></app-custom-dropdown>
+          [options]="dropdownNames.price"
+          formControlName="dropdownPrice"></app-custom-dropdown>
         <app-custom-dropdown
-                             [options]="dropdownNames.rooms"
-                             formControlName="dropdownControl"></app-custom-dropdown>
+          [options]="dropdownNames.rooms"
+          formControlName="dropdownRooms"></app-custom-dropdown>
         <app-custom-dropdown
-                             [options]="dropdownNames.region"
-                             formControlName="dropdownControl"></app-custom-dropdown>
+          [options]="dropdownNames.region"
+          formControlName="dropdownRegion"></app-custom-dropdown>
 
         <input placeholder="Укажите адрес или район" type="text" formControlName="search">
       </form>

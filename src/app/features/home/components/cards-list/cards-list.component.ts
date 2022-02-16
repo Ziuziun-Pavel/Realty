@@ -11,7 +11,6 @@ import {
 })
 export class CardsListComponent implements OnInit {
   @Input()filteredCards: ICard[] = [];
-  @ViewChild(CustomDropdownComponent) custom: CustomDropdownComponent;
 
   public rentCards: ICard[] = [];
 
