@@ -8,9 +8,9 @@ describe('CustomDropdownComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CustomDropdownComponent ]
+      declarations: [ CustomDropdownComponent ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

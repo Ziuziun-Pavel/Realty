@@ -25,7 +25,7 @@ import { SharedModule } from '../../shared/shared.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     AdsComponent,
