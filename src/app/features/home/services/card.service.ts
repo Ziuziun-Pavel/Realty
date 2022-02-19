@@ -14,6 +14,10 @@ export class CardService {
     return of([...sellCards, ...rentCards]);
   }
 
+  public getCardById(cardId: string): Observable<ICard | undefined> {
+    return findItemById(of([...sellCards, ...rentCards]), cardId);
+  }
+
   public getSellCards(): Observable<Array<ICard>> {
     return of(sellCards);
   }

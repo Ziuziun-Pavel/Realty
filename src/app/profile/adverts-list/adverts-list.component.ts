@@ -11,10 +11,17 @@ import { UserService } from '../../core/services/user.service';
 export class AdvertsListComponent implements OnInit {
   public cards: Observable<ICard[]>;
 
-  constructor(private readonly userService: UserService) { }
+  constructor(
+    private readonly userService: UserService,
+  ) {
+  }
 
   ngOnInit(): void {
     this.cards = this.userService.getAddedCards();
+  }
+
+  public onDelete(id: string) {
+    this.userService.deleteCard(id);
   }
 
 }

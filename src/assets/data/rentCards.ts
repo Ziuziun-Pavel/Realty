@@ -102,7 +102,7 @@ export const rentCards: Array<ICard> = [
     'price': 32,
     'square': 69,
     'street': 'ул. Немига 3',
-    'region': 'Миснкая',
+    'region': 'Минская',
     'seller': 'Дарья',
     'numberOfRooms': 2,
     'floor': 4,

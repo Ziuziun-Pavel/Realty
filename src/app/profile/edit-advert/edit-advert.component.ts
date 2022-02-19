@@ -1,47 +1,58 @@
-import { Component, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from '../../core/services/user.service';
-import { ToastrService } from 'ngx-toastr';
-import { LoaderService } from '../../shared/services/loader.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { FormGroup } from '@angular/forms';
 import { FormConfig } from '../../core/models/formConfig';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
+import { UserService } from '../../core/services/user.service';
+import { LoaderService } from '../../shared/services/loader.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-adverts',
-  templateUrl: './add-adverts.component.html',
-  styleUrls: ['./add-adverts.component.scss'],
+  selector: 'app-edit-advert',
+  templateUrl: './edit-advert.component.html',
+  styleUrls: ['./edit-advert.component.scss'],
 })
-export class AddAdvertsComponent implements OnDestroy {
+
+export class EditAdvertComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();
 
-  public loading: boolean = false;
+  public submitted = false;
 
-  public submitted: boolean = false;
+  public id: string;
+
+  public loading = false;
 
   public formConfig: FormConfig = {
-    title: 'Добавить объявление',
+    title: 'Изменить объявление',
     submitted: this.submitted,
     loading: this.loading,
   };
 
   constructor(
-    private readonly router:Router,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+    private readonly authService: AuthService,
     private readonly userService: UserService,
     private readonly loaderService: LoaderService,
     private readonly toastr: ToastrService,
   ) { }
 
-  onSubmit(addingForm: FormGroup): void {
+  ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+  }
+
+  onSubmit(advertForm: FormGroup): void {
     this.loading = true;
     this.loaderService.show();
-    this.userService.addNewCard(addingForm.value)
+
+    this.userService.editAdvert(advertForm.value, this.id)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         ()=>{
           this.loading = false;
           this.loaderService.hide();
-          alert('Объявление добавлено!!');
+          alert('Объявление успешно изменено!!');
           this.router.navigate(['/details']);
         },
         (error)=>{
@@ -56,4 +67,5 @@ export class AddAdvertsComponent implements OnDestroy {
     this.ngUnsubscribe.next(true);
     this.ngUnsubscribe.complete();
   }
+
 }
