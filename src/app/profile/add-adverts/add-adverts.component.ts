@@ -6,6 +6,7 @@ import { LoaderService } from '../../shared/services/loader.service';
 import { Subject, takeUntil } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { FormConfig } from '../../core/models/formConfig';
+import { CardService } from '../../features/home/services/card.service';
 
 @Component({
   selector: 'app-add-adverts',
@@ -27,7 +28,7 @@ export class AddAdvertsComponent implements OnDestroy {
 
   constructor(
     private readonly router:Router,
-    private readonly userService: UserService,
+    private readonly cardService: CardService,
     private readonly loaderService: LoaderService,
     private readonly toastr: ToastrService,
   ) { }
@@ -35,7 +36,7 @@ export class AddAdvertsComponent implements OnDestroy {
   onSubmit(addingForm: FormGroup): void {
     this.loading = true;
     this.loaderService.show();
-    this.userService.addNewCard(addingForm.value)
+    this.cardService.addNewCard(addingForm.value)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         ()=>{

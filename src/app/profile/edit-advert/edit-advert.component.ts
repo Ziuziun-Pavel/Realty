@@ -7,6 +7,7 @@ import { UserService } from '../../core/services/user.service';
 import { LoaderService } from '../../shared/services/loader.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup } from '@angular/forms';
+import { CardService } from '../../features/home/services/card.service';
 
 @Component({
   selector: 'app-edit-advert',
@@ -32,8 +33,7 @@ export class EditAdvertComponent implements OnInit, OnDestroy {
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly authService: AuthService,
-    private readonly userService: UserService,
+    private readonly cardService: CardService,
     private readonly loaderService: LoaderService,
     private readonly toastr: ToastrService,
   ) { }
@@ -46,7 +46,7 @@ export class EditAdvertComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.loaderService.show();
 
-    this.userService.editAdvert(advertForm.value, this.id)
+    this.cardService.editAdvert(advertForm.value, this.id)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         ()=>{
