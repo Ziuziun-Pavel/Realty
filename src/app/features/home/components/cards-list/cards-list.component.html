@@ -1,0 +1,26 @@
+<div class="container">
+  <h1 class="title">Результаты поиска:</h1>
+
+  <div class="sell">
+    <h1 class="subtitle">Продажа:</h1>
+    <div *ngIf="!sellCards.length; else sellCardList" class="no-cards">Ничего не найдено</div>
+    <ng-template #sellCardList>
+      <div class="wrapper">
+        <app-card [id]="card.id" *ngFor="let card of sellCards" [card]="card"></app-card>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="rent">
+    <h1 class="subtitle">Аренда:</h1>
+    <div *ngIf="!rentCards.length; else rentCardList" class="no-cards">Ничего не найдено</div>
+    <ng-template #rentCardList>
+      <div class="wrapper">
+        <app-card [id]="card.id" *ngFor="let card of rentCards" [card]="card"></app-card>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+
+

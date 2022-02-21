@@ -10,6 +10,10 @@ import { findItemById } from '../../../shared/utilits/findItemById';
 })
 export class CardService {
 
+  public getAllCards(): Observable<ICard[]> {
+    return of([...sellCards, ...rentCards]);
+  }
+
   public getSellCards(): Observable<Array<ICard>> {
     return of(sellCards);
   }
