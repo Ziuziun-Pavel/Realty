@@ -9,7 +9,6 @@ import { ICard } from '../../../../../core/models/cards';
   styleUrls: ['./rent-cards.component.scss'],
 })
 export class RentCardsComponent implements OnInit {
-
   public cards: Observable<Array<ICard>>;
 
   constructor(private readonly cardService: CardService) { }

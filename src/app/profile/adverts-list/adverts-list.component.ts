@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICard } from '../../core/models/cards';
-import { UserService } from '../../core/services/user.service';
+import { CardService } from '../../features/home/services/card.service';
 
 @Component({
   selector: 'app-adverts-list',
@@ -11,10 +11,17 @@ import { UserService } from '../../core/services/user.service';
 export class AdvertsListComponent implements OnInit {
   public cards: Observable<ICard[]>;
 
-  constructor(private readonly userService: UserService) { }
+  constructor(
+    private readonly cardService: CardService,
+  ) {
+  }
 
   ngOnInit(): void {
-    this.cards = this.userService.getAddedCards();
+    this.cards = this.cardService.getAddedCards();
+  }
+
+  public onDelete(id: string) {
+    this.cardService.deleteCard(id);
   }
 
 }

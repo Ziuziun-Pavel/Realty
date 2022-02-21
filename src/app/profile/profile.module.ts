@@ -11,6 +11,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { AdvertsListComponent } from './adverts-list/adverts-list.component';
 import { HomeModule } from '../features/home/home.module';
 import { SharedModule } from '../shared/shared.module';
+import { EditAdvertComponent } from './edit-advert/edit-advert.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     EditComponent,
     AddAdvertsComponent,
     AdvertsListComponent,
+    EditAdvertComponent,
   ],
   imports: [
     CommonModule,

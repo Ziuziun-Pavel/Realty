@@ -7,6 +7,7 @@ import { AuthGuard } from '../core/guards/auth.guard';
 import { AddAdvertsComponent } from './add-adverts/add-adverts.component';
 import { AdvertsListComponent } from './adverts-list/adverts-list.component';
 import { FlatPageComponent } from '../features/home/components/advertisement/flat-page/flat-page.component';
+import { EditAdvertComponent } from './edit-advert/edit-advert.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
       {
         path: 'adding',
         component: AddAdvertsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'advertsList/edit-advert/:id',
+        component: EditAdvertComponent,
         canActivate: [AuthGuard],
       },
       {

@@ -1,0 +1,18 @@
+<app-advert-form
+  [formConfig]="formConfig"
+  (Submit)="onSubmit($event)">
+  <div id="edit" class="form-group">
+    <div class="btns">
+      <button
+        class="btn btn-save"
+        [disabled]="loading">
+        Сохранить
+      </button>
+      <button
+        routerLink="/advertsList"
+        class="btn btn-cancel">
+        Отмена
+      </button>
+    </div>
+  </div>
+</app-advert-form>

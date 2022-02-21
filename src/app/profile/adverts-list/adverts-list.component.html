@@ -1,4 +1,13 @@
 <h1 class="title">Мои объявления</h1>
 <div class="container">
-  <app-card [id]="card.id" *ngFor="let card of cards | async" [card]="card"></app-card>
+  <app-card [id]="card.id" *ngFor="let card of cards | async" [card]="card">
+    <div class="btns">
+      <button class="btn" [routerLink]="['edit-advert/', card.id]" >
+        Изменить
+      </button>
+      <button class="btn btn-logout" (click)="onDelete(card.id)">
+        Удалить
+      </button>
+    </div>
+  </app-card>
 </div>
