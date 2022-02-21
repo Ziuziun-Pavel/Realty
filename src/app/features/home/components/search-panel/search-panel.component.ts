@@ -45,10 +45,13 @@ export class SearchPanelComponent implements OnInit {
   }
 
   private formControlsSetInitialValues(): void {
-    this.formControls.dropdownType.setValue(this.dropdownNames.type[0]);
-    this.formControls.dropdownPrice.setValue(this.dropdownNames.price[0]);
-    this.formControls.dropdownRooms.setValue(this.dropdownNames.rooms[0]);
-    this.formControls.dropdownRegion.setValue(this.dropdownNames.region[0]);
+    this.searchingForm.setValue({
+      search: '',
+      dropdownType: this.dropdownNames.type[0],
+      dropdownPrice: this.dropdownNames.price[0],
+      dropdownRooms: this.dropdownNames.rooms[0],
+      dropdownRegion: this.dropdownNames.region[0],
+    });
   }
 
   public onSearch(): void {

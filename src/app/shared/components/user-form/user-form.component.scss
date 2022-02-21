@@ -10,7 +10,8 @@
     height: 100%;
     background-color: rgba(0, 0, 0, .5);
   }
-
+  input.ng-touched.ng-invalid {border:solid red 2px;}
+  input.ng-touched.ng-valid {border:solid green 2px;}
   .title {
     text-align: center;
     font-size: 30px;

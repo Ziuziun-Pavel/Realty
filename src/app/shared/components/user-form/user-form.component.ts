@@ -62,6 +62,7 @@ export class UserFormComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    console.log(this.userForm.get('userName'));
     this.formConfig.submitted = true;
     if (this.userForm.valid) {
       this.Submit.emit(this.userForm);
