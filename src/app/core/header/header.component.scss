@@ -143,19 +143,11 @@ nav {
   transition: all .3s;
 }
 
+.admin {
+  width: 85px;
+}
+
 .btn-registr {
   position: relative;
-  margin-top: 10px;
-  padding: 0 5px;
   width: 107px;
-  height: 40px;
-  border-radius: 10px;
-  color: #000;
-  font-size: 15px;
-  font-weight: 500;
-  background-color:  rgba($color: #FFD02F, $alpha: 1);
-  text-align: end;
-  border: none;
-  cursor: pointer;
-  transition: all .3s;
 }
