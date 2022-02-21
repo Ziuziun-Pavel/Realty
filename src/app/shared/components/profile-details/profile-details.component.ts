@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { UserService } from '../../../core/services/user.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { IUser } from '../../../core/models/user';
 
@@ -13,7 +12,6 @@ export class ProfileDetailsComponent {
   @Input() currentUser: IUser | undefined;
 
   constructor(
-    private readonly userService: UserService,
     private readonly authService: AuthService,
   ) { }
 

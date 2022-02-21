@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminProfileComponent } from './admin-profile.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AdminProfileComponent', () => {
   let component: AdminProfileComponent;
@@ -9,6 +10,7 @@ describe('AdminProfileComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AdminProfileComponent ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   });
