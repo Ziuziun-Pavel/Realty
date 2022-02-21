@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { FormConfig } from '../../core/models/formConfig';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
@@ -7,6 +7,7 @@ import { LoaderService } from '../../shared/services/loader.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup } from '@angular/forms';
 import { CardService } from '../../features/home/services/card.service';
+import { TakeUntilDestroy } from '../../shared/decorators/take-until-destroy.decorator';
 
 @Component({
   selector: 'app-edit-advert',
@@ -15,8 +16,9 @@ import { CardService } from '../../features/home/services/card.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
+@TakeUntilDestroy
 export class EditAdvertComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe: Subject<boolean> = new Subject();
+  private componentDestroy: () => Observable<unknown>;
 
   public submitted = false;
 
@@ -48,7 +50,7 @@ export class EditAdvertComponent implements OnInit, OnDestroy {
     this.loaderService.show();
 
     this.cardService.editAdvert(advertForm.value, this.id)
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.componentDestroy()))
       .subscribe(
         ()=>{
           this.loading = false;
@@ -68,9 +70,6 @@ export class EditAdvertComponent implements OnInit, OnDestroy {
       );
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next(true);
-    this.ngUnsubscribe.complete();
-  }
+  ngOnDestroy() { }
 
 }

@@ -3,8 +3,9 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
 import { LoaderService } from '../../shared/services/loader.service';
+import { TakeUntilDestroy } from '../../shared/decorators/take-until-destroy.decorator';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,10 @@ import { LoaderService } from '../../shared/services/loader.service';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+@TakeUntilDestroy
 export class LoginComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe: Subject<boolean> = new Subject();
+  private componentDestroy: () => Observable<unknown>;
 
   public submitted = false;
 
@@ -48,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loaderService.show();
 
     this.authService.login(this.loginForm.value)
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.componentDestroy()))
       .subscribe(
         () => {
           this.loaderService.hide();
@@ -62,8 +65,5 @@ export class LoginComponent implements OnInit, OnDestroy {
       );
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next(true);
-    this.ngUnsubscribe.complete();
-  }
+  ngOnDestroy() {  }
 }

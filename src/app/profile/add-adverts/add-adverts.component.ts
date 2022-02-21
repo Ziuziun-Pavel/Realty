@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from '../../shared/services/loader.service';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { FormConfig } from '../../core/models/formConfig';
 import { CardService } from '../../features/home/services/card.service';
+import { TakeUntilDestroy } from '../../shared/decorators/take-until-destroy.decorator';
 
 @Component({
   selector: 'app-add-adverts',
@@ -13,8 +14,10 @@ import { CardService } from '../../features/home/services/card.service';
   styleUrls: ['./add-adverts.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+@TakeUntilDestroy
 export class AddAdvertsComponent implements OnDestroy {
-  private ngUnsubscribe: Subject<boolean> = new Subject();
+  private componentDestroy: () => Observable<unknown>;
 
   public loading: boolean = false;
 
@@ -37,7 +40,7 @@ export class AddAdvertsComponent implements OnDestroy {
     this.loading = true;
     this.loaderService.show();
     this.cardService.addNewCard(addingForm.value)
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.componentDestroy()))
       .subscribe(
         ()=>{
           this.loading = false;
@@ -53,8 +56,5 @@ export class AddAdvertsComponent implements OnDestroy {
       );
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next(true);
-    this.ngUnsubscribe.complete();
-  }
+  ngOnDestroy() {  }
 }
