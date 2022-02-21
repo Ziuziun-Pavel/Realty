@@ -13,6 +13,8 @@ import { AuthService } from '../../../../../core/services/auth.service';
 export class RentCardsComponent implements OnInit {
   public cards: Observable<Array<ICard>>;
 
+  public favourite: boolean;
+
   constructor(
     private readonly cardService: CardService,
     private readonly authService: AuthService,

@@ -13,13 +13,14 @@ export class ProfileDetailsComponent {
 
   constructor(
     private readonly authService: AuthService,
-  ) { }
-
-  public isAdmin() {
-    return this.authService.isAdmin();
+  ) {
   }
 
-  public deleteAccount():void {
+  public isAdmin(): void {
+    this.authService.isAdmin();
+  }
+
+  public deleteAccount(): void {
     this.authService.logout();
   }
 

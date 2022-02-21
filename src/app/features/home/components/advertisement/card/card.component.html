@@ -1,14 +1,17 @@
 <div class="item">
-<a [routerLink]="['page/', card.type, card.id ]">
+  <a [routerLink]="['page/', card.type, card.id ]">
     <div class="overlay"></div>
     <img class="item-photo" src="{{ card.url }}">
-    <img src="assets/icons/heart-outline.svg" alt="heart" class="fav-icon">
     <span *ngIf="card.type === 'sell'" class="item-price">{{ card.price }} $</span>
     <span *ngIf="card.type === 'rent'" class="item-price">{{ card.price }}$/сут</span><br>
     <span class="item-street">{{ card.street }}</span><br>
     <span class="item-square">{{ card.numberOfRooms }}-комн.кв., {{ card.square }}м<sup>2</sup></span><br>
     <span class="item-location">{{ card.region }}</span>
-</a>
-<ng-content></ng-content>
+  </a>
+  <div *ngIf="isAuthorized" class="svg-icon">
+    <img (click)="onAddToFavorites()" *ngIf="!favourite" src="assets/icons/heart-outline.svg" alt="heart">
+    <img (click)="onDeleteFromFavorites()" *ngIf="favourite" src="assets/icons/red-heart-outline.svg" alt="heart">
   </div>
+  <ng-content></ng-content>
+</div>
 

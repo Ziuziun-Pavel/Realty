@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Избранные объявления</h1>
+  <div class="card-container">
+    <app-card
+      [favourite]="true"
+      [id]="card.id"
+      *ngFor="let card of cards | async"
+      [card]="card">
+    </app-card>
+  </div>
+</div>

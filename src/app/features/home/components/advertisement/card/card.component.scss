@@ -57,22 +57,26 @@
       background-color: #69b6d5;
     }
   }
-  .fav-icon {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    bottom: 27%;
-    right: 4%;
-    transition: all .3s;
-    z-index: 14;
-    &:hover {
-      opacity: .5;
-    }
-  }
+
   &:hover .item-price{
     color: rgb(73, 89, 230);
   }
   &:hover .overlay{
     display: block;
+  }
+
+  .svg-icon {
+    img {
+      position: absolute;
+      right: 3%;
+      bottom: 27%;
+      width: 30px;
+      height: 30px;
+      transition: all .1s;
+      z-index: 20;
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
   }
 }
