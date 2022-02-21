@@ -15,6 +15,10 @@ export class HeaderComponent {
     return this.authService.isUserAuthorised();
   }
 
+  public isAdmin() {
+    return this.authService.isAdmin();
+  }
+
   public signOut() {
     return this.authService.logout();
   }
