@@ -1,1 +1,18 @@
-<app-news-card id="{{ card.id }}" *ngFor="let card of newsCards | async" [card]="card"></app-news-card>
+<div class="container">
+    <div class="form-group">
+      <input type="text"
+             class="form-control"
+             placeholder="Введите новость..."
+             [(ngModel)]="searchText"
+             autofocus>
+      <div *ngIf="isAdmin()" class="adding">
+        <button class="btn" routerLink="addingNews"><span>Добавить новость</span></button>
+      </div>
+    </div>
+
+
+
+<div class="cards">
+  <app-news-card id="{{ card.id }}" *ngFor="let card of newsCards | async | filter: searchText" [card]="card"></app-news-card>
+</div>
+</div>

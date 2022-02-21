@@ -17,6 +17,7 @@ import { FlatPageComponent } from './components/advertisement/flat-page/flat-pag
 import { NewsPageComponent } from './components/news/news-page/news-page.component';
 import { CardsListComponent } from './components/cards-list/cards-list.component';
 import { SharedModule } from '../../shared/shared.module';
+import { AddingNewsComponent } from './components/news/adding-news/adding-news.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { SharedModule } from '../../shared/shared.module';
     FlatPageComponent,
     NewsPageComponent,
     CardsListComponent,
+    AddingNewsComponent,
   ],
   exports: [HomeComponent, CardComponent, SearchPanelComponent],
 })

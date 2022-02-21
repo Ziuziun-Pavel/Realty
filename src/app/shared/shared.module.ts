@@ -10,6 +10,7 @@ import { CustomDropdownComponent } from './components/custom-dropdown/custom-dro
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AdvertFormComponent } from './components/advert-form/advert-form.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   imports: [CommonModule, MatProgressSpinnerModule, ReactiveFormsModule, RouterModule, BsDropdownModule],
@@ -19,8 +20,9 @@ import { ProfileDetailsComponent } from './components/profile-details/profile-de
     CustomDropdownComponent,
     AdvertFormComponent,
     ProfileDetailsComponent,
+    FilterPipe,
   ],
-  exports: [LoaderComponent, UserFormComponent, CustomDropdownComponent, AdvertFormComponent, ProfileDetailsComponent],
+  exports: [LoaderComponent, UserFormComponent, CustomDropdownComponent, AdvertFormComponent, ProfileDetailsComponent, FilterPipe],
   providers: [LoaderService],
 })
 

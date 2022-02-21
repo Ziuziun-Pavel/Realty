@@ -1,0 +1,95 @@
+<div class="adding-container">
+  <div class="overlay">
+    <form
+      [formGroup]="newsForm"
+      (ngSubmit)="onSubmit()"
+      novalidate>
+      <h2 class="title">Добавить новость</h2>
+
+      <div id="title" class="form-group">
+        <label class="select-label" for="title">Заголовок</label>
+        <textarea
+          type="text"
+          formControlName="title"
+          class="form-control"
+          [class.is-invalid]="submitted && formControls.title.errors">
+        </textarea>
+        <div *ngIf="submitted && formControls.title.errors" class="invalid-feedback">
+          <div *ngIf="formControls.title.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="author">Автор статьи:</label>
+        <input
+          type="text"
+          formControlName="author"
+          class="form-control"
+          [class.is-invalid]="submitted && formControls.author.errors">
+        <div *ngIf="submitted && formControls.author.errors" class="invalid-feedback">
+          <div *ngIf="formControls.author.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div id="url" class="form-group">
+        <label class="select-label" for="url">Введите url изображения</label>
+        <input
+          type="text"
+          formControlName="url"
+          class="form-control"
+          [class.is-invalid]="submitted && formControls.url.errors">
+        <div *ngIf="submitted && formControls.url.errors" class="invalid-feedback">
+          <div *ngIf="formControls.url.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="select-label" for="date">Дата</label>
+        <input
+          id="date"
+          type="date"
+          formControlName="date"
+          class="form-control"
+          min="2022-03-10"
+          max="2050-12-31"
+          [class.is-invalid]="submitted && formControls.date.errors">
+        <div *ngIf="submitted && formControls.date.errors" class="invalid-feedback">
+          <div *ngIf="formControls.date.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div id="description" class="form-group">
+        <label class="select-label" for="description">Описание</label>
+        <textarea
+          formControlName="description"
+          class="form-control"
+          [class.is-invalid]="submitted && formControls.description.errors">
+        </textarea>
+        <div *ngIf="submitted && formControls.description.errors" class="invalid-feedback">
+          <div *ngIf="formControls.description.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+
+      <div id="additionalInfo" class="form-group">
+        <label class="select-label" for="additionalInfo">Дополнительная информация</label>
+        <textarea
+          formControlName="additionalInfo"
+          class="form-control"
+          [class.is-invalid]="submitted && formControls.additionalInfo.errors">
+        </textarea>
+        <div *ngIf="submitted && formControls.additionalInfo.errors" class="invalid-feedback">
+          <div *ngIf="formControls.additionalInfo.errors.required">Это поле обязательно</div>
+        </div>
+      </div>
+      <div id="add" class="form-group">
+        <button
+          class="btn-register"
+          [disabled]="loading">
+          Добавить
+        </button>
+      </div>
+      <app-loader></app-loader>
+    </form>
+  </div>
+</div>
+

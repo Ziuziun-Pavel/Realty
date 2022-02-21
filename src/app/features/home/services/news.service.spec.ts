@@ -22,7 +22,7 @@ describe('NewsService', () => {
       ],
     });
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-    newsService = new NewsService(httpClientSpy);
+    newsService = new NewsService();
     expectedNewsMock = [
       {
         'id': 'n1',

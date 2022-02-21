@@ -1,0 +1,134 @@
+.adding-container {
+  height: 800px;
+  position: relative;
+  background: url("../../../../../../assets/img/registr_bg.jpg") center (center / cover) no-repeat;
+
+  .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  .title {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 28px;
+    grid-column: 1/4;
+  }
+
+  textarea.ng-touched.ng-invalid, input.ng-touched.ng-invalid {
+    border: solid red 2px;
+  }
+
+  textarea.ng-touched.ng-invalid, input.ng-touched.ng-valid {
+    border: solid green 2px;
+  }
+
+  form {
+    display: grid;
+    grid-template: repeat(8, minmax(50px, auto))/repeat(3, 1fr);
+    grid-auto-rows: minmax(50px,auto);
+    column-gap: 10px;
+    font-family: 'Lato', sans-serif;
+    margin: 80px auto;
+    row-gap: 10px;
+    padding: 25px;
+    width: 700px;
+    background-color: rgba(255, 255, 255, 0.6);
+    overflow: hidden;
+  }
+
+  label {
+    color: #000;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  input, textarea {
+    display: block;
+    width: 100%;
+    height: 50px;
+    color: #73787A;
+    padding: 7px 5px 7px 12px;
+    border: 1px solid #E8EAED;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 1px 3px -2px #9098A9;
+    font-size: 15px;
+  }
+
+  textarea {
+    resize: none;
+  }
+}
+
+#title {
+  grid-column: 1/3;
+}
+
+#url {
+  grid-column: 1/3;
+}
+
+#description {
+  grid-column: 1/4;
+  grid-row: 4/6;
+  textarea {
+    height: 80%;
+  }
+}
+
+#additionalInfo {
+  margin-top: 10px;
+  grid-column: 1/4;
+  grid-row: 6/8;
+  textarea {
+    height: 90%;
+  }
+}
+
+.invalid-feedback {
+  font-size: 15px;
+  color: red;
+}
+
+span {
+  a {
+    color: #4D76A1;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+}
+
+button {
+  display: block;
+  margin: 30px auto 10px;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  padding: 6px 12px;
+  width: 200px;
+  background-color: #59abe3;
+  border: 2px solid #59abe3;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #FFFFFF;
+    color: #59abe3;
+  }
+}
+
+#add {
+  grid-column: 2/3;
+}
