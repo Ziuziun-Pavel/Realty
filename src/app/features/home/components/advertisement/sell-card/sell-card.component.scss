@@ -5,3 +5,39 @@
   grid-auto-rows: minmax(300px, auto);
   gap: 15px;
 }
+
+
+.btns {
+  position: absolute;
+  right: 2px;
+  bottom: 7px;
+  display: flex;
+}
+
+.btn {
+  margin-right: 10px;
+  margin-top: 5px;
+  color: #FFFFFF;
+  font-size: 14px;
+  height: 35px;
+  padding: 6px 6px;
+  width: 80px;
+  background-color: #4682B4;
+  border: 2px solid #4682B4;
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #B0C4DE;
+    color: #FFFFFF;
+  }
+}
+
+.btn-logout {
+  background-color: #B22222;
+  border: 2px solid #B22222;
+
+  &:hover {
+    background-color: #F08080;
+  }
+}
