@@ -5,6 +5,7 @@ import { HomeComponent } from './features/home/home.component';
 import { NewsPageComponent } from './features/home/components/news/news-page/news-page.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { Role } from './core/models/role.rs';
+import { AdminGuard } from './core/guards/admin.guard';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -20,14 +21,8 @@ const routes: Routes = [
   { path: 'profile', loadChildren: profileModule },
   { path: 'account', loadChildren: accountModule },
   { path: 'admin',
-    canActivate: [AuthGuard],
-    data: {
-      roles: [
-        Role.Admin,
-      ]
-    },
-    loadChildren: adminModule
-  },
+    canActivate: [AdminGuard],
+    loadChildren: adminModule },
 ];
 
 @NgModule({
