@@ -1,1 +1,10 @@
-<app-card [id]="card.id" *ngFor="let card of cards | async" [card]="card"></app-card>
+<app-card [id]="card.id" *ngFor="let card of cards | async" [card]="card">
+  <div *ngIf="isAdmin()" class="btns">
+    <button class="btn" [routerLink]="['advertsList/edit-advert/', card.id]" >
+      Изменить
+    </button>
+    <button class="btn btn-logout" (click)="onDelete(card.id)">
+      Удалить
+    </button>
+  </div>
+</app-card>

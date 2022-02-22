@@ -3,7 +3,6 @@ import { Subject, takeUntil } from 'rxjs';
 import { FormConfig } from '../../core/models/formConfig';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
-import { UserService } from '../../core/services/user.service';
 import { LoaderService } from '../../shared/services/loader.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup } from '@angular/forms';
@@ -34,6 +33,7 @@ export class EditAdvertComponent implements OnInit, OnDestroy {
     private readonly router: Router,
     private readonly route: ActivatedRoute,
     private readonly cardService: CardService,
+    private readonly authService: AuthService,
     private readonly loaderService: LoaderService,
     private readonly toastr: ToastrService,
   ) { }
@@ -53,7 +53,11 @@ export class EditAdvertComponent implements OnInit, OnDestroy {
           this.loading = false;
           this.loaderService.hide();
           alert('Объявление успешно изменено!!');
-          this.router.navigate(['/details']);
+          if(this.authService.isAdmin()) {
+            this.router.navigate(['/admin/adminProfile']);
+          } else {
+            this.router.navigate(['/details']);
+          }
         },
         (error)=>{
           this.toastr.error(error.error.message, 'Error');

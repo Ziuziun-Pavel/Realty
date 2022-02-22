@@ -7,7 +7,8 @@
       <img class="user-photo" src="assets/icons/user.png">
       <h2 class="title-name">{{ currentUser.userName }} {{ currentUser.userSurname }}</h2>
       <p class="title-email">{{ currentUser.userEmail }}</p>
-      <span *ngIf="!isAdmin" class="adverts" routerLink="/advertsList">
+      <p *ngIf="isAdmin()" class="title-admin">Вы - администратор!!</p>
+      <span class="adverts" routerLink="/advertsList">
         Мои объявления
       </span>
       <div class="btns">

@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private router: Router) {  }
 
   public isUserAuthorised(): boolean {
-    return localStorage.getItem('logUser') !== null ;
+    return !!localStorage.getItem('logUser') || !!this.administrator;
   }
 
   public isAdmin(): boolean {
@@ -57,6 +57,7 @@ export class AuthService {
 
   public logout(): void {
     localStorage.removeItem('logUser');
+    this.administrator = undefined;
     this.router.navigate(['/register']);
   }
 

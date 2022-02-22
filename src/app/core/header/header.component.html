@@ -35,7 +35,7 @@
       <img src="../../assets/icons/user_logo.svg" alt="user" class="account">
     </div>
 
-    <div *ngIf="isAuthorized() || isAdmin" class="signin">
+    <div *ngIf="isAuthorized() && isAdmin" class="signin">
       <button class="btn-signin" (click)="signOut()"><span>Выйти</span></button>
       <img src="../../assets/icons/user_logo.svg" alt="user" class="account">
     </div>
