@@ -9,5 +9,5 @@ export const admin:  Array<IUser> =  [
     userEmail: 'admisitrator1@gmail.com',
     role: Role.Admin,
     password: '12345678',
-  }
+  },
 ];

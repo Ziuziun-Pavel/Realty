@@ -7,12 +7,12 @@ import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
-    AdminProfileComponent
+    AdminProfileComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
-  ]
+    SharedModule,
+  ],
 })
 export class AdminModule { }

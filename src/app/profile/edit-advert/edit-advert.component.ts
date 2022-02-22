@@ -54,7 +54,7 @@ export class EditAdvertComponent implements OnInit, OnDestroy {
           this.loading = false;
           this.loaderService.hide();
           alert('Объявление успешно изменено!!');
-          if(this.authService.isAdmin()) {
+          if (this.authService.isAdmin()) {
             this.router.navigate(['/admin/adminProfile']);
           } else {
             this.router.navigate(['/details']);

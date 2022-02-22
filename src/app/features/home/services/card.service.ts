@@ -66,7 +66,7 @@ export class CardService {
       editAdvertFromAllCardsArray = data;
     });
 
-  console.log(editAdvertFromAllCardsArray);
+    console.log(editAdvertFromAllCardsArray);
 
     this.card = {
       ...editCard,
@@ -117,7 +117,7 @@ export class CardService {
       this.arrayOfNewCards.splice(index, 1);
 
     }
-    if(itemFromAllCards) {
+    if (itemFromAllCards) {
       let sellIndex = sellCards.indexOf(itemFromAllCards);
       let rentIndex = rentCards.indexOf(itemFromAllCards);
 

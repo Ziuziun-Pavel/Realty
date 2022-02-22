@@ -28,8 +28,8 @@ export class AuthService {
     this.administrator = admin.find(item => item.userEmail.toLowerCase() === user.userEmail
       && user.password === (item.password));
 
-    if(this.administrator) {
-      alert('Здравствуйте, Администратор!!!')
+    if (this.administrator) {
+      alert('Здравствуйте, Администратор!!!');
       return of(this.administrator);
     } else if (loggedUser) {
       localStorage.setItem('logUser', JSON.stringify(loggedUser));
