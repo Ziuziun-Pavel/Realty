@@ -8,9 +8,9 @@ describe('AdminProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminProfileComponent ]
+      declarations: [ AdminProfileComponent ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

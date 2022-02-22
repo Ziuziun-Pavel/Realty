@@ -15,7 +15,7 @@ export class RentCardsComponent implements OnInit {
   constructor(
     private readonly cardService: CardService,
     private readonly authService: AuthService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.cards = this.cardService.getRentCards();

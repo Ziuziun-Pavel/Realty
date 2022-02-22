@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../core/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from '../../shared/services/loader.service';
 import { Subject, takeUntil } from 'rxjs';

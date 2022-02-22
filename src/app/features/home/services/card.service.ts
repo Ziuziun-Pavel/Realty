@@ -61,12 +61,12 @@ export class CardService {
 
     findItemById(of(this.arrayOfNewCards), cardId).subscribe(data => {
       editAdvert = data;
-    })
+    });
     findItemById(this.getAllCards(), cardId).subscribe(data => {
       editAdvertFromAllCardsArray = data;
     });
 
-  console.log(editAdvertFromAllCardsArray);
+    console.log(editAdvertFromAllCardsArray);
 
     this.card = {
       ...editCard,
@@ -106,7 +106,7 @@ export class CardService {
 
     findItemById(of(this.arrayOfNewCards), cardId).subscribe(data => {
       item = data;
-    })
+    });
     findItemById(this.getAllCards(), cardId).subscribe(data => {
       itemFromAllCards = data;
     });
@@ -117,7 +117,7 @@ export class CardService {
       this.arrayOfNewCards.splice(index, 1);
 
     }
-    if(itemFromAllCards) {
+    if (itemFromAllCards) {
       let sellIndex = sellCards.indexOf(itemFromAllCards);
       let rentIndex = rentCards.indexOf(itemFromAllCards);
 

@@ -21,7 +21,6 @@ export class SellCardComponent implements OnInit {
     this.cards = this.cardService.getSellCards();
   }
 
-
   public onDelete(id: string) {
     this.cardService.deleteCard(id);
   }

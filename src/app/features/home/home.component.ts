@@ -32,14 +32,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cards$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
-      (cards) => {
-        this.cards = cards;
-        this.filteredCards = cards;
-      },
-      (error) => {
-        this.error = error;
-      },
-    );
+        (cards) => {
+          this.cards = cards;
+          this.filteredCards = cards;
+        },
+        (error) => {
+          this.error = error;
+        },
+      );
   }
 
   ngOnDestroy(): void {

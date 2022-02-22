@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FlatPageComponent } from './features/home/components/advertisement/flat-page/flat-page.component';
+import {
+  FlatPageComponent,
+} from './features/home/components/advertisement/flat-page/flat-page.component';
 import { HomeComponent } from './features/home/home.component';
 import { NewsPageComponent } from './features/home/components/news/news-page/news-page.component';
-import { AuthGuard } from './core/guards/auth.guard';
-import { Role } from './core/models/role.rs';
 import { AdminGuard } from './core/guards/admin.guard';
 
 const accountModule = () =>
