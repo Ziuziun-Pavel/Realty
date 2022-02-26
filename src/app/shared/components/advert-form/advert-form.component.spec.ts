@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdvertFormComponent } from './advert-form.component';
+import { FormBuilder } from '@angular/forms';
 
 describe('AdvertFormComponent', () => {
   let component: AdvertFormComponent;
@@ -9,6 +10,7 @@ describe('AdvertFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AdvertFormComponent ],
+      providers: [FormBuilder]
     })
       .compileComponents();
   });

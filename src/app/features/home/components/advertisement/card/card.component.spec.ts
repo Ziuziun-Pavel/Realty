@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
+import { AuthService } from '../../../../../core/services/auth.service';
+import { MockAuthService } from '../../../../../core/services/auth.service.mock';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -9,6 +11,12 @@ describe('CardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CardComponent ],
+      providers: [
+        {
+          provide: AuthService,
+          useClass: MockAuthService
+        },
+      ]
     })
       .compileComponents();
   });

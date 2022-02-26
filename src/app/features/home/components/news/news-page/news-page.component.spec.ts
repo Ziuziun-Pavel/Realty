@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewsPageComponent } from './news-page.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('PageForNewsCardComponent', () => {
   let component: NewsPageComponent;
@@ -9,6 +11,7 @@ describe('PageForNewsCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NewsPageComponent],
+      imports: [RouterTestingModule, HttpClientTestingModule]
     })
       .compileComponents();
   });
