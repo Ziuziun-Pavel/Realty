@@ -1,9 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { FormConfig } from '../../core/models/formConfig';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
-import { UserService } from '../../core/services/user.service';
 import { LoaderService } from '../../shared/services/loader.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup } from '@angular/forms';
@@ -13,6 +11,7 @@ import { CardService } from '../../features/home/services/card.service';
   selector: 'app-edit-advert',
   templateUrl: './edit-advert.component.html',
   styleUrls: ['./edit-advert.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class EditAdvertComponent implements OnInit, OnDestroy {

@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ICard } from '../../../../core/models/cards';
 import { CardService } from '../../services/card.service';
@@ -10,6 +17,7 @@ import { FilterService } from '../../services/filter.service';
   selector: 'app-search-panel',
   templateUrl: './search-panel.component.html',
   styleUrls: ['./search-panel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchPanelComponent implements OnInit {
   @Input() public cards: ICard[];
@@ -26,6 +34,7 @@ export class SearchPanelComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly cardService: CardService,
     private readonly filterService: FilterService,
+    private readonly cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {

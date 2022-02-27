@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CardType, ICard } from '../../../../../core/models/cards';
 import { ActivatedRoute } from '@angular/router';
 import { CardService } from '../../../services/card.service';
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
   selector: 'app-flat-page',
   templateUrl: './flat-page.component.html',
   styleUrls: ['./flat-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class FlatPageComponent implements OnInit {
 

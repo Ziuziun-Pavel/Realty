@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ApplicationRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component, NgZone,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
@@ -10,6 +17,7 @@ import { LoaderService } from '../../shared/services/loader.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit, OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();
@@ -24,8 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private readonly loaderService: LoaderService,
     private readonly router: Router,
     private readonly toastr: ToastrService,
-  ) {
-  }
+  ) {  }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(

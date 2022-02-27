@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NewsItem } from '../../../../../core/models/news';
 import { Observable } from 'rxjs';
 import { NewsService } from '../../../services/news.service';
@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   selector: 'app-flat-news-page',
   templateUrl: './news-page.component.html',
   styleUrls: ['./news-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewsPageComponent implements OnInit {
 

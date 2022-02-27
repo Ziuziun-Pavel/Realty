@@ -9,8 +9,7 @@ import { AuthService } from '../services/auth.service';
 
 export class HeaderComponent {
 
-  constructor(private readonly authService: AuthService) {
-  }
+  constructor(private readonly authService: AuthService) { }
 
   public isAuthorized() {
     return this.authService.isUserAuthorised();
