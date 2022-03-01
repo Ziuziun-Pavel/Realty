@@ -9,6 +9,7 @@ import { MockUserService } from '../../../core/services/user.service.mock';
 describe('ProfileDetailsComponent', () => {
   let component: ProfileDetailsComponent;
   let fixture: ComponentFixture<ProfileDetailsComponent>;
+  let MockUser;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -30,10 +31,18 @@ describe('ProfileDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProfileDetailsComponent);
     component = fixture.componentInstance;
+    MockUser = {
+      id: '1',
+      userName: 'admin',
+      userSurname: 'admin',
+      userEmail: 'admin@gmail.com',
+    };
+    component.currentUser = MockUser;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
