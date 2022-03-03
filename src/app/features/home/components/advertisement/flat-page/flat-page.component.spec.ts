@@ -63,16 +63,13 @@ describe('PageComponent', () => {
     const getCardSpy = cardService.getSellCardById.and.returnValue(of(MockCard));
     fixture.detectChanges();
     expect(getCardSpy.calls.any).toBeTruthy();
-
   });
 
-  // it('should display card street', () => {
-  //   const cardStreet = fixture.nativeElement.querySelector('.item-street');
-  //   expect(cardStreet.textContent).toEqual(MockCard.street);
-  // });
-  //
-  // it('should display card region', () => {
-  //   const cardRegion = fixture.nativeElement.querySelector('.item-location');
-  //   expect(cardRegion.textContent).toEqual(MockCard.region);
-  // });
+  it('should call getRentCardById from CardService', () => {
+    const cardService = jasmine.createSpyObj('CardService', ['getRentCardById']);
+    const getCardSpy = cardService.getRentCardById.and.returnValue(of(MockCard));
+    fixture.detectChanges();
+    expect(getCardSpy.calls.any).toBeTruthy();
+  });
+
 });
