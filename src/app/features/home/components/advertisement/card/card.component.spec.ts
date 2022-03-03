@@ -1,15 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
-import { CardType } from '../../../../../core/models/cards';
+import { CardType, ICard } from '../../../../../core/models/cards';
+import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 
 describe('CardComponent', () => {
   let component: CardComponent;
   let fixture: ComponentFixture<CardComponent>;
-  let MockCard;
+  let MockCard: ICard;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ CardComponent ],
     })
       .compileComponents();
@@ -44,4 +47,21 @@ describe('CardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display card street', () => {
+    const cardStreet = fixture.nativeElement.querySelector('.item-street');
+    expect(cardStreet.textContent).toEqual(MockCard.street);
+  });
+
+  it('should display card region', () => {
+    const cardRegion = fixture.nativeElement.querySelector('.item-location');
+    expect(cardRegion.textContent).toEqual(MockCard.region);
+  });
+
+  it('should test if the route is correct', () => {
+    let href = fixture.debugElement.query(By.css('a')).nativeElement
+      .getAttribute('href');
+    expect(href).toEqual('/page/sell/1s');
+  });
+
 });

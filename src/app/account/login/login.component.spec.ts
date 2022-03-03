@@ -9,6 +9,10 @@ import { LoaderService } from '../../shared/services/loader.service';
 import { MockLoaderService } from '../../shared/services/loader.service.mock';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
+import { IUser } from '../../core/models/user';
+import { of } from 'rxjs';
+import { Role } from '../../core/models/role.rs';
+import { FakeMatIconRegistry } from '@angular/material/icon/testing';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -52,6 +56,7 @@ describe('LoginComponent', () => {
     component = fixture.componentInstance;
     component.ngOnInit();
     fixture.detectChanges();
+    spyOn(component.router, 'navigate');
   });
 
   it('should create', () => {
@@ -59,8 +64,8 @@ describe('LoginComponent', () => {
   });
 
   it('should render input elements', () => {
-    const email = component.loginForm['controls']['userEmail'];
-    const password = component.loginForm['controls']['password'];
+    const email = component.loginForm.controls.userEmail;
+    const password = component.loginForm.controls.password;
 
     email.setValue('asd@gmail.com');
     password.setValue('1234567');
@@ -71,19 +76,46 @@ describe('LoginComponent', () => {
 
   it('should test form validity', () => {
     expect(component.loginForm.valid).toBeFalse();
-
     component.loginForm.controls.userEmail.setValue('asd@asd.com');
     component.loginForm.controls.password.setValue('text');
     expect(component.loginForm.valid).toBeTruthy();
   })
 
-  it(`should call the onSubmit() method`, (() => {
-    const fnc = spyOn(component, 'onSubmit');
-    const el = fixture.debugElement.query(By.css('form'));
+  it('should test for correct email', () => {
+    component.loginForm.controls.userEmail.setValue('asdfdfdfd');
+    expect(component.loginForm.hasError('email')).toBeDefined();
+  })
 
-    el.triggerEventHandler('ngSubmit',null);
+  it('should be required', () => {
+    expect(component.loginForm.controls.password.hasError('required')).toBeTruthy();
+
+    component.loginForm.controls.password.setValue('a');
+
+    expect(component.loginForm.controls.password.hasError('required')).toBeFalse();
+  });
+
+  it('should call the onSubmit() method', (() => {
+    const fnc = spyOn(component, 'onSubmit');
+    const form = fixture.debugElement.query(By.css('form'));
+
+    form.triggerEventHandler('ngSubmit',null);
     expect(fnc).toHaveBeenCalled();
   }));
 
+  it('should submitted become true' , () => {
+    const form = fixture.debugElement.query(By.css('form'));
+
+    form.triggerEventHandler('ngSubmit',null);
+    component.submitted = true;
+    expect(component.submitted).toBeTruthy();
+  });
+
+  it('should go to url, if user has no account',  () => {
+    let href = fixture.debugElement.query(By.css('a')).nativeElement
+      .getAttribute('href');
+
+    expect(href).toEqual('/register');
+  });
 
 });
+

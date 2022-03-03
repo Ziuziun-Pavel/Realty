@@ -7,6 +7,10 @@ import { MockAuthService } from '../../core/services/auth.service.mock';
 import { LoaderService } from '../../shared/services/loader.service';
 import { MockLoaderService } from '../../shared/services/loader.service.mock';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { UserFormComponent } from '../../shared/components/user-form/user-form.component';
+import { FormBuilder } from '@angular/forms';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -27,9 +31,10 @@ describe('RegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ],
+      declarations: [ RegisterComponent, UserFormComponent ],
       imports: [RouterTestingModule],
       providers: [
+        FormBuilder,
         {
           provide: AuthService,
           useClass: MockAuthService
@@ -40,6 +45,7 @@ describe('RegisterComponent', () => {
         },
         { provide: ToastrService, useValue: toastrService }
       ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });
@@ -52,5 +58,11 @@ describe('RegisterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should go to url, if user already has account',  () => {
+    let href = fixture.debugElement.query(By.css('a')).nativeElement
+      .getAttribute('href');
+    expect(href).toEqual('/login');
   });
 });
