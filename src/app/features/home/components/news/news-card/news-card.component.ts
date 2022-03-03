@@ -5,7 +5,7 @@ import { NewsItem } from '../../../../../core/models/news';
   selector: 'app-news-card',
   templateUrl: './news-card.component.html',
   styleUrls: ['./news-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsCardComponent {
   @Input()  card: NewsItem;

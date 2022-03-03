@@ -1,10 +1,10 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
   OnInit,
-  Output
+  Output,
 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { ICard } from '../../../../core/models/cards';
@@ -34,7 +34,6 @@ export class SearchPanelComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly cardService: CardService,
     private readonly filterService: FilterService,
-    private readonly cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {

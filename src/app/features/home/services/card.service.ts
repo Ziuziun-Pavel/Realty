@@ -61,7 +61,7 @@ export class CardService {
 
     findItemById(of(this.arrayOfNewCards), cardId).subscribe(data => {
       editAdvert = data;
-    })
+    });
     findItemById(this.getAllCards(), cardId).subscribe(data => {
       editAdvertFromAllCardsArray = data;
     });
@@ -97,7 +97,7 @@ export class CardService {
     let itemFromAllCards: ICard | undefined;
     findItemById(of(this.arrayOfNewCards), cardId).subscribe(data => {
       item = data;
-    })
+    });
     findItemById(this.getAllCards(), cardId).subscribe(data => {
       itemFromAllCards = data;
     });

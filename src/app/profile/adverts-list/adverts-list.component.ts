@@ -7,7 +7,7 @@ import { CardService } from '../../features/home/services/card.service';
   selector: 'app-adverts-list',
   templateUrl: './adverts-list.component.html',
   styleUrls: ['./adverts-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdvertsListComponent implements OnInit {
   public cards: Observable<ICard[]>;

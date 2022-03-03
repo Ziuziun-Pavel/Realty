@@ -11,7 +11,7 @@ import { CardService } from '../../features/home/services/card.service';
   selector: 'app-edit-advert',
   templateUrl: './edit-advert.component.html',
   styleUrls: ['./edit-advert.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class EditAdvertComponent implements OnInit, OnDestroy {

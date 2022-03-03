@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Input,
   OnInit,
-  Output
+  Output,
 } from '@angular/core';
 import { FormConfig } from '../../../core/models/formConfig';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,7 +13,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
   selector: 'app-advert-form',
   templateUrl: './advert-form.component.html',
   styleUrls: ['./advert-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdvertFormComponent implements OnInit {
   @Input() public formConfig: FormConfig = {

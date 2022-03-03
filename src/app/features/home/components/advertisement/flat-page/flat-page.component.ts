@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   selector: 'app-flat-page',
   templateUrl: './flat-page.component.html',
   styleUrls: ['./flat-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
 export class FlatPageComponent implements OnInit {

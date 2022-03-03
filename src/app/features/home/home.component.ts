@@ -8,7 +8,7 @@ import { FilterService } from './services/filter.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, OnDestroy {
   @Input() public cards$: Observable<Array<ICard>>;
@@ -33,14 +33,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cards$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
-      (cards) => {
-        this.cards = cards;
-        this.filteredCards = cards;
-      },
-      (error) => {
-        this.error = error;
-      },
-    );
+        (cards) => {
+          this.cards = cards;
+          this.filteredCards = cards;
+        },
+        (error) => {
+          this.error = error;
+        },
+      );
   }
 
   ngOnDestroy(): void {

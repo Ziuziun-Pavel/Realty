@@ -5,7 +5,7 @@ import { CardType, ICard } from '../../../../core/models/cards';
   selector: 'app-cards-list',
   templateUrl: './cards-list.component.html',
   styleUrls: ['./cards-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsListComponent implements OnInit {
   @Input()filteredCards: ICard[] = [];

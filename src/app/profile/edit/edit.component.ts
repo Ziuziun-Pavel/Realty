@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { FormConfig } from '../../core/models/formConfig';
 import { Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { FormGroup } from '@angular/forms';
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditComponent implements OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();
@@ -35,17 +35,6 @@ export class EditComponent implements OnDestroy {
     private readonly toastr: ToastrService,
   ) {
   }
-
-  // ngOnChanges(change: SimpleChanges) {
-  //   console.log('Parent ngOnChanges', change);
-  // }
-  //
-  // ngOnInit() {
-  //   console.log('onInit');
-  // }
-  // ngDoCheck() {
-  //   console.log('Parent ngDoCheck');
-  // }
 
   public onSubmit(userForm: FormGroup): void {
     this.loading = true;

@@ -1,11 +1,10 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef,
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
   OnInit,
   Output,
-  SimpleChanges
 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormConfig } from '../../../core/models/formConfig';
@@ -14,7 +13,7 @@ import { FormConfig } from '../../../core/models/formConfig';
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class UserFormComponent implements OnInit {
@@ -31,10 +30,6 @@ export class UserFormComponent implements OnInit {
   constructor(private readonly formBuilder: FormBuilder) {
   }
 
-  // ngOnChanges(change: SimpleChanges) {
-  //   console.log('Child ngOnChanges', change);
-  // }
-
   ngOnInit(): void {
     this.userForm = this.formBuilder.group(
       {
@@ -49,10 +44,6 @@ export class UserFormComponent implements OnInit {
       },
     );
   }
-
-  // ngDoCheck() {
-  //   console.log('Child ngDoCheck');
-  // }
 
   public get formControls(): { [key: string]: AbstractControl; } {
     return this.userForm.controls;
