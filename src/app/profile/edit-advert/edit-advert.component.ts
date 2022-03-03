@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { FormConfig } from '../../core/models/formConfig';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { CardService } from '../../features/home/services/card.service';
   selector: 'app-edit-advert',
   templateUrl: './edit-advert.component.html',
   styleUrls: ['./edit-advert.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class EditAdvertComponent implements OnInit, OnDestroy {

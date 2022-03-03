@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { FormConfig } from '../../core/models/formConfig';
 import { Subject, takeUntil } from 'rxjs';
 import { FormGroup } from '@angular/forms';
@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();

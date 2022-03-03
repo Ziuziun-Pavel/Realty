@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoaderService } from '../../shared/services/loader.service';
@@ -11,6 +11,7 @@ import { CardService } from '../../features/home/services/card.service';
   selector: 'app-add-adverts',
   templateUrl: './add-adverts.component.html',
   styleUrls: ['./add-adverts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddAdvertsComponent implements OnDestroy {
   private ngUnsubscribe: Subject<boolean> = new Subject();
