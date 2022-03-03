@@ -1,4 +1,10 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  forwardRef,
+  Input,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectedOption } from '../../../core/models/selectedOption';
 
@@ -12,6 +18,7 @@ import { SelectedOption } from '../../../core/models/selectedOption';
     multi: true,
   },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class CustomDropdownComponent implements ControlValueAccessor {
@@ -19,10 +26,14 @@ export class CustomDropdownComponent implements ControlValueAccessor {
 
   public selectedOption: SelectedOption;
 
+  constructor(private readonly cd: ChangeDetectorRef) {
+  }
+
   private onChange: (_: any) => {};
 
   public writeValue(value: SelectedOption) {
     this.selectedOption = value;
+    this.cd.markForCheck();
   }
 
   public registerOnChange(fn: (_: any) => {}) {

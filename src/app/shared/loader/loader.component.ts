@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { LoaderService } from '../services/loader.service';
 import { Subject } from 'rxjs';
@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
   selector: 'app-loader',
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoaderComponent {
   public color = 'primary';

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CardService } from '../../../services/card.service';
 import { ICard } from '../../../../../core/models/cards';
@@ -7,6 +7,7 @@ import { ICard } from '../../../../../core/models/cards';
   selector: 'app-rent-cards',
   templateUrl: './rent-cards.component.html',
   styleUrls: ['./rent-cards.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RentCardsComponent implements OnInit {
   public cards: Observable<Array<ICard>>;
@@ -16,4 +17,5 @@ export class RentCardsComponent implements OnInit {
   ngOnInit(): void {
     this.cards = this.cardService.getRentCards();
   }
+
 }

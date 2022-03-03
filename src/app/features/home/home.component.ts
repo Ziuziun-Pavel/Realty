@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ICard } from '../../core/models/cards';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { CardService } from './services/card.service';
@@ -8,6 +8,7 @@ import { FilterService } from './services/filter.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit, OnDestroy {
   @Input() public cards$: Observable<Array<ICard>>;
@@ -32,14 +33,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.cards$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
-      (cards) => {
-        this.cards = cards;
-        this.filteredCards = cards;
-      },
-      (error) => {
-        this.error = error;
-      },
-    );
+        (cards) => {
+          this.cards = cards;
+          this.filteredCards = cards;
+        },
+        (error) => {
+          this.error = error;
+        },
+      );
   }
 
   ngOnDestroy(): void {
