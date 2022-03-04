@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.cards$ = this.cardService.getAllCards();
+
     this.cards$
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(

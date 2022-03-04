@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -9,10 +9,7 @@ import { LoaderService } from '../../shared/services/loader.service';
 import { MockLoaderService } from '../../shared/services/loader.service.mock';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
-import { IUser } from '../../core/models/user';
-import { of } from 'rxjs';
-import { Role } from '../../core/models/role.rs';
-import { FakeMatIconRegistry } from '@angular/material/icon/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -33,8 +30,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
       imports: [ RouterTestingModule, ReactiveFormsModule ],
+      declarations: [ LoginComponent ],
       providers: [
         FormBuilder,
         {
@@ -47,6 +44,7 @@ describe('LoginComponent', () => {
         },
         { provide: ToastrService, useValue: toastrService }
       ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   });

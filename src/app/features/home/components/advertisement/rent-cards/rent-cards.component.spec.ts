@@ -5,17 +5,13 @@ import { AuthService } from '../../../../../core/services/auth.service';
 import { MockAuthService } from '../../../../../core/services/auth.service.mock';
 import { CardService } from '../../../services/card.service';
 import { MockCardService } from '../../../services/card.service.mock';
-import { IUser } from '../../../../../core/models/user';
-import { Role } from '../../../../../core/models/role.rs';
-import { of } from 'rxjs';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('RentCardsComponent', () => {
   let component: RentCardsComponent;
   let fixture: ComponentFixture<RentCardsComponent>;
   let authService: AuthService;
   let cardService: CardService;
-  let MockUser: IUser;
-  let MockAdmin: IUser;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -30,6 +26,7 @@ describe('RentCardsComponent', () => {
           useClass: MockCardService
         },
       ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   });
@@ -39,22 +36,6 @@ describe('RentCardsComponent', () => {
     component = fixture.componentInstance;
     authService = fixture.debugElement.injector.get(AuthService);
     cardService = fixture.debugElement.injector.get(CardService);
-
-    MockUser = {
-      id: '1sdh34hn',
-      userName: 'John',
-      userSurname: 'Smith',
-      userEmail: 'asd@gmail.com',
-      password: '12345678',
-    };
-    MockAdmin =   {
-      id: 'admin1',
-      userName: 'Admin',
-      userSurname: 'Admin',
-      userEmail: 'admisitrator1@gmail.com',
-      role: Role.Admin,
-      password: '12345678',
-    };
     fixture.detectChanges();
   });
 

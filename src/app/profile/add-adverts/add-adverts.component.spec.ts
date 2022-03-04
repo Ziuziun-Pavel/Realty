@@ -3,13 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddAdvertsComponent } from './add-adverts.component';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AuthService } from '../../core/services/auth.service';
-import { MockAuthService } from '../../core/services/auth.service.mock';
-import { FormBuilder } from '@angular/forms';
 import { CardService } from '../../features/home/services/card.service';
 import { MockCardService } from '../../features/home/services/card.service.mock';
 import { LoaderService } from '../../shared/services/loader.service';
 import { MockLoaderService } from '../../shared/services/loader.service.mock';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AddAdvertsComponent', () => {
   let component: AddAdvertsComponent;
@@ -42,6 +40,7 @@ describe('AddAdvertsComponent', () => {
         },
         { provide: ToastrService, useValue: toastrService }
       ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });

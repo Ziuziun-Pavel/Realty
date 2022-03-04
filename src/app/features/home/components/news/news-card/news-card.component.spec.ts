@@ -1,14 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NewsItem } from 'src/app/core/models/news';
 
 import { NewsCardComponent } from './news-card.component';
+import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NewsCardComponent', () => {
   let component: NewsCardComponent;
   let fixture: ComponentFixture<NewsCardComponent>;
-  let MockNewsCard;
+  let MockNewsCard: NewsItem;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ NewsCardComponent ],
     })
       .compileComponents();
@@ -33,4 +37,16 @@ describe('NewsCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display card title', () => {
+    const cardStreet = fixture.nativeElement.querySelector('.text');
+    expect(cardStreet.textContent).toEqual(MockNewsCard.title);
+  });
+
+  it('should test if the route is correct', () => {
+    let href = fixture.debugElement.query(By.css('a')).nativeElement
+      .getAttribute('href');
+    expect(href).toEqual('/news/n1');
+  });
+
 });
