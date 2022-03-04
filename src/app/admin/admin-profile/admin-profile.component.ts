@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IUser } from '../../core/models/user';
-import { admin } from '../../../assets/data/admin';
+import { regUsers } from '../../../assets/data/users';
+import { Role } from '../../core/models/role.rs';
 
 @Component({
   selector: 'app-admin-profile',
@@ -8,6 +9,5 @@ import { admin } from '../../../assets/data/admin';
   styleUrls: ['./admin-profile.component.scss'],
 })
 export class AdminProfileComponent {
-
-  public user: IUser = admin[0];
+  public user?: IUser = regUsers.find(item => item.role === Role.Admin)
 }

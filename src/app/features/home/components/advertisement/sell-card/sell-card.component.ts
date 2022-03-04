@@ -22,11 +22,11 @@ export class SellCardComponent implements OnInit {
     this.cards = this.cardService.getSellCards();
   }
 
-  public onDelete(id: string) {
+  public onDelete(id: string): void {
     this.cardService.deleteCard(id);
   }
 
-  public isAdmin() {
+  public isAdmin(): boolean {
     return this.authService.isAdmin();
   }
 }

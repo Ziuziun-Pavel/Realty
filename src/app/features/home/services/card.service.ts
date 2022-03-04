@@ -66,14 +66,10 @@ export class CardService {
       editAdvertFromAllCardsArray = data;
     });
 
-    console.log(editAdvertFromAllCardsArray);
-
     this.card = {
       ...editCard,
       id: cardId,
     };
-
-    console.log(this.card);
 
     if (editAdvert) {
       let index = this.arrayOfNewCards.indexOf(editAdvert);

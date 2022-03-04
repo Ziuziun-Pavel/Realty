@@ -4,36 +4,31 @@ import { Observable, of, throwError } from 'rxjs';
 import { IUser } from '../models/user';
 import { Router } from '@angular/router';
 import { regUsers } from '../../../assets/data/users';
-import { admin } from '../../../assets/data/admin';
+import { Role } from '../models/role.rs';
 
 @Injectable()
 export class AuthService {
-  public administrator: IUser | undefined;
-
+  public loggedUser: IUser|undefined;
   constructor(private router: Router) {  }
 
   public isUserAuthorised(): boolean {
-    return !!localStorage.getItem('logUser') || !!this.administrator;
+    return !!localStorage.getItem('logUser') ;
   }
 
   public isAdmin(): boolean {
-    return !!this.administrator;
+    return this.loggedUser?.role === Role.Admin;
   }
 
   public login(user: IUser):Observable<IUser | undefined> {
-
-    let loggedUser = regUsers.find(item => item.userEmail.toLowerCase() === user.userEmail
+     this.loggedUser = regUsers.find(item => item.userEmail.toLowerCase() === user.userEmail
       && user.password === (item.password));
 
-    this.administrator = admin.find(item => item.userEmail.toLowerCase() === user.userEmail
-      && user.password === (item.password));
-
-    if (this.administrator) {
-      alert('Здравствуйте, Администратор!!!');
-      return of(this.administrator);
-    } else if (loggedUser) {
-      localStorage.setItem('logUser', JSON.stringify(loggedUser));
-      return of(loggedUser);
+    if (this.loggedUser) {
+      localStorage.setItem('logUser', JSON.stringify(this.loggedUser));
+      if (this.isAdmin()) {
+        alert('Здравствуйте, Администратор!!!');
+      }
+      return of(this.loggedUser);
     } else {
       return throwError('Неверный логин или пароль');
     }
@@ -57,7 +52,6 @@ export class AuthService {
 
   public logout(): void {
     localStorage.removeItem('logUser');
-    this.administrator = undefined;
     this.router.navigate(['/register']);
   }
 
