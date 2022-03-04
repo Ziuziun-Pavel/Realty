@@ -8,7 +8,8 @@ import { Role } from '../models/role.rs';
 
 @Injectable()
 export class AuthService {
-  public loggedUser: IUser|undefined;
+  public loggedUser: IUser | undefined;
+
   constructor(private router: Router) {  }
 
   public isUserAuthorised(): boolean {
@@ -20,7 +21,7 @@ export class AuthService {
   }
 
   public login(user: IUser):Observable<IUser | undefined> {
-     this.loggedUser = regUsers.find(item => item.userEmail.toLowerCase() === user.userEmail
+    this.loggedUser = regUsers.find(item => item.userEmail.toLowerCase() === user.userEmail
       && user.password === (item.password));
 
     if (this.loggedUser) {

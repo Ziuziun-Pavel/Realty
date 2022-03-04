@@ -9,5 +9,5 @@ import { Role } from '../../core/models/role.rs';
   styleUrls: ['./admin-profile.component.scss'],
 })
 export class AdminProfileComponent {
-  public user?: IUser = regUsers.find(item => item.role === Role.Admin)
+  public user?: IUser = regUsers.find(item => item.role === Role.Admin);
 }
