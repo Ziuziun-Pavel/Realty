@@ -1,15 +1,18 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { ProfileDetailsComponent } from './profile-details.component';
 import { AuthService } from '../../../core/services/auth.service';
 import { MockAuthService } from '../../../core/services/auth.service.mock';
 import { UserService } from '../../../core/services/user.service';
 import { MockUserService } from '../../../core/services/user.service.mock';
+import { IUser } from '../../../core/models/user';
+import { By } from '@angular/platform-browser';
 
 describe('ProfileDetailsComponent', () => {
   let component: ProfileDetailsComponent;
   let fixture: ComponentFixture<ProfileDetailsComponent>;
-  let MockUser;
+  let authService: AuthService;
+  let MockUser: IUser;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,10 +22,6 @@ describe('ProfileDetailsComponent', () => {
           provide: AuthService,
           useClass: MockAuthService
         },
-        {
-          provide: UserService,
-          useClass: MockUserService
-        },
         ],
     })
       .compileComponents();
@@ -31,11 +30,13 @@ describe('ProfileDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProfileDetailsComponent);
     component = fixture.componentInstance;
+    authService = fixture.debugElement.injector.get(AuthService);
     MockUser = {
-      id: '1',
-      userName: 'admin',
-      userSurname: 'admin',
-      userEmail: 'admin@gmail.com',
+      id: '1sd78sdf',
+      userName: 'John',
+      userSurname: 'Smith',
+      userEmail: 'asd@gmail.com',
+      password: '1234567',
     };
     component.currentUser = MockUser;
     fixture.detectChanges();
@@ -43,6 +44,38 @@ describe('ProfileDetailsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should correctly render title', () => {
+    const title = fixture.debugElement.query(By.css('.title-name'));
+    expect(title.nativeElement.textContent).toEqual(MockUser.userName + ' ' + MockUser.userSurname )
+  });
+
+  it('should go to url with adverts',  () => {
+    let advertsLink = fixture.debugElement.query(By.css('.adverts')).nativeElement
+      .getAttribute('routerLink');
+
+    expect(advertsLink).toEqual('/advertsList');
+  });
+
+  it('should call isAdmin from AuthService', () => {
+    const spy = spyOn(authService, 'isAdmin').and.returnValue(true);
+    component.isAdmin();
+    expect(spy.calls.any()).toBeTruthy()
+  });
+
+  it('should call signOut', fakeAsync(() => {
+    spyOn(component, 'deleteAccount');
+    let button = fixture.debugElement.nativeElement.querySelector('.btn-logout');
+    button.click();
+    tick();
+    fixture.detectChanges();
+    expect(component.deleteAccount).toHaveBeenCalled();
+  }));
+
+  it('should check for admin', () => {
+    component.isAdmin();
+    expect(MockUser.role).toBeUndefined();
   });
 
 });

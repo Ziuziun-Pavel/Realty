@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, flush, TestBed } from '@angular/core/testing';
 
 import { LoaderService } from './loader.service';
 import { MockLoaderService } from './loader.service.mock';
@@ -21,4 +21,7 @@ describe('LoaderService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+
+
 });

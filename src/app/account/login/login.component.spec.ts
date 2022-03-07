@@ -100,14 +100,6 @@ describe('LoginComponent', () => {
     expect(fnc).toHaveBeenCalled();
   }));
 
-  it('should submitted become true' , () => {
-    const form = fixture.debugElement.query(By.css('form'));
-
-    form.triggerEventHandler('ngSubmit',null);
-    component.submitted = true;
-    expect(component.submitted).toBeTruthy();
-  });
-
   it('should go to url, if user has no account',  () => {
     let href = fixture.debugElement.query(By.css('a')).nativeElement
       .getAttribute('href');

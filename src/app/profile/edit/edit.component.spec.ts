@@ -9,10 +9,14 @@ import { MockLoaderService } from '../../shared/services/loader.service.mock';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
 import { UserService } from '../../core/services/user.service';
 import { MockUserService } from '../../core/services/user.service.mock';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { IUser } from '../../core/models/user';
+import { of } from 'rxjs';
 
 describe('EditComponent', () => {
   let component: EditComponent;
   let fixture: ComponentFixture<EditComponent>;
+  let userService: UserService;
 
   const toastrService = {
     success: (
@@ -46,6 +50,7 @@ describe('EditComponent', () => {
         },
         { provide: ToastrService, useValue: toastrService }
       ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
   });
@@ -53,6 +58,7 @@ describe('EditComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EditComponent);
     component = fixture.componentInstance;
+    userService = fixture.debugElement.injector.get(UserService);
     fixture.detectChanges();
   });
 

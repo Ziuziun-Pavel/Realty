@@ -58,10 +58,10 @@ describe('RentCardsComponent', () => {
   });
 
   it('should call getRentCards from CardService', () => {
-    const spy = spyOn(cardService, 'getRentCards');
+    spyOn(cardService, 'getRentCards');
+    component.ngOnInit();
     fixture.detectChanges();
-    expect(spy.calls.any).toBeTruthy();
+    expect(cardService.getRentCards).toHaveBeenCalled();
   });
-
 
 });
