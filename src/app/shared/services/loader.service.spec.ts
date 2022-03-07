@@ -4,7 +4,7 @@ import { LoaderService } from './loader.service';
 import { MockLoaderService } from './loader.service.mock';
 
 describe('LoaderService', () => {
-  let service: LoaderService;
+  let loaderService: LoaderService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -15,13 +15,27 @@ describe('LoaderService', () => {
         },
       ]
     });
-    service = TestBed.inject(LoaderService);
+    loaderService = TestBed.inject(LoaderService);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(loaderService).toBeTruthy();
   });
 
+  it('show() should emit data for isLoading', (done) => {
+    const loaderServiceSpy = jasmine.createSpyObj('loaderService', ['show']);
 
+    loaderServiceSpy.show();
+    expect(loaderServiceSpy.show).toHaveBeenCalled();
+    done();
+  });
+
+  it('hide() should emit data for isLoading', (done) => {
+    const loaderServiceSpy = jasmine.createSpyObj('loaderService', ['hide']);
+
+    loaderServiceSpy.hide();
+    expect(loaderServiceSpy.hide).toHaveBeenCalled();
+    done();
+  });
 
 });
