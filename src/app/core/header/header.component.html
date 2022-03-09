@@ -26,7 +26,7 @@
     </div>
 
     <div *ngIf="isAdmin()" class="signin">
-      <button class="btn-signin admin" routerLink="admin/adminProfile"><span>Админ</span></button>
+      <button class="btn-signin admin" [routerLink]="['admin/adminProfile', 'admin1']"><span>Админ</span></button>
       <img src="../../assets/icons/admin.png" alt="admin" class="account">
     </div>
 

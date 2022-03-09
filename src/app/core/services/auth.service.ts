@@ -5,6 +5,7 @@ import { IUser } from '../models/user';
 import { Router } from '@angular/router';
 import { regUsers } from '../../../assets/data/users';
 import { Role } from '../models/role.rs';
+import { findItemById } from '../../shared/utilits/findItemById';
 
 @Injectable()
 export class AuthService {
@@ -54,6 +55,10 @@ export class AuthService {
   public logout(): void {
     localStorage.removeItem('logUser');
     this.router.navigate(['/register']);
+  }
+
+  public getUserById(userId: string): Observable<IUser | undefined> {
+    return findItemById(of(regUsers), userId);
   }
 
 }
