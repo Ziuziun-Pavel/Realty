@@ -66,25 +66,28 @@ export class CardService {
       editAdvertFromAllCardsArray = data;
     });
 
-    if (editAdvert) {
-      let index = this.arrayOfNewCards.indexOf(editAdvert);
-      this.arrayOfNewCards.splice(index, 1);
-    }
-
     this.card = {
       ...editCard,
       id: cardId,
     };
-    this.arrayOfNewCards.push(this.card);
+
+    if (editAdvert) {
+      let index = this.arrayOfNewCards.indexOf(editAdvert);
+      this.arrayOfNewCards.splice(index, 1);
+
+      this.arrayOfNewCards.push(this.card);
+    }
 
     if (editAdvertFromAllCardsArray) {
-      let globalIndex = [...sellCards, ...rentCards].indexOf(editAdvertFromAllCardsArray);
+      let sellIndex = sellCards.indexOf(editAdvertFromAllCardsArray);
+      let rentIndex = rentCards.indexOf(editAdvertFromAllCardsArray);
+
 
       if (this.card.type === CardType.sell ) {
-        sellCards.splice(globalIndex, 1);
+        sellCards.splice(sellIndex, 1);
         sellCards.push(this.card);
       } else {
-        rentCards.splice(globalIndex, 1);
+        rentCards.splice(rentIndex, 1);
         rentCards.push(this.card);
       }
     }
@@ -93,8 +96,10 @@ export class CardService {
   }
 
   public deleteCard(cardId: string): ICard[] {
+
     let item: ICard | undefined;
     let itemFromAllCards: ICard | undefined;
+
     findItemById(of(this.arrayOfNewCards), cardId).subscribe(data => {
       item = data;
     });
@@ -102,17 +107,22 @@ export class CardService {
       itemFromAllCards = data;
     });
 
-    if (item && itemFromAllCards) {
+    if (item) {
       let index = this.arrayOfNewCards.indexOf(item);
-      let globalIndex = [...sellCards, ...rentCards].indexOf(itemFromAllCards);
 
       this.arrayOfNewCards.splice(index, 1);
 
+    }
+    if (itemFromAllCards) {
+      let sellIndex = sellCards.indexOf(itemFromAllCards);
+      let rentIndex = rentCards.indexOf(itemFromAllCards);
+
       if (itemFromAllCards.type === CardType.sell) {
-        sellCards.splice(globalIndex, 1);
+        sellCards.splice(sellIndex, 1);
       } else {
-        rentCards.splice(globalIndex, 1);
+        rentCards.splice(rentIndex, 1);
       }
+
     }
     return this.arrayOfNewCards;
   }

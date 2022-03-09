@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { IUser } from '../../core/models/user';
 import { UserService } from '../../core/services/user.service';
-import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-details',
@@ -21,12 +20,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly userService: UserService,
-    private readonly authService: AuthService,
   ) {  }
-
-  public deleteAccount():void {
-    this.authService.logout();
-  }
 
   ngOnInit(): void {
     this.user = this.userService.getLoggedUser();
