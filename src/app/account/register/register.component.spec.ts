@@ -15,7 +15,6 @@ import { FormBuilder } from '@angular/forms';
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
-  let authService: AuthService;
 
   const toastrService = {
     success: (
@@ -48,7 +47,6 @@ describe('RegisterComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
-    authService = fixture.debugElement.injector.get(AuthService);
     fixture.detectChanges();
   });
 
