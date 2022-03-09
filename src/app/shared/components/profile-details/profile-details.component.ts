@@ -9,7 +9,7 @@ import { IUser } from '../../../core/models/user';
 })
 export class ProfileDetailsComponent {
 
-  @Input() currentUser: IUser | undefined;
+  @Input() currentUser: IUser;
 
   constructor(
     private readonly authService: AuthService,
