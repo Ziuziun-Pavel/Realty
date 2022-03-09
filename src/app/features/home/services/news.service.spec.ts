@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 describe('NewsService', () => {
   let newsService: NewsService;
   let httpClientSpy: jasmine.SpyObj<HttpClient>;
+  let expectedNewsMock: NewsItem[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -22,14 +23,7 @@ describe('NewsService', () => {
     });
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     newsService = new NewsService(httpClientSpy);
-  });
-
-  it('should be created', () => {
-    expect(newsService).toBeTruthy();
-  });
-
-  it('should get news from .json', (done) => {
-    const expectedNews: NewsItem[] = [
+    expectedNewsMock = [
       {
         "id": "n1",
         "url": "/assets/img/news/9291bf4aa5acaab1cf4dd58f5fdf685f.jpg",
@@ -48,14 +42,20 @@ describe('NewsService', () => {
         "description": "Планируете купить недорогую квартиру в 2022 году, но старый жилой фонд не подходит? Мы уже показали, как выглядят и сколько стоят однушки и двушки на продажу в домах не старше 1991 года. Никаких хрущевок с маленькими кухнями! В нашей сегодняшней подборке интересные варианты трехкомнатных квартир площадью от 72 до 84 «квадратов», которые продаются в Минске. Стоимость их не превышает 86 тысяч долларов.",
         "additionalInfo": "Расположена квартира в одноэтажном кирпичном доме на улице Карла Маркса, 62−1. Окружение дома, построенного в начале прошлого века — топовое. Рядом находится центральный бобруйский рынок и главное − пешеходная улица Социалистическая. На ней можно найти не только огромное количество сувенирных лавочек и кафешек, но и самую фотографируемую достопримечательность города — бронзового Бобра. Поблизости также находится площадь Победы с большим сквером, областной драматический театр имени Дунина-Марцинкевича и городской музей.\n Площадь квартиры — всего 33,2 квадратного метра. Судя по фотографиям, жилье давно пустует и требует ремонта. В местных новостях за 2019 год, есть упоминание о том, что в квартире был пожар. На снимках, кстати, можно заметить обгоревший санузел. Однако отмечается, что в доме есть все коммуникации: электричество, отопление, канализация, водопровод и газоснабжение.\nУчитывая месторасположение жилья, вместо обычных соседей у будущих жильцов будут общественные заведения. Так, в одном доме с квартирой уже располагается аптека и кафе «Арбатъ». Возможно, будущий владелец также решит перевести квартиру в нежилой фонд.\n\nНачальная стоимость объекта — 31 тысяча рублей, или 11,9 тысяч долларов. Электронные торги, которые пройдут на площадке «БелЮрОбеспечение», назначены на 8 февраля."
       },
-    ];
+    ]
+  });
 
-    httpClientSpy.get.and.returnValue(of(expectedNews));
+  it('should be created', () => {
+    expect(newsService).toBeTruthy();
+  });
+
+  it('should get news from .json', (done) => {
+    httpClientSpy.get.and.returnValue(of(expectedNewsMock));
 
     newsService.getNews().subscribe((news) => {
       expect(news)
         .withContext('expected news')
-        .toEqual(expectedNews)
+        .toEqual(expectedNewsMock)
       done();
     })
     expect(httpClientSpy.get.calls.count())
@@ -63,6 +63,20 @@ describe('NewsService', () => {
       .toBe(1);
   });
 
+  it('should get news by id', (done) => {
+    let cardId = 'n1';
+    httpClientSpy.get.and.returnValue(of(expectedNewsMock));
+
+    newsService.getNewsById(cardId).subscribe((item) => {
+      expect(item?.id)
+        .withContext('expected news')
+        .toBe('n1');
+      done();
+    })
+    expect(httpClientSpy.get.calls.count())
+      .withContext('one call')
+      .toBe(1);
+  });
 
 
 
