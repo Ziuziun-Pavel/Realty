@@ -78,6 +78,4 @@ describe('NewsService', () => {
       .toBe(1);
   });
 
-
-
 });
