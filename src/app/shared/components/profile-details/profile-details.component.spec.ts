@@ -3,8 +3,6 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { ProfileDetailsComponent } from './profile-details.component';
 import { AuthService } from '../../../core/services/auth.service';
 import { MockAuthService } from '../../../core/services/auth.service.mock';
-import { UserService } from '../../../core/services/user.service';
-import { MockUserService } from '../../../core/services/user.service.mock';
 import { IUser } from '../../../core/models/user';
 import { By } from '@angular/platform-browser';
 
@@ -20,9 +18,9 @@ describe('ProfileDetailsComponent', () => {
       providers: [
         {
           provide: AuthService,
-          useClass: MockAuthService
+          useClass: MockAuthService,
         },
-        ],
+      ],
     })
       .compileComponents();
   });
@@ -48,7 +46,7 @@ describe('ProfileDetailsComponent', () => {
 
   it('should correctly render title', () => {
     const title = fixture.debugElement.query(By.css('.title-name'));
-    expect(title.nativeElement.textContent).toEqual(MockUser.userName + ' ' + MockUser.userSurname )
+    expect(title.nativeElement.textContent).toEqual(MockUser.userName + ' ' + MockUser.userSurname );
   });
 
   it('should go to url with adverts',  () => {
@@ -61,7 +59,7 @@ describe('ProfileDetailsComponent', () => {
   it('should call isAdmin from AuthService', () => {
     const spy = spyOn(authService, 'isAdmin').and.returnValue(true);
     component.isAdmin();
-    expect(spy.calls.any()).toBeTruthy()
+    expect(spy.calls.any()).toBeTruthy();
   });
 
   it('should call signOut', fakeAsync(() => {

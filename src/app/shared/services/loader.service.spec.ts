@@ -1,4 +1,4 @@
-import { fakeAsync, flush, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { LoaderService } from './loader.service';
 import { MockLoaderService } from './loader.service.mock';
@@ -11,9 +11,9 @@ describe('LoaderService', () => {
       providers: [
         {
           provide: LoaderService,
-          useClass: MockLoaderService
+          useClass: MockLoaderService,
         },
-      ]
+      ],
     });
     loaderService = TestBed.inject(LoaderService);
   });

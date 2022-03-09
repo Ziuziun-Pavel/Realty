@@ -16,10 +16,10 @@ describe('LoaderComponent', () => {
       providers: [
         {
           provide: LoaderService,
-          useClass: MockLoaderService
+          useClass: MockLoaderService,
         },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });
@@ -36,7 +36,7 @@ describe('LoaderComponent', () => {
   });
 
   it('should take a value from loaderService', () => {
-    expect(component.isLoading).toEqual(loaderService.isLoading)
+    expect(component.isLoading).toEqual(loaderService.isLoading);
   });
 
 });

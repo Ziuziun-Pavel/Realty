@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { IUser } from '../models/user';
 
 describe('UserService', () => {
-  let service: UserService
+  let service: UserService;
   let MockUser: IUser;
 
 
@@ -41,7 +41,7 @@ describe('UserService', () => {
     service.getUsers();
 
     expect(service.getUsers).toHaveBeenCalled();
-    expect(users.length).toBe(1)
+    expect(users.length).toBe(1);
   });
 
   it('should update user', (done) => {
@@ -57,7 +57,7 @@ describe('UserService', () => {
       user = updatedUser;
       expect(service.updateUser).toHaveBeenCalled();
       expect(user).toEqual(updatedUser);
-    })
+    });
     done();
   });
 

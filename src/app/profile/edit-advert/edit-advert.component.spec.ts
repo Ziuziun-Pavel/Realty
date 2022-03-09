@@ -4,10 +4,9 @@ import { EditAdvertComponent } from './edit-advert.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '../../core/services/auth.service';
 import { MockAuthService } from '../../core/services/auth.service.mock';
-import { FormBuilder } from '@angular/forms';
 import { LoaderService } from '../../shared/services/loader.service';
 import { MockLoaderService } from '../../shared/services/loader.service.mock';
-import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { CardService } from '../../features/home/services/card.service';
 import { MockCardService } from '../../features/home/services/card.service.mock';
 
@@ -17,14 +16,8 @@ describe('EditAdvertComponent', () => {
 
   const toastrService = {
     success: (
-      message?: string,
-      title?: string,
-      override?: Partial<IndividualConfig>
     ) => {},
     error: (
-      message?: string,
-      title?: string,
-      override?: Partial<IndividualConfig>
     ) => {},
   };
 
@@ -35,18 +28,18 @@ describe('EditAdvertComponent', () => {
       providers: [
         {
           provide: AuthService,
-          useClass: MockAuthService
+          useClass: MockAuthService,
         },
-      {
-        provide: CardService,
-        useClass: MockCardService
-      },
-      {
-        provide: LoaderService,
-        useClass: MockLoaderService
-      },
-      { provide: ToastrService, useValue: toastrService }
-    ],
+        {
+          provide: CardService,
+          useClass: MockCardService,
+        },
+        {
+          provide: LoaderService,
+          useClass: MockLoaderService,
+        },
+        { provide: ToastrService, useValue: toastrService },
+      ],
     })
       .compileComponents();
   });

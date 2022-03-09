@@ -17,8 +17,8 @@ describe('DetailsComponent', () => {
         {
           provide: UserService,
           useClass: MockUserService,
-        }
-      ]
+        },
+      ],
     })
       .compileComponents();
   });
@@ -45,9 +45,9 @@ describe('DetailsComponent', () => {
     spyOn(userService, 'getLoggedUser').and.returnValue(of(loggedUser));
     userService.getLoggedUser().subscribe((value) => {
       component.currentUser = value;
-    })
+    });
     tick(0);
-    fixture.detectChanges()
+    fixture.detectChanges();
     expect(component.currentUser).toEqual(loggedUser);
   }));
 

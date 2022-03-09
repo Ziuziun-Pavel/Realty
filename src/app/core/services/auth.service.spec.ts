@@ -1,16 +1,14 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 import { MockAuthService } from './auth.service.mock';
 import { IUser } from '../models/user';
 import { of } from 'rxjs';
-import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthService', () => {
   let authService: AuthService;
   let MockUser: IUser;
-  let router: Router;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -19,8 +17,8 @@ describe('AuthService', () => {
         {
           provide: AuthService,
           useClass: MockAuthService,
-        }
-      ]
+        },
+      ],
     });
     MockUser = {
       id: '1sd78sdf',
@@ -29,7 +27,6 @@ describe('AuthService', () => {
       userEmail: 'asd@gmail.com',
       password: '1234567',
     };
-    router = TestBed.get(Router);
     authService = TestBed.inject(AuthService);
   });
 
@@ -38,11 +35,11 @@ describe('AuthService', () => {
   });
 
   it('should check if the user is authorized', () => {
-    expect(MockUser).toBeTruthy()
+    expect(MockUser).toBeTruthy();
   });
 
   it('should check if the user is admin', () => {
-    expect(MockUser.role).toBeUndefined()
+    expect(MockUser.role).toBeUndefined();
   });
 
   it('the user should sign in', (done) => {
@@ -51,9 +48,9 @@ describe('AuthService', () => {
     authService.login(MockUser).subscribe(() => {
       user = MockUser;
       expect(authService.login).toHaveBeenCalledOnceWith(MockUser);
-      expect(user).toEqual(MockUser)
+      expect(user).toEqual(MockUser);
       done();
-    })
+    });
   });
 
   it('the user should correctly register', (done) => {
@@ -64,10 +61,10 @@ describe('AuthService', () => {
 
     authService.register(MockUser.userName, MockUser.userSurname, MockUser.userEmail, '1234567').subscribe(() => {
       user.push(MockUser);
-    })
+    });
 
     expect(authService.register).toHaveBeenCalled();
-    expect(user.length).toBe(1)
+    expect(user.length).toBe(1);
 
     done();
   });

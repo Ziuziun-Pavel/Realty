@@ -16,10 +16,10 @@ describe('AdvertsListComponent', () => {
       providers: [
         {
           provide: CardService,
-          useClass: MockCardService
+          useClass: MockCardService,
         },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });

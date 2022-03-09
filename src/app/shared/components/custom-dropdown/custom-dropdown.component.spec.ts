@@ -48,13 +48,13 @@ describe('CustomDropdownComponent', () => {
 
   it('should render SelectedOption state', () => {
     const state = fixture.debugElement.query(By.css('#button-basic'));
-    expect(state.nativeElement.textContent).toEqual(component.selectedOption.state)
+    expect(state.nativeElement.textContent).toEqual(component.selectedOption.state);
   });
 
   it('should call changeSelectedOption method', fakeAsync(() => {
     let fnc = spyOn(component, 'changeSelectedOption');
     let button = fixture.debugElement.query(By.css('span'));
-    button.triggerEventHandler('click',null);
+    button.triggerEventHandler('click', null);
     tick();
     fixture.detectChanges();
     expect(fnc.calls.any).toBeTruthy();
@@ -64,7 +64,7 @@ describe('CustomDropdownComponent', () => {
     spyOn(component, 'writeValue');
     let value: SelectedOption = {
       state: 'Цена',
-      value: ''
+      value: '',
     };
     component.writeValue(value);
     expect(component.selectedOption).toEqual(value);
