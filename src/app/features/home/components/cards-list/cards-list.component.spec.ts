@@ -13,7 +13,7 @@ describe('CardsListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CardsListComponent ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });
@@ -40,7 +40,7 @@ describe('CardsListComponent', () => {
         'telNumber': '+375-44-543-12-00',
         'type': CardType.sell,
         'description': 'К приобретению доступна квартира 76 м.кв. со свободной планировкой которая располагается в жилом комплексе премиум-класса «Олимпик Парк» (дом 13) на пересечении улиц Тимирязева и Ратомской рядом с водохранилищем Дрозды. Жилой комплекс прилегает к республиканскому заказнику «Лебяжий».\n\n«Олимпик Парк» — тихий уголок в одном из самых живописных и наименее заселенных мест Минска. Каждая деталь малоэтажного квартала премиум-класса создана, чтобы дарить комфорт. Дома ЖК «Олимпик Парк» образуют уютный двор с изобилием зелени и прогулочными местами для спокойного семейного отдыха. Самые активные оценят наличие велосипедных дорожек рядом с собственным домом.',
-      }
+      },
     ];
     fixture.detectChanges();
   });
@@ -57,7 +57,7 @@ describe('CardsListComponent', () => {
 
   it('should filter cards by type', () => {
     component.sellCards = MockCardsArray;
-    expect(component.sellCards).toEqual(MockCardsArray)
+    expect(component.sellCards).toEqual(MockCardsArray);
   });
 
 });

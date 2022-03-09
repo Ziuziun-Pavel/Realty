@@ -5,8 +5,6 @@ import { IUser } from '../models/user';
 @Injectable()
 export class MockAuthService {
 
-  constructor() {  }
-
   public isUserAuthorised(): boolean {
     return true;
   }
@@ -16,7 +14,7 @@ export class MockAuthService {
   }
 
   public login(){
-    return of({})
+    return of({});
   }
 
   public register(): Observable<IUser[]> {

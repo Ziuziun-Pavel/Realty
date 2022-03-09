@@ -16,10 +16,10 @@ describe('NewsListComponent', () => {
       providers: [
         {
           provide: NewsService,
-          useClass: MockNewsService
+          useClass: MockNewsService,
         },
-        ],
-      schemas: [NO_ERRORS_SCHEMA]
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });

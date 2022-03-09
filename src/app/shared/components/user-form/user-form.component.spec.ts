@@ -14,7 +14,7 @@ describe('UserFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UserFormComponent ],
-      providers: [FormBuilder]
+      providers: [FormBuilder],
     })
       .compileComponents();
   });
@@ -82,14 +82,14 @@ describe('UserFormComponent', () => {
     const fnc = spyOn(component, 'onSubmit');
     const form = fixture.debugElement.query(By.css('form'));
 
-    form.triggerEventHandler('ngSubmit',null);
+    form.triggerEventHandler('ngSubmit', null);
     expect(fnc).toHaveBeenCalled();
   }));
 
   it('should @Output form', (() => {
     spyOn(component.Submit, 'emit');
     const form = fixture.debugElement.query(By.css('form'));
-    form.triggerEventHandler('ngSubmit',null);
+    form.triggerEventHandler('ngSubmit', null);
     fixture.detectChanges();
     expect(component.Submit.emit).toBeTruthy();
   }));

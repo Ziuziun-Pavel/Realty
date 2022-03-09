@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FlatPageComponent } from './flat-page.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -10,7 +10,6 @@ import { MockCardService } from '../../../services/card.service.mock';
 describe('PageComponent', () => {
   let component: FlatPageComponent;
   let fixture: ComponentFixture<FlatPageComponent>;
-  let cardService: CardService;
   let MockCard: ICard;
 
   beforeEach(async () => {
@@ -21,8 +20,8 @@ describe('PageComponent', () => {
         {
           provide: CardService,
           useClass: MockCardService,
-        }
-      ]
+        },
+      ],
     })
       .compileComponents();
   });
@@ -30,7 +29,6 @@ describe('PageComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FlatPageComponent);
     component = fixture.componentInstance;
-    cardService = fixture.debugElement.injector.get(CardService);
     MockCard = {
       'id': '1s',
       'url': '../../assets/img/flatsForSelling/1617587576_17-p-stil-kontemporari-v-interere-kvartiri-18.jpg',

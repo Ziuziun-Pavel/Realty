@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../core/services/auth.service';
 import { MockAuthService } from '../../core/services/auth.service.mock';
 import { LoaderService } from '../../shared/services/loader.service';
@@ -17,14 +17,8 @@ describe('LoginComponent', () => {
 
   const toastrService = {
     success: (
-      message?: string,
-      title?: string,
-      override?: Partial<IndividualConfig>
     ) => {},
     error: (
-      message?: string,
-      title?: string,
-      override?: Partial<IndividualConfig>
     ) => {},
   };
 
@@ -36,15 +30,15 @@ describe('LoginComponent', () => {
         FormBuilder,
         {
           provide: AuthService,
-          useClass: MockAuthService
+          useClass: MockAuthService,
         },
         {
           provide: LoaderService,
-          useClass: MockLoaderService
+          useClass: MockLoaderService,
         },
-        { provide: ToastrService, useValue: toastrService }
+        { provide: ToastrService, useValue: toastrService },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });
@@ -77,12 +71,12 @@ describe('LoginComponent', () => {
     component.loginForm.controls.userEmail.setValue('asd@asd.com');
     component.loginForm.controls.password.setValue('text');
     expect(component.loginForm.valid).toBeTruthy();
-  })
+  });
 
   it('should test for correct email', () => {
     component.loginForm.controls.userEmail.setValue('asdfdfdfd');
     expect(component.loginForm.hasError('email')).toBeDefined();
-  })
+  });
 
   it('should be required', () => {
     expect(component.loginForm.controls.password.hasError('required')).toBeTruthy();
@@ -96,7 +90,7 @@ describe('LoginComponent', () => {
     const fnc = spyOn(component, 'onSubmit');
     const form = fixture.debugElement.query(By.css('form'));
 
-    form.triggerEventHandler('ngSubmit',null);
+    form.triggerEventHandler('ngSubmit', null);
     expect(fnc).toHaveBeenCalled();
   }));
 

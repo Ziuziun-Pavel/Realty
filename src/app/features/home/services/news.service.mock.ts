@@ -7,10 +7,8 @@ import { NewsItem } from '../../../core/models/news';
 })
 export class MockNewsService {
 
-  constructor() { }
-
   public getNews(): Observable<Array<NewsItem>> {
-    return of([])
+    return of([]);
   }
 
   public getNewsById() {

@@ -23,10 +23,10 @@ describe('CardComponent', () => {
         },
         {
           provide: CardService,
-          useClass: MockCardService
+          useClass: MockCardService,
         },
       ],
-      schemas: [NO_ERRORS_SCHEMA]
+      schemas: [NO_ERRORS_SCHEMA],
     })
       .compileComponents();
   });
@@ -47,14 +47,14 @@ describe('CardComponent', () => {
   it('should call isAdmin from AuthService', () => {
     const spy = spyOn(authService, 'isAdmin').and.returnValue(true);
     component.isAdmin();
-    expect(spy.calls.any()).toBeTruthy()
+    expect(spy.calls.any()).toBeTruthy();
   });
 
   it('should call Delete() from CardService', () => {
     const spy = spyOn(cardService, 'deleteCard');
     const cardId = '1huhu2b';
     component.onDelete(cardId);
-    expect(spy.calls.any()).toBeTruthy()
+    expect(spy.calls.any()).toBeTruthy();
   });
 
   it('should call getSellCards from CardService', () => {

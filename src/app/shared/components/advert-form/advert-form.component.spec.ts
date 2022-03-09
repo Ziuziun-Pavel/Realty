@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdvertFormComponent } from './advert-form.component';
 import { FormBuilder } from '@angular/forms';
 import { FormConfig } from '../../../core/models/formConfig';
-import { Input } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 describe('AdvertFormComponent', () => {
@@ -14,7 +13,7 @@ describe('AdvertFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AdvertFormComponent ],
-      providers: [FormBuilder]
+      providers: [FormBuilder],
     })
       .compileComponents();
   });
@@ -39,7 +38,7 @@ describe('AdvertFormComponent', () => {
     const inputStreet = component.advertForm.controls.street;
 
     inputPrice.setValue(400000);
-    inputStreet.setValue('ул. Пушкина')
+    inputStreet.setValue('ул. Пушкина');
 
     expect(inputPrice).toBeTruthy();
     expect(inputStreet).toBeTruthy();
@@ -71,14 +70,14 @@ describe('AdvertFormComponent', () => {
     const fnc = spyOn(component, 'onSubmit');
     const form = fixture.debugElement.query(By.css('form'));
 
-    form.triggerEventHandler('ngSubmit',null);
+    form.triggerEventHandler('ngSubmit', null);
     expect(fnc).toHaveBeenCalled();
   }));
 
   it('should correctly @Output form', (() => {
     spyOn(component.Submit, 'emit');
     const form = fixture.debugElement.query(By.css('form'));
-    form.triggerEventHandler('ngSubmit',null);
+    form.triggerEventHandler('ngSubmit', null);
     fixture.detectChanges();
     expect(component.Submit.emit).toBeTruthy();
   }));

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddAdvertsComponent } from './add-adverts.component';
-import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CardService } from '../../features/home/services/card.service';
 import { MockCardService } from '../../features/home/services/card.service.mock';
@@ -15,14 +15,8 @@ describe('AddAdvertsComponent', () => {
 
   const toastrService = {
     success: (
-      message?: string,
-      title?: string,
-      override?: Partial<IndividualConfig>
     ) => {},
     error: (
-      message?: string,
-      title?: string,
-      override?: Partial<IndividualConfig>
     ) => {},
   };
   beforeEach(async () => {
@@ -32,13 +26,13 @@ describe('AddAdvertsComponent', () => {
       providers: [
         {
           provide: CardService,
-          useClass: MockCardService
+          useClass: MockCardService,
         },
         {
           provide: LoaderService,
-          useClass: MockLoaderService
+          useClass: MockLoaderService,
         },
-        { provide: ToastrService, useValue: toastrService }
+        { provide: ToastrService, useValue: toastrService },
       ],
       schemas: [NO_ERRORS_SCHEMA],
     })

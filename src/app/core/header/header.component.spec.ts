@@ -3,7 +3,6 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { HeaderComponent } from './header.component';
 import { MockAuthService } from '../services/auth.service.mock';
 import { AuthService } from '../services/auth.service';
-import { Role } from '../models/role.rs';
 import { IUser } from '../models/user';
 
 describe('HeaderComponent', () => {
@@ -11,7 +10,6 @@ describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
   let authService: AuthService;
   let MockUser: IUser;
-  let MockAdmin: IUser;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,7 +17,7 @@ describe('HeaderComponent', () => {
       providers: [
         {
           provide: AuthService,
-          useClass: MockAuthService
+          useClass: MockAuthService,
         },
       ],
     })
@@ -49,13 +47,13 @@ describe('HeaderComponent', () => {
   it('should call isAuthorized from AuthService', () => {
     const spy = spyOn(authService, 'isUserAuthorised').and.returnValue(true);
     component.isAuthorized();
-    expect(spy.calls.any()).toBeTruthy()
+    expect(spy.calls.any()).toBeTruthy();
   });
 
   it('should call isAdmin from AuthService', () => {
     const spy = spyOn(authService, 'isAdmin').and.returnValue(true);
     component.isAdmin();
-    expect(spy.calls.any()).toBeTruthy()
+    expect(spy.calls.any()).toBeTruthy();
   });
 
   it('should call signOut', fakeAsync(() => {
@@ -63,7 +61,7 @@ describe('HeaderComponent', () => {
     let button = fixture.debugElement.nativeElement.querySelector('.out');
     button.click();
     tick();
-    fixture.detectChanges()
+    fixture.detectChanges();
     expect(component.signOut).toHaveBeenCalled();
   }));
 
