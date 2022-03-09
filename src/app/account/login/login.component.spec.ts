@@ -48,7 +48,6 @@ describe('LoginComponent', () => {
     component = fixture.componentInstance;
     component.ngOnInit();
     fixture.detectChanges();
-    spyOn(component.router, 'navigate');
   });
 
   it('should create', () => {

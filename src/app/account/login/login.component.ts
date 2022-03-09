@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private readonly formBuilder: FormBuilder,
     private readonly authService: AuthService,
     private readonly loaderService: LoaderService,
-    readonly router: Router,
+    private readonly router: Router,
     private readonly toastr: ToastrService,
   ) {  }
 
