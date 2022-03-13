@@ -14,6 +14,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let authService: AuthService;
 
   const toastrService = {
     success: (
@@ -46,23 +47,13 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    authService = fixture.debugElement.injector.get(AuthService);
     component.ngOnInit();
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should render input elements', () => {
-    const email = component.loginForm.controls.userEmail;
-    const password = component.loginForm.controls.password;
-
-    email.setValue('asd@gmail.com');
-    password.setValue('1234567');
-
-    expect(email).toBeTruthy();
-    expect(password).toBeTruthy();
   });
 
   it('should test form validity', () => {
@@ -72,25 +63,19 @@ describe('LoginComponent', () => {
     expect(component.loginForm.valid).toBeTruthy();
   });
 
-  it('should test for correct email', () => {
-    component.loginForm.controls.userEmail.setValue('asdfdfdfd');
-    expect(component.loginForm.hasError('email')).toBeDefined();
-  });
-
-  it('should be required', () => {
-    expect(component.loginForm.controls.password.hasError('required')).toBeTruthy();
-
-    component.loginForm.controls.password.setValue('a');
-
-    expect(component.loginForm.controls.password.hasError('required')).toBeFalse();
+  it('button should be disabled if the form is invalid', () => {
+    const button = fixture.debugElement.query(By.css('.btn-register')).nativeElement;
+    component.loginForm.controls.userEmail.setValue('');
+    component.loginForm.controls.password.setValue('');
+    expect(button['disabled']).toBeTruthy();
   });
 
   it('should call the onSubmit() method', (() => {
-    const fnc = spyOn(component, 'onSubmit');
+    const fnc = spyOn(authService, 'login');
     const form = fixture.debugElement.query(By.css('form'));
 
     form.triggerEventHandler('ngSubmit', null);
-    expect(fnc).toHaveBeenCalled();
+    expect(fnc.calls.any).toBeTruthy();
   }));
 
   it('should go to url, if user has no account',  () => {

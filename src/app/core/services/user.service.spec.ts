@@ -52,7 +52,7 @@ describe('UserService', () => {
       userEmail: 'lllk@gmail.com',
       password: '5346876',
     };
-    spyOn(service, 'updateUser').and.returnValue(of(MockUser));
+    spyOn(service, 'updateUser').and.returnValue(of(updatedUser));
     service.updateUser(updatedUser).subscribe((user) => {
       user = updatedUser;
       expect(service.updateUser).toHaveBeenCalled();

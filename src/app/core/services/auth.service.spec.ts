@@ -11,7 +11,7 @@ describe('AuthService', () => {
   let MockUser: IUser;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
+     TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes([])],
       providers: [
         {
@@ -20,6 +20,7 @@ describe('AuthService', () => {
         },
       ],
     });
+
     MockUser = {
       id: '1sd78sdf',
       userName: 'John',
@@ -34,13 +35,6 @@ describe('AuthService', () => {
     expect(authService).toBeTruthy();
   });
 
-  it('should check if the user is authorized', () => {
-    expect(MockUser).toBeTruthy();
-  });
-
-  it('should check if the user is admin', () => {
-    expect(MockUser.role).toBeUndefined();
-  });
 
   it('the user should sign in', (done) => {
     let user;
@@ -74,10 +68,8 @@ describe('AuthService', () => {
     authServiceSpy.logout();
 
     expect(authServiceSpy.logout).toHaveBeenCalled();
-    expect(localStorage.length).toBe(0);
+    expect(localStorage.clear).toBeTruthy();
     done();
   });
-
-
 
 });

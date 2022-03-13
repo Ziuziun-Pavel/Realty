@@ -15,12 +15,16 @@ export class MockAuthService {
     return true;
   }
 
-  public login(){
+  public login(): Observable<object>{
     return of({});
   }
 
   public register(): Observable<IUser[]> {
     return of([]);
+  }
+
+  public logout(): void {
+
   }
 
   public getUserById() {

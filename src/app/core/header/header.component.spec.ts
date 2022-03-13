@@ -3,13 +3,11 @@ import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testin
 import { HeaderComponent } from './header.component';
 import { MockAuthService } from '../services/auth.service.mock';
 import { AuthService } from '../services/auth.service';
-import { IUser } from '../models/user';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let authService: AuthService;
-  let MockUser: IUser;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -29,13 +27,6 @@ describe('HeaderComponent', () => {
     component = fixture.componentInstance;
     authService = fixture.debugElement.injector.get(AuthService);
 
-    MockUser = {
-      id: '1sdh34hn',
-      userName: 'John',
-      userSurname: 'Smith',
-      userEmail: 'asd@gmail.com',
-      password: '12345678',
-    };
     fixture.detectChanges();
   });
 
@@ -45,34 +36,24 @@ describe('HeaderComponent', () => {
   });
 
   it('should call isAuthorized from AuthService', () => {
-    const spy = spyOn(authService, 'isUserAuthorised').and.returnValue(true);
+    const spy = spyOn(authService, 'isUserAuthorised');
     component.isAuthorized();
     expect(spy.calls.any()).toBeTruthy();
   });
 
   it('should call isAdmin from AuthService', () => {
-    const spy = spyOn(authService, 'isAdmin').and.returnValue(true);
+    const spy = spyOn(authService, 'isAdmin');
     component.isAdmin();
     expect(spy.calls.any()).toBeTruthy();
   });
 
   it('should call signOut', fakeAsync(() => {
-    spyOn(component, 'signOut');
+    const spy = spyOn(authService, 'logout');
     let button = fixture.debugElement.nativeElement.querySelector('.out');
     button.click();
     tick();
     fixture.detectChanges();
-    expect(component.signOut).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
   }));
-
-  it('should check if the user is authorized', () => {
-    component.isAuthorized();
-    expect(MockUser).toBeDefined();
-  });
-
-  it('should check for admin', () => {
-    component.isAdmin();
-    expect(MockUser.role).toBeUndefined();
-  });
 
 });
