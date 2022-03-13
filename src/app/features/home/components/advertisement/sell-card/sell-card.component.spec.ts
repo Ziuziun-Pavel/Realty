@@ -40,12 +40,11 @@ describe('CardComponent', () => {
   });
 
   it('should create', () => {
-    expect(component)
-      .toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it('should call isAdmin from AuthService', () => {
-    const spy = spyOn(authService, 'isAdmin').and.returnValue(true);
+    const spy = spyOn(authService, 'isAdmin');
     component.isAdmin();
     expect(spy.calls.any()).toBeTruthy();
   });

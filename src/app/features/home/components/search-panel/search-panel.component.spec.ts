@@ -11,6 +11,8 @@ import {
 } from '../../../../shared/components/custom-dropdown/custom-dropdown.component';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ICard } from '../../../../core/models/cards';
+import { of } from 'rxjs';
 
 describe('SearchPanelComponent', () => {
   let component: SearchPanelComponent;
@@ -46,18 +48,13 @@ describe('SearchPanelComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render input elements', () => {
-    const searchInput = component.searchingForm.controls.search;
-    searchInput.setValue('asdas');
-    expect(searchInput).toBeTruthy();
-  });
-
-  it('should call the onSearch ', (() => {
-    const fnc = spyOn(component, 'onSearch');
+  it('should emit event when the user clicked search button ', (() => {
+    spyOn(component.filtered, 'emit');
     const button = fixture.debugElement.query(By.css('.btn-search'));
 
     button.triggerEventHandler('click', null);
-    expect(fnc).toHaveBeenCalled();
+    fixture.detectChanges()
+    expect(component.filtered.emit).toBeTruthy();
   }));
 
   it('should call the onReset ', (() => {
@@ -68,23 +65,7 @@ describe('SearchPanelComponent', () => {
     expect(fnc).toHaveBeenCalled();
   }));
 
-  it('should correctly @Output filteredCards', (() => {
-    spyOn(component.filtered, 'emit');
-    const button = fixture.debugElement.query(By.css('.btn-search'));
-    button.triggerEventHandler('click', null);
-    fixture.detectChanges();
-    expect(component.filtered.emit).toBeTruthy();
-  }));
-
-  it('should correctly call filterCards() method from filterService', (() => {
-    const filterService = jasmine.createSpyObj('FilterService', ['filterCards']);
-    const button = fixture.debugElement.query(By.css('.btn-search'));
-    button.triggerEventHandler('click', null);
-    fixture.detectChanges();
-    expect(filterService.filterCards.calls.any).toBeTruthy();
-  }));
-
-  it('should correctly call show() method from filterService', (() => {
+  it('should show loader when the user click search button', (() => {
     const filterService = jasmine.createSpyObj('FilterService', ['show']);
     const button = fixture.debugElement.query(By.css('.btn-search'));
     button.triggerEventHandler('click', null);
@@ -92,14 +73,14 @@ describe('SearchPanelComponent', () => {
     expect(filterService.show.calls.any).toBeTruthy();
   }));
 
-  it('should reset form',  () => {
+  it('should correctly reset form',  () => {
     const searchControl = component.searchingForm.controls.search;
     searchControl.setValue('adsa');
     component.searchingForm.reset();
     expect(searchControl.value).toBeFalsy();
   });
 
-  it('should correctly call hide() method from filterService', (() => {
+  it('should hide slider when the server gave a response', (() => {
     const filterService = jasmine.createSpyObj('FilterService', ['hide']);
     const button = fixture.debugElement.query(By.css('.btn-reset'));
     button.triggerEventHandler('click', null);

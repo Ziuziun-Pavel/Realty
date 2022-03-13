@@ -42,7 +42,8 @@ describe('PageForNewsCardComponent', () => {
 
   it('should call getNewsById from NewsService', () => {
     const newsService = jasmine.createSpyObj('NewsService', ['getNewsById']);
-    const getCardSpy = newsService.getNewsById.and.returnValue(of(MockCard));
+    const getCardSpy = newsService.getNewsById;
+    component.ngOnInit();
     fixture.detectChanges();
     expect(getCardSpy.calls.any).toBeTruthy();
   });

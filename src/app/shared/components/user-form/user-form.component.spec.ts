@@ -34,20 +34,6 @@ describe('UserFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render input elements', () => {
-    const inputName = component.userForm.controls.userName;
-    const inputEmail = component.userForm.controls.userEmail;
-    const inputPassword = component.userForm.controls.password;
-
-    inputName.setValue('John');
-    inputEmail.setValue('asd@gmail.com');
-    inputPassword.setValue('1234567');
-
-    expect(inputName).toBeTruthy();
-    expect(inputEmail).toBeTruthy();
-    expect(inputPassword).toBeTruthy();
-  });
-
   it('should test if the form is valid', () => {
     expect(component.userForm.valid).toBeFalse();
 
@@ -57,25 +43,6 @@ describe('UserFormComponent', () => {
     component.userForm.controls.confirmPassword.setValue('1234567');
 
     expect(component.userForm.valid).toBeTruthy();
-  });
-
-  it('should be required', () => {
-    expect(component.userForm.controls.userName.hasError('required')).toBeTruthy();
-    expect(component.userForm.controls.userEmail.hasError('required')).toBeTruthy();
-    expect(component.userForm.controls.password.hasError('required')).toBeTruthy();
-    expect(component.userForm.controls.confirmPassword.hasError('required')).toBeTruthy();
-
-
-    component.userForm.controls.userName.setValue('John');
-    component.userForm.controls.userEmail.setValue('asd@gmail.com');
-    component.userForm.controls.password.setValue('1234567');
-    component.userForm.controls.confirmPassword.setValue('1234567');
-
-
-    expect(component.userForm.controls.userName.hasError('required')).toBeFalse();
-    expect(component.userForm.controls.userEmail.hasError('required')).toBeFalse();
-    expect(component.userForm.controls.password.hasError('required')).toBeFalse();
-    expect(component.userForm.controls.confirmPassword.hasError('required')).toBeFalse();
   });
 
   it('should call onSubmit() method', (() => {

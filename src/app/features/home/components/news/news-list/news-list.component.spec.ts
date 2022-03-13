@@ -32,12 +32,13 @@ describe('NewsListComponent', () => {
   });
 
   it('should create', () => {
-    expect(component)
-      .toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it('should call getNews method from NewsService', () => {
     const getNewsSpy = spyOn(newsService, 'getNews');
+    component.ngOnInit();
+    fixture.detectChanges();
     expect(getNewsSpy.calls.any).toBeTruthy();
   });
 });

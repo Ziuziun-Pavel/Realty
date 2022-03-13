@@ -33,38 +33,10 @@ describe('AdvertFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render input elements', () => {
-    const inputPrice = component.advertForm.controls.price;
-    const inputStreet = component.advertForm.controls.street;
-
-    inputPrice.setValue(400000);
-    inputStreet.setValue('ул. Пушкина');
-
-    expect(inputPrice).toBeTruthy();
-    expect(inputStreet).toBeTruthy();
-  });
-
   it('should test if the form is valid', () => {
     expect(component.advertForm.valid).toBeFalse();
   });
 
-  it('should be required', () => {
-    expect(component.advertForm.controls.price.hasError('required')).toBeTruthy();
-    expect(component.advertForm.controls.street.hasError('required')).toBeTruthy();
-    expect(component.advertForm.controls.seller.hasError('required')).toBeTruthy();
-    expect(component.advertForm.controls.region.hasError('required')).toBeTruthy();
-
-
-    component.advertForm.controls.price.setValue(400000);
-    component.advertForm.controls.street.setValue('улица Пушкина');
-    component.advertForm.controls.seller.setValue('Павел');
-    component.advertForm.controls.region.setValue('Минская');
-
-    expect(component.advertForm.controls.price.hasError('required')).toBeFalse();
-    expect(component.advertForm.controls.street.hasError('required')).toBeFalse();
-    expect(component.advertForm.controls.seller.hasError('required')).toBeFalse();
-    expect(component.advertForm.controls.region.hasError('required')).toBeFalse();
-  });
 
   it('should call the onSubmit() method', (() => {
     const fnc = spyOn(component, 'onSubmit');

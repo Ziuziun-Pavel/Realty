@@ -57,23 +57,17 @@ describe('ProfileDetailsComponent', () => {
   });
 
   it('should call isAdmin from AuthService', () => {
-    const spy = spyOn(authService, 'isAdmin').and.returnValue(true);
+    const spy = spyOn(authService, 'isAdmin');
     component.isAdmin();
     expect(spy.calls.any()).toBeTruthy();
   });
 
   it('should call signOut', fakeAsync(() => {
-    spyOn(component, 'deleteAccount');
-    let button = fixture.debugElement.nativeElement.querySelector('.btn-logout');
-    button.click();
+    spyOn(authService, 'logout');
+    component.deleteAccount();
     tick();
     fixture.detectChanges();
-    expect(component.deleteAccount).toHaveBeenCalled();
+    expect(authService.logout).toHaveBeenCalled();
   }));
-
-  it('should check for admin', () => {
-    component.isAdmin();
-    expect(MockUser.role).toBeUndefined();
-  });
 
 });

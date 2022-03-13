@@ -55,9 +55,4 @@ describe('CardsListComponent', () => {
     expect(el.textContent).toEqual(title);
   });
 
-  it('should filter cards by type', () => {
-    component.sellCards = MockCardsArray;
-    expect(component.sellCards).toEqual(MockCardsArray);
-  });
-
 });
