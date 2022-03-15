@@ -7,7 +7,25 @@ import { By } from '@angular/platform-browser';
 describe('CustomDropdownComponent', () => {
   let component: CustomDropdownComponent;
   let fixture: ComponentFixture<CustomDropdownComponent>;
-  let MockOption: SelectedOption[];
+  let mockOption: SelectedOption[] = [
+    {
+      state: 'Цена',
+      value: '',
+    },
+    {
+      state: 'до 50 000$',
+      value: '50000',
+    }, {
+      state: 'до 150 000$',
+      value: '150000',
+    }, {
+      state: 'до 300 000$',
+      value: '300000',
+    }, {
+      state: 'до 600 000$',
+      value: '600000',
+    },
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,26 +37,7 @@ describe('CustomDropdownComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CustomDropdownComponent);
     component = fixture.componentInstance;
-    MockOption = [
-      {
-        state: 'Цена',
-        value: '',
-      },
-      {
-        state: 'до 50 000$',
-        value: '50000',
-      }, {
-        state: 'до 150 000$',
-        value: '150000',
-      }, {
-        state: 'до 300 000$',
-        value: '300000',
-      }, {
-        state: 'до 600 000$',
-        value: '600000',
-      },
-    ];
-    component.selectedOption = MockOption[0];
+    component.selectedOption = mockOption[0];
     fixture.detectChanges();
   });
 

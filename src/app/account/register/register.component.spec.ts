@@ -17,10 +17,8 @@ describe('RegisterComponent', () => {
   let fixture: ComponentFixture<RegisterComponent>;
 
   const toastrService = {
-    success: (
-    ) => {},
-    error: (
-    ) => {},
+    success: () => {},
+    error: () => {},
   };
 
   beforeEach(async () => {

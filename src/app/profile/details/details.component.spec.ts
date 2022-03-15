@@ -10,6 +10,7 @@ describe('DetailsComponent', () => {
   let component: DetailsComponent;
   let fixture: ComponentFixture<DetailsComponent>;
   let userService: UserService;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DetailsComponent],

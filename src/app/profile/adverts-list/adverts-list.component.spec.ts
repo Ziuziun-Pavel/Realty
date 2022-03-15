@@ -5,7 +5,6 @@ import { CardService } from '../../features/home/services/card.service';
 import { MockCardService } from '../../features/home/services/card.service.mock';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ICard } from '../../core/models/cards';
-import { of } from 'rxjs';
 
 describe('AdvertsListComponent', () => {
   let component: AdvertsListComponent;
@@ -41,11 +40,11 @@ describe('AdvertsListComponent', () => {
     let cards: ICard[];
     component.cards.subscribe((items => {
       cards = items;
-    }))
+    }));
 
     cardService.getAddedCards().subscribe((adverts) => {
-      expect(cards).toEqual(adverts)
-    })
+      expect(cards).toEqual(adverts);
+    });
     done();
   });
 

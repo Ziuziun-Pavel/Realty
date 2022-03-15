@@ -15,10 +15,8 @@ describe('EditAdvertComponent', () => {
   let fixture: ComponentFixture<EditAdvertComponent>;
 
   const toastrService = {
-    success: (
-    ) => {},
-    error: (
-    ) => {},
+    success: () => {},
+    error: () => {},
   };
 
   beforeEach(async () => {

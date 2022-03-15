@@ -10,7 +10,13 @@ describe('ProfileDetailsComponent', () => {
   let component: ProfileDetailsComponent;
   let fixture: ComponentFixture<ProfileDetailsComponent>;
   let authService: AuthService;
-  let MockUser: IUser;
+  let mockUser: IUser = {
+    id: '1sd78sdf',
+    userName: 'John',
+    userSurname: 'Smith',
+    userEmail: 'asd@gmail.com',
+    password: '1234567',
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -29,14 +35,7 @@ describe('ProfileDetailsComponent', () => {
     fixture = TestBed.createComponent(ProfileDetailsComponent);
     component = fixture.componentInstance;
     authService = fixture.debugElement.injector.get(AuthService);
-    MockUser = {
-      id: '1sd78sdf',
-      userName: 'John',
-      userSurname: 'Smith',
-      userEmail: 'asd@gmail.com',
-      password: '1234567',
-    };
-    component.currentUser = MockUser;
+    component.currentUser = mockUser;
     fixture.detectChanges();
   });
 
@@ -46,7 +45,7 @@ describe('ProfileDetailsComponent', () => {
 
   it('should correctly render title', () => {
     const title = fixture.debugElement.query(By.css('.title-name'));
-    expect(title.nativeElement.textContent).toEqual(MockUser.userName + ' ' + MockUser.userSurname );
+    expect(title.nativeElement.textContent).toEqual(mockUser.userName + ' ' + mockUser.userSurname );
   });
 
   it('should go to url with adverts',  () => {

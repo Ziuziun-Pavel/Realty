@@ -14,11 +14,10 @@ describe('AddAdvertsComponent', () => {
   let fixture: ComponentFixture<AddAdvertsComponent>;
 
   const toastrService = {
-    success: (
-    ) => {},
-    error: (
-    ) => {},
+    success: () => {},
+    error: () => {},
   };
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ AddAdvertsComponent ],

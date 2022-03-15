@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 import { MockAuthService } from '../services/auth.service.mock';
@@ -47,13 +47,13 @@ describe('HeaderComponent', () => {
     expect(spy.calls.any()).toBeTruthy();
   });
 
-  it('should call signOut', fakeAsync(() => {
+
+  it('should call signOut', () => {
     const spy = spyOn(authService, 'logout');
-    let button = fixture.debugElement.nativeElement.querySelector('.out');
+    let button = fixture.debugElement.nativeElement.querySelector('[data-btn="signout"]');
     button.click();
-    tick();
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
-  }));
+  });
 
 });

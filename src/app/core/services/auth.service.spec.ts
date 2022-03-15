@@ -1,33 +1,30 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
-import { MockAuthService } from './auth.service.mock';
 import { IUser } from '../models/user';
-import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Role } from '../models/role.rs';
 
 describe('AuthService', () => {
   let authService: AuthService;
-  let MockUser: IUser;
+  let mockUser: IUser = {
+    id: '1sd78sdf',
+    userName: 'John',
+    userSurname: 'Smith',
+    userEmail: 'asd@gmail.com',
+    role: Role.User,
+    password: '1234567',
+  };
 
   beforeEach(() => {
-     TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes([])],
       providers: [
         {
           provide: AuthService,
-          useClass: MockAuthService,
         },
       ],
     });
-
-    MockUser = {
-      id: '1sd78sdf',
-      userName: 'John',
-      userSurname: 'Smith',
-      userEmail: 'asd@gmail.com',
-      password: '1234567',
-    };
     authService = TestBed.inject(AuthService);
   });
 
@@ -35,41 +32,11 @@ describe('AuthService', () => {
     expect(authService).toBeTruthy();
   });
 
-
-  it('the user should sign in', (done) => {
-    let user;
-    spyOn(authService, 'login').and.returnValue(of(user));
-    authService.login(MockUser).subscribe(() => {
-      user = MockUser;
-      expect(authService.login).toHaveBeenCalledOnceWith(MockUser);
-      expect(user).toEqual(MockUser);
-      done();
-    });
-  });
-
-  it('the user should correctly register', (done) => {
-    let user: IUser[] = [];
-    spyOn(authService, 'register')
-      .and
-      .returnValue(of(user));
-
-    authService.register(MockUser.userName, MockUser.userSurname, MockUser.userEmail, '1234567').subscribe(() => {
-      user.push(MockUser);
-    });
-
-    expect(authService.register).toHaveBeenCalled();
-    expect(user.length).toBe(1);
-
-    done();
-  });
-
-  it('the user should sign out', (done) => {
-    const authServiceSpy = jasmine.createSpyObj('authService', ['logout']);
-    authServiceSpy.logout();
-
-    expect(authServiceSpy.logout).toHaveBeenCalled();
-    expect(localStorage.clear).toBeTruthy();
-    done();
+  it('should check if the user is admin', () => {
+    authService.loggedUser = mockUser;
+    expect(authService.isAdmin()).toBe(false);
+    mockUser.role = Role.Admin;
+    expect(authService.isAdmin()).toBe(true);
   });
 
 });

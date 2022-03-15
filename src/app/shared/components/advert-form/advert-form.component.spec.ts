@@ -8,7 +8,11 @@ import { By } from '@angular/platform-browser';
 describe('AdvertFormComponent', () => {
   let component: AdvertFormComponent;
   let fixture: ComponentFixture<AdvertFormComponent>;
-  let formConfigMock: FormConfig;
+  let formConfigMock: FormConfig = {
+    title: '',
+    submitted: false,
+    loading: false,
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -21,11 +25,6 @@ describe('AdvertFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AdvertFormComponent);
     component = fixture.componentInstance;
-    formConfigMock = {
-      title: '',
-      submitted: false,
-      loading: false,
-    };
     fixture.detectChanges();
   });
 

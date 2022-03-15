@@ -8,8 +8,11 @@ import { FormConfig } from '../../../core/models/formConfig';
 describe('UserFormComponent', () => {
   let component: UserFormComponent;
   let fixture: ComponentFixture<UserFormComponent>;
-  let formConfigMock: FormConfig;
-
+  let formConfigMock: FormConfig = {
+    title: '',
+    submitted: false,
+    loading: false,
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -22,11 +25,6 @@ describe('UserFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UserFormComponent);
     component = fixture.componentInstance;
-    formConfigMock = {
-      title: '',
-      submitted: false,
-      loading: false,
-    };
     fixture.detectChanges();
   });
 
@@ -44,14 +42,6 @@ describe('UserFormComponent', () => {
 
     expect(component.userForm.valid).toBeTruthy();
   });
-
-  it('should call onSubmit() method', (() => {
-    const fnc = spyOn(component, 'onSubmit');
-    const form = fixture.debugElement.query(By.css('form'));
-
-    form.triggerEventHandler('ngSubmit', null);
-    expect(fnc).toHaveBeenCalled();
-  }));
 
   it('should @Output form', (() => {
     spyOn(component.Submit, 'emit');

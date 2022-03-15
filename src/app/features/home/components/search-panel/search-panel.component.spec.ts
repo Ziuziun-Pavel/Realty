@@ -11,8 +11,6 @@ import {
 } from '../../../../shared/components/custom-dropdown/custom-dropdown.component';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ICard } from '../../../../core/models/cards';
-import { of } from 'rxjs';
 
 describe('SearchPanelComponent', () => {
   let component: SearchPanelComponent;
@@ -21,7 +19,7 @@ describe('SearchPanelComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule],
-      declarations: [ SearchPanelComponent, CustomDropdownComponent ],
+      declarations: [SearchPanelComponent, CustomDropdownComponent],
       providers: [
         FormBuilder,
         {
@@ -45,7 +43,8 @@ describe('SearchPanelComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component)
+      .toBeTruthy();
   });
 
   it('should emit event when the user clicked search button ', (() => {
@@ -53,8 +52,9 @@ describe('SearchPanelComponent', () => {
     const button = fixture.debugElement.query(By.css('.btn-search'));
 
     button.triggerEventHandler('click', null);
-    fixture.detectChanges()
-    expect(component.filtered.emit).toBeTruthy();
+    fixture.detectChanges();
+    expect(component.filtered.emit)
+      .toBeTruthy();
   }));
 
   it('should call the onReset ', (() => {
@@ -62,7 +62,8 @@ describe('SearchPanelComponent', () => {
     const button = fixture.debugElement.query(By.css('.btn-reset'));
 
     button.triggerEventHandler('click', null);
-    expect(fnc).toHaveBeenCalled();
+    expect(fnc)
+      .toHaveBeenCalled();
   }));
 
   it('should show loader when the user click search button', (() => {
@@ -70,14 +71,16 @@ describe('SearchPanelComponent', () => {
     const button = fixture.debugElement.query(By.css('.btn-search'));
     button.triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(filterService.show.calls.any).toBeTruthy();
+    expect(filterService.show.calls.any)
+      .toBeTruthy();
   }));
 
-  it('should correctly reset form',  () => {
+  it('should correctly reset form', () => {
     const searchControl = component.searchingForm.controls.search;
     searchControl.setValue('adsa');
     component.searchingForm.reset();
-    expect(searchControl.value).toBeFalsy();
+    expect(searchControl.value)
+      .toBeFalsy();
   });
 
   it('should hide slider when the server gave a response', (() => {
@@ -85,7 +88,8 @@ describe('SearchPanelComponent', () => {
     const button = fixture.debugElement.query(By.css('.btn-reset'));
     button.triggerEventHandler('click', null);
     fixture.detectChanges();
-    expect(filterService.hide.calls.any).toBeTruthy();
+    expect(filterService.hide.calls.any)
+      .toBeTruthy();
   }));
 
 });

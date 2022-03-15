@@ -10,17 +10,24 @@ import { MockLoaderService } from '../../shared/services/loader.service.mock';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { IUser } from '../../core/models/user';
+import { of } from 'rxjs';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let authService: AuthService;
+  let mockUser: IUser = {
+    userName: '',
+    userSurname: '',
+    id: 'ad21j23j',
+    password: '12345678',
+    userEmail: 'admisitrator1@gmail.com',
+  };
 
   const toastrService = {
-    success: (
-    ) => {},
-    error: (
-    ) => {},
+    success: () => {},
+    error: () => {},
   };
 
   beforeEach(async () => {
@@ -67,15 +74,24 @@ describe('LoginComponent', () => {
     const button = fixture.debugElement.query(By.css('.btn-register')).nativeElement;
     component.loginForm.controls.userEmail.setValue('');
     component.loginForm.controls.password.setValue('');
-    expect(button['disabled']).toBeTruthy();
+    expect(button.disabled).toBeTruthy();
   });
 
-  it('should call the onSubmit() method', (() => {
-    const fnc = spyOn(authService, 'login');
+  it('should call the onSubmit() method', ((done) => {
+    spyOn(authService, 'login').and.returnValue(of(mockUser));
     const form = fixture.debugElement.query(By.css('form'));
 
     form.triggerEventHandler('ngSubmit', null);
-    expect(fnc.calls.any).toBeTruthy();
+    component.loginForm.patchValue({
+      password: '12345678',
+      userEmail: 'admisitrator1@gmail.com',
+    });
+    authService.login(component.loginForm.value).subscribe(() => {
+      expect(component.loginForm.value.userEmail).toEqual(mockUser.userEmail);
+      expect(component.loginForm.value.password).toEqual(mockUser.password);
+    });
+    expect(authService.login).toHaveBeenCalled();
+    done();
   }));
 
   it('should go to url, if user has no account',  () => {
