@@ -3,14 +3,21 @@ import { TestBed } from '@angular/core/testing';
 import { LoaderService } from './loader.service';
 
 describe('LoaderService', () => {
-  let service: LoaderService;
+  let loaderService: LoaderService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(LoaderService);
+    TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: LoaderService,
+        },
+      ],
+    });
+    loaderService = TestBed.inject(LoaderService);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(loaderService).toBeTruthy();
   });
+
 });
