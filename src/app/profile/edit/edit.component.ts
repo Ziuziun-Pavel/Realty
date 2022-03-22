@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { FormConfig } from '../../core/models/formConfig';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { UserService } from '../../core/services/user.service';
 import { LoaderService } from '../../shared/services/loader.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup } from '@angular/forms';
+import { TakeUntilDestroy } from '../../shared/decorators/take-until-destroy.decorator';
 
 @Component({
   selector: 'app-edit',
@@ -14,8 +15,10 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+@TakeUntilDestroy
 export class EditComponent implements OnDestroy {
-  private ngUnsubscribe: Subject<boolean> = new Subject();
+  private componentDestroy: () => Observable<unknown>;
 
   public submitted = false;
 
@@ -40,7 +43,7 @@ export class EditComponent implements OnDestroy {
     this.loading = true;
     this.loaderService.show();
     this.userService.updateUser(userForm.value)
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.componentDestroy()))
       .subscribe(
         () => {
           this.loading = false;
@@ -56,8 +59,5 @@ export class EditComponent implements OnDestroy {
       );
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next(true);
-    this.ngUnsubscribe.complete();
-  }
+  ngOnDestroy() { }
 }

@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { FormConfig } from '../../core/models/formConfig';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, takeUntil } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { UserService } from '../../core/services/user.service';
 import { LoaderService } from '../../shared/services/loader.service';
 import { ToastrService } from 'ngx-toastr';
+import { TakeUntilDestroy } from '../../shared/decorators/take-until-destroy.decorator';
 
 @Component({
   selector: 'app-register',
@@ -14,8 +15,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+@TakeUntilDestroy
 export class RegisterComponent implements OnDestroy {
-  private ngUnsubscribe: Subject<boolean> = new Subject();
+  private componentDestroy: () => Observable<unknown>;
 
   public submitted = false;
 
@@ -45,7 +48,7 @@ export class RegisterComponent implements OnDestroy {
       userForm.controls.userEmail.value,
       userForm.controls.password.value,
     )
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.componentDestroy()))
       .subscribe(
         () => {
           this.loading = false;
@@ -61,8 +64,5 @@ export class RegisterComponent implements OnDestroy {
       );
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next(true);
-    this.ngUnsubscribe.complete();
-  }
+  ngOnDestroy() {  }
 }

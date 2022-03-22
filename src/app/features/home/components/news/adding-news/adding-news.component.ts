@@ -1,18 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoaderService } from '../../../../../shared/services/loader.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NewsService } from '../../../services/news.service';
+import { TakeUntilDestroy } from '../../../../../shared/decorators/take-until-destroy.decorator';
 
 @Component({
   selector: 'app-adding-news',
   templateUrl: './adding-news.component.html',
   styleUrls: ['./adding-news.component.scss'],
 })
-export class AddingNewsComponent implements OnInit, OnDestroy {
-  private ngUnsubscribe: Subject<boolean> = new Subject();
+
+@TakeUntilDestroy
+export class AddingNewsComponent implements OnInit {
+  private componentDestroy: () => Observable<unknown>;
 
   public submitted = false;
 
@@ -53,7 +56,7 @@ export class AddingNewsComponent implements OnInit, OnDestroy {
     this.loaderService.show();
 
     this.newsService.addNews(this.newsForm.value)
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.componentDestroy()))
       .subscribe(
         () => {
           this.loaderService.hide();
@@ -67,9 +70,6 @@ export class AddingNewsComponent implements OnInit, OnDestroy {
       );
   }
 
-  ngOnDestroy() {
-    this.ngUnsubscribe.next(true);
-    this.ngUnsubscribe.complete();
-  }
+  ngOnDestroy() { }
 
 }
