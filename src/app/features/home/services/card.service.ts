@@ -5,12 +5,15 @@ import { sellCards } from '../../../../assets/data/sellCard';
 import { rentCards } from '../../../../assets/data/rentCards';
 import { findItemById } from '../../../shared/utilits/findItemById';
 import * as uniqid from 'uniqid';
+import { favCards } from '../../../../assets/data/favouriteCards';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CardService {
   private arrayOfNewCards: ICard[] = [];
+
+  private set: Set<string> = new Set();
 
   private card: ICard;
 
@@ -42,7 +45,6 @@ export class CardService {
     return of(this.arrayOfNewCards);
   }
 
-
   public addNewCard(card: ICard): Observable<ICard[]> {
     card.id = uniqid();
 
@@ -59,12 +61,14 @@ export class CardService {
     let editAdvert: ICard | undefined;
     let editAdvertFromAllCardsArray: ICard | undefined;
 
-    findItemById(of(this.arrayOfNewCards), cardId).subscribe(data => {
-      editAdvert = data;
-    });
-    findItemById(this.getAllCards(), cardId).subscribe(data => {
-      editAdvertFromAllCardsArray = data;
-    });
+    findItemById(of(this.arrayOfNewCards), cardId)
+      .subscribe(data => {
+        editAdvert = data;
+      });
+    findItemById(this.getAllCards(), cardId)
+      .subscribe(data => {
+        editAdvertFromAllCardsArray = data;
+      });
 
     this.card = {
       ...editCard,
@@ -82,8 +86,7 @@ export class CardService {
       let sellIndex = sellCards.indexOf(editAdvertFromAllCardsArray);
       let rentIndex = rentCards.indexOf(editAdvertFromAllCardsArray);
 
-
-      if (this.card.type === CardType.sell ) {
+      if (this.card.type === CardType.sell) {
         sellCards.splice(sellIndex, 1);
         sellCards.push(this.card);
       } else {
@@ -100,19 +103,20 @@ export class CardService {
     let item: ICard | undefined;
     let itemFromAllCards: ICard | undefined;
 
-    findItemById(of(this.arrayOfNewCards), cardId).subscribe(data => {
-      item = data;
-    });
-    findItemById(this.getAllCards(), cardId).subscribe(data => {
-      itemFromAllCards = data;
-    });
+    findItemById(of(this.arrayOfNewCards), cardId)
+      .subscribe(data => {
+        item = data;
+      });
+    findItemById(this.getAllCards(), cardId)
+      .subscribe(data => {
+        itemFromAllCards = data;
+      });
 
     if (item) {
       let index = this.arrayOfNewCards.indexOf(item);
-
       this.arrayOfNewCards.splice(index, 1);
-
     }
+
     if (itemFromAllCards) {
       let sellIndex = sellCards.indexOf(itemFromAllCards);
       let rentIndex = rentCards.indexOf(itemFromAllCards);
@@ -127,5 +131,47 @@ export class CardService {
     return this.arrayOfNewCards;
   }
 
+  getFavouriteCards(): Observable<ICard[]> {
+
+    this.set.forEach(id => {
+      if (favCards.find(card => card.id === id)) {
+        return;
+      }
+      findItemById(this.getAllCards(), id)
+        .subscribe(card => {
+          if (card) {
+            favCards.push(card);
+          }
+        });
+    });
+
+    return of(favCards);
+  }
+
+  addFavouriteCards(card: ICard): Observable<ICard[]> {
+    this.set.add(card.id);
+    localStorage.setItem('set', JSON.stringify(Array.from(this.set)));
+    console.log(this.set);
+    return of(favCards);
+  }
+
+  deleteFavouriteCards(cardId: string): Observable<ICard[]> {
+    let card: ICard | undefined;
+
+    findItemById(this.getFavouriteCards(), cardId)
+      .subscribe((deletedCard) => {
+        card = deletedCard;
+      });
+
+    if (card) {
+      let cardIndex = favCards.indexOf(card);
+      favCards.splice(cardIndex, 1);
+    }
+
+    this.set.delete(cardId);
+    localStorage.setItem('set', JSON.stringify(Array.from(this.set)));
+
+    return of(favCards);
+  }
 
 }

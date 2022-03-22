@@ -6,6 +6,9 @@ import {
 import { HomeComponent } from './features/home/home.component';
 import { NewsPageComponent } from './features/home/components/news/news-page/news-page.component';
 import { AdminGuard } from './core/guards/admin.guard';
+import {
+  FavouriteCardsComponent,
+} from './features/home/components/advertisement/favourite-cards/favourite-cards.component';
 
 const accountModule = () =>
   import('./account/account.module').then((x) => x.AccountModule);
@@ -18,11 +21,11 @@ const routes: Routes = [
   { path: 'page/:type/:id', component: FlatPageComponent },
   { path: '', component: HomeComponent },
   { path: 'news/:id', component: NewsPageComponent },
+  { path: 'favourite', component: FavouriteCardsComponent },
+  { path: 'favourite/page/:type/:id', component: FlatPageComponent },
   { path: 'profile', loadChildren: profileModule },
   { path: 'account', loadChildren: accountModule },
-  { path: 'admin',
-    canActivate: [AdminGuard],
-    loadChildren: adminModule },
+  { path: 'admin', canActivate: [AdminGuard], loadChildren: adminModule },
 ];
 
 @NgModule({

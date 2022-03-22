@@ -18,6 +18,7 @@ import { NewsPageComponent } from './components/news/news-page/news-page.compone
 import { CardsListComponent } from './components/cards-list/cards-list.component';
 import { SharedModule } from '../../shared/shared.module';
 import { AddingNewsComponent } from './components/news/adding-news/adding-news.component';
+import { FavouriteCardsComponent } from './components/advertisement/favourite-cards/favourite-cards.component';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { AddingNewsComponent } from './components/news/adding-news/adding-news.c
     NewsPageComponent,
     CardsListComponent,
     AddingNewsComponent,
+    FavouriteCardsComponent,
   ],
   exports: [HomeComponent, CardComponent, SearchPanelComponent],
 })
